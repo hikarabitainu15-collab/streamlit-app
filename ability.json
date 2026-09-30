@@ -1,0 +1,339 @@
+{
+    "passive": [
+        {
+            "name": "回避行動I",
+            "required_lv": 1,
+            "explanation": "回避力+1"
+        },
+        {
+            "name": "回避行動II",
+            "required_lv": 1,
+            "explanation": "回避力+2"
+        },
+        {
+            "name": "頑強",
+            "required_lv": 5,
+            "explanation": "最大HP+15"
+        },
+        {
+            "name": "武器習熟A/ソード",
+            "required_lv": 1,
+            "explanation": "ランクAのソードを装備可能、ソードの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/アックス",
+            "required_lv": 1,
+            "explanation": "ランクAのアックスを装備可能、アックスの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/スピア",
+            "required_lv": 1,
+            "explanation": "ランクAのスピアを装備可能、スピアの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/スタッフ",
+            "required_lv": 1,
+            "explanation": "ランクAのスタッフを装備可能、スタッフの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/フレイル",
+            "required_lv": 1,
+            "explanation": "ランクAのフレイルを装備可能、フレイルの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/ウォーハンマー",
+            "required_lv": 1,
+            "explanation": "ランクAのウォーハンマーを装備可能、ウォーハンマーの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/格闘",
+            "required_lv": 1,
+            "explanation": "ランクAの格闘を装備可能、格闘の追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/投擲",
+            "required_lv": 1,
+            "explanation": "ランクAの投擲を装備可能、投擲の追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/ボウ",
+            "required_lv": 1,
+            "explanation": "ランクAのボウを装備可能、ボウの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/クロスボウ",
+            "required_lv": 1,
+            "explanation": "ランクAのクロスボウを装備可能、クロスボウの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟A/ガン",
+            "required_lv": 1,
+            "explanation": "ランクAのガンを装備可能、ガンの追加ダメージ+1"
+        },
+        {
+            "name": "武器習熟S/ソード",
+            "required_lv": 5,
+            "explanation": "ランクSのソードを装備可能、ソードの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/アックス",
+            "required_lv": 5,
+            "explanation": "ランクSのアックスを装備可能、アックスの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/スピア",
+            "required_lv": 5,
+            "explanation": "ランクSのスピアを装備可能、スピアの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/スタッフ",
+            "required_lv": 5,
+            "explanation": "ランクSのスタッフを装備可能、スタッフの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/フレイル",
+            "required_lv": 5,
+            "explanation": "ランクSのフレイルを装備可能、フレイルの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/ウォーハンマー",
+            "required_lv": 5,
+            "explanation": "ランクSのウォーハンマーを装備可能、ウォーハンマーの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/格闘",
+            "required_lv": 5,
+            "explanation": "ランクSの格闘を装備可能、格闘の追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/投擲",
+            "required_lv": 5,
+            "explanation": "ランクSの投擲を装備可能、投擲の追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/ボウ",
+            "required_lv": 5,
+            "explanation": "ランクSのボウを装備可能、ボウの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/クロスボウ",
+            "required_lv": 5,
+            "explanation": "ランクSのクロスボウを装備可能、クロスボウの追加ダメージ+2"
+        },
+        {
+            "name": "武器習熟S/ガン",
+            "required_lv": 5,
+            "explanation": "ランクSのガンを装備可能、ガンの追加ダメージ+2"
+        },
+        {
+            "name": "武器の達人",
+            "required_lv": 11,
+            "explanation": "すべての武器を装備可能"
+        },
+        {
+            "name": "防具習熟A/金属鎧",
+            "required_lv": 1,
+            "explanation": "ランクAの金属鎧を装備可能、金属鎧の防護点+1"
+        },
+        {
+            "name": "防具習熟A/非金属鎧",
+            "required_lv": 1,
+            "explanation": "ランクAの非金属鎧を装備可能、非金属鎧の防護点+1"
+        },
+        {
+            "name": "防具習熟A/盾",
+            "required_lv": 1,
+            "explanation": "ランクAの盾を装備可能、盾の防護点+1"
+        },
+        {
+            "name": "防具習熟S/金属鎧",
+            "required_lv": 5,
+            "explanation": "ランクSの金属鎧を装備可能、金属鎧の防護点+2"
+        },
+        {
+            "name": "防具習熟S/非金属鎧",
+            "required_lv": 5,
+            "explanation": "ランクSの非金属鎧を装備可能、非金属鎧の防護点+2"
+        },
+        {
+            "name": "防具習熟S/盾",
+            "required_lv": 5,
+            "explanation": "ランクSの盾を装備可能、盾の防護点+2"
+        },
+        {
+            "name": "防具の達人",
+            "required_lv": 11,
+            "explanation": "すべての防具を装備可能"
+        }
+    ],
+    "active": [
+        {
+            "name": "囮攻撃I",
+            "required_lv": 1,
+            "explanation": "命中-1、ダメージ+2、回避されたら失敗するまで対象の回避-1"
+        },
+        {
+            "name": "囮攻撃II",
+            "required_lv": 1,
+            "explanation": "命中-2、ダメージ+8、回避されたら失敗するまで対象の回避-2"
+        },
+        {
+            "name": "切り返しI",
+            "required_lv": 1,
+            "explanation": "命中に失敗したらもう一度だけ行う"
+        },
+        {
+            "name": "切り返しII",
+            "required_lv": 1,
+            "explanation": "1回目の命中でダメージ+4、命中に失敗したらもう一度だけ行う"
+        },
+        {
+            "name": "牽制攻撃I",
+            "required_lv": 1,
+            "explanation": "命中力判定+1、C値+1"
+        },
+        {
+            "name": "牽制攻撃II",
+            "required_lv": 1,
+            "explanation": "命中力判定+2"
+        },
+        {
+            "name": "牽制攻撃III",
+            "required_lv": 1,
+            "explanation": "命中力判定+3"
+        },
+        {
+            "name": "全力攻撃I",
+            "required_lv": 1,
+            "explanation": "ダメージ+4、リスク:回避力-2"
+        },
+        {
+            "name": "全力攻撃II",
+            "required_lv": 1,
+            "explanation": "ダメージ+12、リスク:回避力-2"
+        },
+        {
+            "name": "全力攻撃III",
+            "required_lv": 1,
+            "explanation": "ダメージ+20、リスク:回避力-2"
+        },
+        {
+            "name": "挑発攻撃I",
+            "required_lv": 1,
+            "explanation": "ダメージ-2、可能な限り挑発した対象を攻撃する"
+        },
+        {
+            "name": "挑発攻撃II",
+            "required_lv": 1,
+            "explanation": "可能な限り挑発した対象を攻撃する"
+        },
+        {
+            "name": "必殺攻撃I",
+            "required_lv": 1,
+            "explanation": "威力表の出目+1、リスク:回避力-2"
+        },
+        {
+            "name": "必殺攻撃II",
+            "required_lv": 1,
+            "explanation": "威力表の出目+1、リスク:回避力-1"
+        },
+        {
+            "name": "必殺攻撃III",
+            "required_lv": 1,
+            "explanation": "威力表の出目+1、クリティカル無効を無視"
+        },
+        {
+            "name": "魔力撃",
+            "required_lv": 1,
+            "explanation": "ダメージ+任意の魔力、リスク:生命・精神抵抗力-2"
+        },
+        {
+            "name": "魔法拡大/威力確実化",
+            "required_lv": 1,
+            "explanation": "魔法の威力表が出目4以下だったら振りなおす"
+        },
+        {
+            "name": "魔法拡大/確実化",
+            "required_lv": 1,
+            "explanation": "魔法行使判定を2回振る"
+        },
+        {
+            "name": "魔法拡大/数",
+            "required_lv": 1,
+            "explanation": "魔法の対象数を増やす"
+        },
+        {
+            "name": "魔法拡大/距離",
+            "required_lv": 1,
+            "explanation": "魔法の射程を増やす"
+        },
+        {
+            "name": "魔法拡大/時間",
+            "required_lv": 1,
+            "explanation": "魔法の効果時間を増やす"
+        },
+        {
+            "name": "魔法拡大/範囲",
+            "required_lv": 1,
+            "explanation": "魔法の範囲を増やす"
+        },
+        {
+            "name": "MP軽減/ソーサラー",
+            "required_lv": 5,
+            "explanation": "真語魔法の消費MP-1"
+        },
+        {
+            "name": "MP軽減/コンジャラー",
+            "required_lv": 5,
+            "explanation": "操霊魔法の消費MP-1"
+        },
+        {
+            "name": "MP軽減/プリースト",
+            "required_lv": 5,
+            "explanation": "神聖魔法の消費MP-1"
+        },
+        {
+            "name": "MP軽減/マギテック",
+            "required_lv": 5,
+            "explanation": "魔動機術の消費MP-1"
+        },
+        {
+            "name": "MP軽減/フェアリーテイマー",
+            "required_lv": 5,
+            "explanation": "妖精魔法の消費MP-1"
+        },
+        {
+            "name": "MP軽減/ドルイド",
+            "required_lv": 5,
+            "explanation": "森羅魔法の消費MP-1"
+        },
+        {
+            "name": "MP軽減/デーモンルーラー",
+            "required_lv": 5,
+            "explanation": "召異魔法の消費MP-1"
+        },
+        {
+            "name": "MP軽減/アビスゲイザー",
+            "required_lv": 5,
+            "explanation": "奈落魔法の消費MP-1"
+        },
+        {
+            "name": "MP軽減/ビブリオマンサー",
+            "required_lv": 5,
+            "explanation": "秘奥魔法の消費MP-1"
+        }
+    ],
+    "main_active": [
+        {
+            "name": "狙撃",
+            "required_lv": 1,
+            "explanation": "次の射撃攻撃の命中が3以上有利で算出ダメージ2倍"
+        },
+        {
+            "name": "ワードブレイク",
+            "required_lv": 1,
+            "explanation": "冒+知で特殊効果を解除"
+        }
+    ]
+
+}

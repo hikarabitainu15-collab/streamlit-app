@@ -1,0 +1,144 @@
+{
+    "skill" :[
+        {
+            "name": "ファイター",
+            "exp_table": 0,
+            "type": 0
+        },
+        {
+            "name": "グラップラー",
+            "exp_table": 0,
+            "type": 0
+        },
+        {
+            "name": "バトルダンサー",
+            "exp_table": 0,
+            "type": 0
+        },
+        {
+            "name": "フェンサー",
+            "exp_table": 1,
+            "type": 0
+        },
+        {
+            "name": "シューター",
+            "exp_table": 1,
+            "type": 0
+        },
+        {
+            "name": "ソーサラー",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "コンジャラー",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "プリースト",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "マギテック",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "フェアリーテイマー",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "ドルイド",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "デーモンルーラー",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "アビスゲイザー",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "ビブリオマンサー",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "スカウト",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "レンジャー",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "セージ",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "エンハンサー",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "バード",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "ライダー",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "アルケミスト",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "ウォーリーダー",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "ジオマンサー",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "ダークハンター",
+            "exp_table": 1,
+            "type": 2
+        },
+        {
+            "name": "フィジカルマスター",
+            "exp_table": 1,
+            "type": 3
+        },
+        {
+            "name": "ミスティック",
+            "exp_table": 1,
+            "type": 3
+        },
+        {
+            "name": "アーティザン",
+            "exp_table": 1,
+            "type": 3
+        },
+        {
+            "name": "アリストクラシー",
+            "exp_table": 1,
+            "type": 3
+        }
+    ]
+}
