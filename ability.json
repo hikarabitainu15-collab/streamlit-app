@@ -1,6 +1,31 @@
 {
     "passive": [
         {
+            "name": "足さばき",
+            "required_lv": 9,
+            "explanation": "制限移動の距離を10mにする"
+        },
+        {
+            "name": "追い打ち",
+            "required_lv": 3,
+            "explanation": "シールドバッシュで転倒させた対象に攻撃できる"
+        },
+        {
+            "name": "ガーディアンI",
+            "required_lv": 5,
+            "explanation": "かばう回数を3回にする"
+        },
+        {
+            "name": "ガーディアンII",
+            "required_lv": 5,
+            "explanation": "かばう回数を5回にする"
+        },
+        {
+            "name": "かいくぐり",
+            "required_lv": 1,
+            "explanation": "回避成功数だけC値減少"
+        },
+        {
             "name": "回避行動I",
             "required_lv": 1,
             "explanation": "回避力+1"
@@ -14,6 +39,221 @@
             "name": "頑強",
             "required_lv": 5,
             "explanation": "最大HP+15"
+        },
+        {
+            "name": "キャパシティ",
+            "required_lv": 11,
+            "explanation": "最大MP+15"
+        },
+        {
+            "name": "鼓咆陣率追加I",
+            "required_lv": 1,
+            "explanation": "鼓咆陣率の取得数+1"
+        },
+        {
+            "name": "鼓咆陣率追加II",
+            "required_lv": 1,
+            "explanation": "鼓咆陣率の取得数+2"
+        },
+        {
+            "name": "鼓咆陣率追加III",
+            "required_lv": 1,
+            "explanation": "鼓咆陣率の取得数+3"
+        },
+        {
+            "name": "射手の体術",
+            "required_lv": 7,
+            "explanation": "シューター技能で回避可能になる"
+        },
+        {
+            "name": "終律増強",
+            "required_lv": 3,
+            "explanation": "終律の威力+10"
+        },
+        {
+            "name": "呪歌追加I",
+            "required_lv": 1,
+            "explanation": "呪歌の取得数+1"
+        },
+        {
+            "name": "呪歌追加II",
+            "required_lv": 1,
+            "explanation": "呪歌の取得数+2"
+        },
+        {
+            "name": "呪歌追加III",
+            "required_lv": 1,
+            "explanation": "呪歌の取得数+3"
+        },
+        {
+            "name": "スローイングI",
+            "required_lv": 1,
+            "explanation": "投擲の命中+1、ポーションボール使用可"
+        },
+        {
+            "name": "スローイングII",
+            "required_lv": 1,
+            "explanation": "投擲の命中+2、ポーションボール使用可"
+        },
+        {
+            "name": "双撃",
+            "required_lv": 3,
+            "explanation": "両手利きで別の対象を攻撃可能"
+        },
+        {
+            "name": "相克の標的",
+            "required_lv": 1,
+            "explanation": "相域の対象数を2体にする"
+        },
+        {
+            "name": "相克の別離",
+            "required_lv": 3,
+            "explanation": "相域の効果を対象ごとに選べるようにする"
+        },
+        {
+            "name": "ターゲッティング",
+            "required_lv": 1,
+            "explanation": "誤射を起こさなくなる"
+        },
+        {
+            "name": "鷹の目",
+            "required_lv": 3,
+            "explanation": "遮蔽の奥を対象にできるようになる"
+        },
+        {
+            "name": "超頑強",
+            "required_lv": 7,
+            "explanation": "最大HP+15"
+        },
+        {
+            "name": "抵抗強化I",
+            "required_lv": 3,
+            "explanation": "生命抵抗力、精神抵抗力、生死判定+1"
+        },
+        {
+            "name": "抵抗強化II",
+            "required_lv": 3,
+            "explanation": "生命抵抗力、精神抵抗力、生死判定+2"
+        },
+        {
+            "name": "特殊楽器習熟",
+            "required_lv": 3,
+            "explanation": "特殊楽器を装備可能"
+        },
+        {
+            "name": "飛び蹴り",
+            "required_lv": 9,
+            "explanation": "10m以上移動した際にキックで攻撃可能"
+        },
+        {
+            "name": "投げ強化I",
+            "required_lv": 3,
+            "explanation": "2部位まで投げの対象にできる"
+        },
+        {
+            "name": "投げ強化II",
+            "required_lv": 3,
+            "explanation": "3部位まで投げの対象にできる"
+        },
+        {
+            "name": "二刀流",
+            "required_lv": 5,
+            "explanation": "両手利きのペナルティを無効化"
+        },
+        {
+            "name": "二刀無双",
+            "required_lv": 11,
+            "explanation": "両手利きの必筋制限を撤廃"
+        },
+        {
+            "name": "ハーモニー",
+            "required_lv": 5,
+            "explanation": "ペットと同時に呪歌を奏でられる"
+        },
+        {
+            "name": "賦術強化I",
+            "required_lv": 3,
+            "explanation": "賦術判定+1"
+        },
+        {
+            "name": "賦術強化II",
+            "required_lv": 3,
+            "explanation": "賦術判定+2"
+        },
+        {
+            "name": "賦術全遠隔化",
+            "required_lv": 5,
+            "explanation": "賦術の射程+10m、接触のものも10mにする"
+        },
+        {
+            "name": "踏みつけ",
+            "required_lv": 5,
+            "explanation": "投げた対象に追加攻撃を行う"
+        },
+        {
+            "name": "ブロッキング",
+            "required_lv": 5,
+            "explanation": "自身の部位数を2として扱う"
+        },
+        {
+            "name": "変幻自在I",
+            "required_lv": 5,
+            "explanation": "複数宣言=2回、両方とも使用:グラップラー/バトルダンサー/フェンサーに限る"
+        },
+        {
+            "name": "変幻自在II",
+            "required_lv": 5,
+            "explanation": "複数宣言=3回、すべて使用:グラップラー/バトルダンサー/フェンサーに限る"
+        },
+        {
+            "name": "魔晶石の達人",
+            "required_lv": 9,
+            "explanation": "魔晶石を一度に2つ使用可能"
+        },
+        {
+            "name": "魔法拡大の達人",
+            "required_lv": 5,
+            "explanation": "対象ごとに魔法拡大の効果の適用を選べる"
+        },
+        {
+            "name": "マリオネット",
+            "required_lv": 5,
+            "explanation": "ゴーレム等を自由な手番で動かせる"
+        },
+        {
+            "name": "魔力強化I",
+            "required_lv": 7,
+            "explanation": "すべての魔力+1"
+        },
+        {
+            "name": "魔力強化II",
+            "required_lv": 7,
+            "explanation": "すべての魔力+2"
+        },
+        {
+            "name": "命中強化I",
+            "required_lv": 7,
+            "explanation": "命中力+1"
+        },
+        {
+            "name": "命中強化II",
+            "required_lv": 7,
+            "explanation": "命中力+2"
+        },
+        {
+            "name": "両手利き",
+            "required_lv": 1,
+            "explanation": "命中-2で両手の武器で攻撃可能"
+        },
+        {
+            "name": "連続賦術",
+            "required_lv": 5,
+            "explanation": "すべての魔力+1"
+        },
+        {
+            "name": "練体の極意",
+            "required_lv": 5,
+            "explanation": "練技の効果時間3倍"
         },
         {
             "name": "武器習熟A/ソード",
@@ -131,6 +371,36 @@
             "explanation": "すべての武器を装備可能"
         },
         {
+            "name": "魔器習熟A",
+            "required_lv": 1,
+            "explanation": "ランクAの魔器を装備可能、魔器の追加ダメージ+1、防護点+1"
+        },
+        {
+            "name": "魔器習熟S",
+            "required_lv": 5,
+            "explanation": "ランクSの魔器を装備可能、魔器の追加ダメージ+1、防護点+1"
+        },
+        {
+            "name": "魔器の達人",
+            "required_lv": 11,
+            "explanation": "すべての魔器を装備可能、魔器の追加ダメージ+1、防護点+1"
+        },
+        {
+            "name": "魔導書習熟A",
+            "required_lv": 1,
+            "explanation": "ランクAの魔導書を装備可能"
+        },
+        {
+            "name": "魔導書習熟S",
+            "required_lv": 5,
+            "explanation": "ランクSの魔導書を装備可能"
+        },
+        {
+            "name": "魔導書の達人",
+            "required_lv": 11,
+            "explanation": "すべての魔導書を装備可能"
+        },
+        {
             "name": "防具習熟A/金属鎧",
             "required_lv": 1,
             "explanation": "ランクAの金属鎧を装備可能、金属鎧の防護点+1"
@@ -164,118 +434,6 @@
             "name": "防具の達人",
             "required_lv": 11,
             "explanation": "すべての防具を装備可能"
-        }
-    ],
-    "active": [
-        {
-            "name": "囮攻撃I",
-            "required_lv": 1,
-            "explanation": "命中-1、ダメージ+2、回避されたら失敗するまで対象の回避-1"
-        },
-        {
-            "name": "囮攻撃II",
-            "required_lv": 1,
-            "explanation": "命中-2、ダメージ+8、回避されたら失敗するまで対象の回避-2"
-        },
-        {
-            "name": "切り返しI",
-            "required_lv": 1,
-            "explanation": "命中に失敗したらもう一度だけ行う"
-        },
-        {
-            "name": "切り返しII",
-            "required_lv": 1,
-            "explanation": "1回目の命中でダメージ+4、命中に失敗したらもう一度だけ行う"
-        },
-        {
-            "name": "牽制攻撃I",
-            "required_lv": 1,
-            "explanation": "命中力判定+1、C値+1"
-        },
-        {
-            "name": "牽制攻撃II",
-            "required_lv": 1,
-            "explanation": "命中力判定+2"
-        },
-        {
-            "name": "牽制攻撃III",
-            "required_lv": 1,
-            "explanation": "命中力判定+3"
-        },
-        {
-            "name": "全力攻撃I",
-            "required_lv": 1,
-            "explanation": "ダメージ+4、リスク:回避力-2"
-        },
-        {
-            "name": "全力攻撃II",
-            "required_lv": 1,
-            "explanation": "ダメージ+12、リスク:回避力-2"
-        },
-        {
-            "name": "全力攻撃III",
-            "required_lv": 1,
-            "explanation": "ダメージ+20、リスク:回避力-2"
-        },
-        {
-            "name": "挑発攻撃I",
-            "required_lv": 1,
-            "explanation": "ダメージ-2、可能な限り挑発した対象を攻撃する"
-        },
-        {
-            "name": "挑発攻撃II",
-            "required_lv": 1,
-            "explanation": "可能な限り挑発した対象を攻撃する"
-        },
-        {
-            "name": "必殺攻撃I",
-            "required_lv": 1,
-            "explanation": "威力表の出目+1、リスク:回避力-2"
-        },
-        {
-            "name": "必殺攻撃II",
-            "required_lv": 1,
-            "explanation": "威力表の出目+1、リスク:回避力-1"
-        },
-        {
-            "name": "必殺攻撃III",
-            "required_lv": 1,
-            "explanation": "威力表の出目+1、クリティカル無効を無視"
-        },
-        {
-            "name": "魔力撃",
-            "required_lv": 1,
-            "explanation": "ダメージ+任意の魔力、リスク:生命・精神抵抗力-2"
-        },
-        {
-            "name": "魔法拡大/威力確実化",
-            "required_lv": 1,
-            "explanation": "魔法の威力表が出目4以下だったら振りなおす"
-        },
-        {
-            "name": "魔法拡大/確実化",
-            "required_lv": 1,
-            "explanation": "魔法行使判定を2回振る"
-        },
-        {
-            "name": "魔法拡大/数",
-            "required_lv": 1,
-            "explanation": "魔法の対象数を増やす"
-        },
-        {
-            "name": "魔法拡大/距離",
-            "required_lv": 1,
-            "explanation": "魔法の射程を増やす"
-        },
-        {
-            "name": "魔法拡大/時間",
-            "required_lv": 1,
-            "explanation": "魔法の効果時間を増やす"
-        },
-        {
-            "name": "魔法拡大/範囲",
-            "required_lv": 1,
-            "explanation": "魔法の範囲を増やす"
         },
         {
             "name": "MP軽減/ソーサラー",
@@ -321,6 +479,413 @@
             "name": "MP軽減/ビブリオマンサー",
             "required_lv": 5,
             "explanation": "秘奥魔法の消費MP-1"
+        },
+        {
+            "name": "自己占瞳",
+            "required_lv": 5,
+            "explanation": "奈落魔法の消費MP-1"
+        },
+        {
+            "name": "占瞳操作",
+            "required_lv": 5,
+            "explanation": "占瞳判定の達成値を±1できる"
+        },
+        {
+            "name": "代償軽減I",
+            "required_lv": 3,
+            "explanation": "代償のコスト-1"
+        },
+        {
+            "name": "代償軽減II",
+            "required_lv": 3,
+            "explanation": "代償のコスト半減"
+        },
+        {
+            "name": "切り払い",
+            "required_lv": 16,
+            "explanation": "射撃攻撃や対象:1体の形状:射撃を命中で消滅にできる"
+        },
+        {
+            "name": "無尽の盾",
+            "required_lv": 16,
+            "explanation": "範囲攻撃をかばえる"
+        },
+        {
+            "name": "ファントムカウンター",
+            "required_lv": 16,
+            "explanation": "何回でもカウンターを試みられる、試みるたびに達成値-2"
+        },
+        {
+            "name": "切り払い",
+            "required_lv": 16,
+            "explanation": "射撃攻撃や対象:1体の形状:射撃を命中で消滅にできる"
+        },
+        {
+            "name": "急所狙い",
+            "required_lv": 16,
+            "explanation": "必殺攻撃時、C値-1(下限7)"
+        },
+        {
+            "name": "心眼",
+            "required_lv": 16,
+            "explanation": "回避+4、透明を無視"
+        },
+        {
+            "name": "零距離射撃",
+            "required_lv": 16,
+            "explanation": "余分な射程5mごとにダメージ+1"
+        }
+    ],
+    "active": [
+        {
+            "name": "インファイトI",
+            "required_lv": 5,
+            "explanation": "命中+2、同対象しか攻撃できない"
+        },
+        {
+            "name": "インファイトII",
+            "required_lv": 5,
+            "explanation": "命中+2、ダメージ+4、同対象しか攻撃できない"
+        },
+        {
+            "name": "囮攻撃I",
+            "required_lv": 1,
+            "explanation": "命中-1、ダメージ+2、回避されたら失敗するまで対象の回避-1"
+        },
+        {
+            "name": "囮攻撃II",
+            "required_lv": 1,
+            "explanation": "命中-2、ダメージ+8、回避されたら失敗するまで対象の回避-2"
+        },
+        {
+            "name": "カード軽減",
+            "required_lv": 5,
+            "explanation": "カード消費量-1"
+        },
+        {
+            "name": "楽素転換",
+            "required_lv": 3,
+            "explanation": "楽素1つを任意の楽素に変換する"
+        },
+        {
+            "name": "影矢",
+            "required_lv": 9,
+            "explanation": "矢弾を2倍消費することで命中判定を2回行う"
+        },
+        {
+            "name": "カニングキャストI",
+            "required_lv": 1,
+            "explanation": "一度使用した魔法の行使判定+2"
+        },
+        {
+            "name": "カニングキャストII",
+            "required_lv": 1,
+            "explanation": "一度使用した魔法の行使判定+3"
+        },
+        {
+            "name": "かばうI",
+            "required_lv": 1,
+            "explanation": "かばえる"
+        },
+        {
+            "name": "かばうII",
+            "required_lv": 7,
+            "explanation": "かばえる、宣言回数に含めない"
+        },
+        {
+            "name": "斬り返しI",
+            "required_lv": 1,
+            "explanation": "命中に失敗したらもう一度だけ行う"
+        },
+        {
+            "name": "斬り返しII",
+            "required_lv": 1,
+            "explanation": "1回目の命中でダメージ+4、命中に失敗したらもう一度だけ行う"
+        },
+        {
+            "name": "牙折り",
+            "required_lv": 9,
+            "explanation": "対象の発生させる物理ダメージ―8"
+        },
+        {
+            "name": "クイックキャスト",
+            "required_lv": 1,
+            "explanation": "抵抗:消滅の魔法の消費MP半減"
+        },
+        {
+            "name": "クリティカルキャストI",
+            "required_lv": 7,
+            "explanation": "C値-1"
+        },
+        {
+            "name": "クリティカルキャストII",
+            "required_lv": 7,
+            "explanation": "C値-1、抵抗されてもクリティカルする"
+        },
+        {
+            "name": "牽制攻撃I",
+            "required_lv": 1,
+            "explanation": "命中力判定+1、C値+1"
+        },
+        {
+            "name": "牽制攻撃II",
+            "required_lv": 1,
+            "explanation": "命中力判定+2"
+        },
+        {
+            "name": "牽制攻撃III",
+            "required_lv": 1,
+            "explanation": "命中力判定+3"
+        },
+        {
+            "name": "高度な柔軟性",
+            "required_lv": 9,
+            "explanation": "鼓咆のランクを2段階下げると陣気+2"
+        },
+        {
+            "name": "シールドバッシュI",
+            "required_lv": 1,
+            "explanation": "盾で攻撃し、1部位なら転倒させる"
+        },
+        {
+            "name": "シールドバッシュII",
+            "required_lv": 1,
+            "explanation": "盾で攻撃し、2部位までなら転倒させる"
+        },
+        {
+            "name": "シャドウステップI",
+            "required_lv": 1,
+            "explanation": "回避失敗時もう一度行う、または乱戦内の味方部位数が多いならダメージ+2"
+        },
+        {
+            "name": "シャドウステップII",
+            "required_lv": 1,
+            "explanation": "回避失敗時もう一度行う、または乱戦内の味方部位数が多いならダメージ+4"
+        },
+        {
+            "name": "シュアパフォーマー",
+            "required_lv": 5,
+            "explanation": "終律をC値なしにし、必中にする"
+        },
+        {
+            "name": "スキルフルプレイ",
+            "required_lv": 7,
+            "explanation": "演奏判定を2回行う"
+        },
+        {
+            "name": "捨て身攻撃I",
+            "required_lv": 1,
+            "explanation": "ダメージ+5、命中時自身に確定ダメージ5点"
+        },
+        {
+            "name": "捨て身攻撃II",
+            "required_lv": 1,
+            "explanation": "ダメージ+10、命中時自身に確定ダメージ10点"
+        },
+        {
+            "name": "捨て身攻撃III",
+            "required_lv": 1,
+            "explanation": "ダメージ+30、命中時自身に確定ダメージ30点"
+        },
+        {
+            "name": "先陣の才覚",
+            "required_lv": 5,
+            "explanation": "先制判定成功時、陣気+2"
+        },
+        {
+            "name": "全力攻撃I",
+            "required_lv": 1,
+            "explanation": "ダメージ+4、リスク:回避力-2"
+        },
+        {
+            "name": "全力攻撃II",
+            "required_lv": 1,
+            "explanation": "ダメージ+12、リスク:回避力-2"
+        },
+        {
+            "name": "全力攻撃III",
+            "required_lv": 1,
+            "explanation": "ダメージ+20、リスク:回避力-2"
+        },
+        {
+            "name": "ダブルキャスト",
+            "required_lv": 9,
+            "explanation": "魔法行使を2回行う、2回目はレベル半減、魔力-10"
+        },
+        {
+            "name": "挑発攻撃I",
+            "required_lv": 1,
+            "explanation": "ダメージ-2、可能な限り挑発した対象を攻撃する"
+        },
+        {
+            "name": "挑発攻撃II",
+            "required_lv": 1,
+            "explanation": "可能な限り挑発した対象を攻撃する"
+        },
+        {
+            "name": "露払い",
+            "required_lv": 1,
+            "explanation": "命中判定の出目を5に固定、威力表の出目+1"
+        },
+        {
+            "name": "ディフェンススタンス",
+            "required_lv": 1,
+            "explanation": "回避、生命抵抗、精神抵抗のいずれか+4、回避以外のすべての行動判定-4"
+        },
+        {
+            "name": "テイルスイングI",
+            "required_lv": 3,
+            "explanation": "命中-1、尻尾で3体まで攻撃"
+        },
+        {
+            "name": "テイルスイングII",
+            "required_lv": 3,
+            "explanation": "尻尾で5体まで攻撃"
+        },
+        {
+            "name": "薙ぎ払いI",
+            "required_lv": 3,
+            "explanation": "ダメージ-3、3体まで攻撃"
+        },
+        {
+            "name": "薙ぎ払いII",
+            "required_lv": 3,
+            "explanation": "5体まで攻撃"
+        },
+        {
+            "name": "バイオレントキャストI",
+            "required_lv": 1,
+            "explanation": "魔法行使判定+2、攻撃魔法のみ"
+        },
+        {
+            "name": "バイオレントキャストII",
+            "required_lv": 1,
+            "explanation": "魔法行使判定+3、攻撃魔法のみ"
+        },
+        {
+            "name": "必殺攻撃I",
+            "required_lv": 1,
+            "explanation": "威力表の出目+1、リスク:回避力-2"
+        },
+        {
+            "name": "必殺攻撃II",
+            "required_lv": 1,
+            "explanation": "威力表の出目+1、リスク:回避力-1"
+        },
+        {
+            "name": "必殺攻撃III",
+            "required_lv": 1,
+            "explanation": "威力表の出目+1、クリティカル無効を無視"
+        },
+        {
+            "name": "魔法収束",
+            "required_lv": 3,
+            "explanation": "範囲魔法を対象1体にする"
+        },
+        {
+            "name": "魔法制御",
+            "required_lv": 5,
+            "explanation": "範囲魔法で任意の対象を除外する"
+        },
+        {
+            "name": "魔力撃",
+            "required_lv": 1,
+            "explanation": "ダメージ+任意の魔力、リスク:生命・精神抵抗力-2"
+        },
+        {
+            "name": "マルチアクション",
+            "required_lv": 5,
+            "explanation": "近接攻撃と魔法行使を行う"
+        },
+        {
+            "name": "鎧貫きI",
+            "required_lv": 1,
+            "explanation": "対象の防護点を半分でダメージ計算、C値+1"
+        },
+        {
+            "name": "鎧貫きII",
+            "required_lv": 1,
+            "explanation": "対象の防護点を半分でダメージ計算、C値+1、クリティカルした場合は無視"
+        },
+        {
+            "name": "鎧貫きIII",
+            "required_lv": 1,
+            "explanation": "対象の防護点を半分でダメージ計算、クリティカルした場合は無視"
+        },
+        {
+            "name": "乱撃I",
+            "required_lv": 1,
+            "explanation": "命中-2、3体まで攻撃"
+        },
+        {
+            "name": "乱撃II",
+            "required_lv": 1,
+            "explanation": "3体まで攻撃"
+        },
+        {
+            "name": "魔法拡大/威力確実化",
+            "required_lv": 1,
+            "explanation": "魔法の威力表が出目4以下だったら振りなおす"
+        },
+        {
+            "name": "魔法拡大/確実化",
+            "required_lv": 1,
+            "explanation": "魔法行使判定を2回振る"
+        },
+        {
+            "name": "魔法拡大/数",
+            "required_lv": 1,
+            "explanation": "魔法の対象数を増やす"
+        },
+        {
+            "name": "魔法拡大/距離",
+            "required_lv": 1,
+            "explanation": "魔法の射程を増やす"
+        },
+        {
+            "name": "魔法拡大/時間",
+            "required_lv": 1,
+            "explanation": "魔法の効果時間を増やす"
+        },
+        {
+            "name": "魔法拡大/範囲",
+            "required_lv": 1,
+            "explanation": "魔法の範囲を増やす"
+        },
+        {
+            "name": "双占瞳",
+            "required_lv": 7,
+            "explanation": "命中-2、3体まで攻撃"
+        },
+        {
+            "name": "痛撃",
+            "required_lv": 16,
+            "explanation": "適用ダメージの10分の1だけ最大HPを減少させる"
+        },
+        {
+            "name": "跳躍攻撃",
+            "required_lv": 16,
+            "explanation": "飛行や攻撃障害を無視する"
+        },
+        {
+            "name": "封印撃",
+            "required_lv": 16,
+            "explanation": "対象に宣言特技の使用を禁止させる"
+        },
+        {
+            "name": "ヒットアンドアウェイ",
+            "required_lv": 16,
+            "explanation": "攻撃後10m移動する、回避-4"
+        },
+        {
+            "name": "曲射",
+            "required_lv": 16,
+            "explanation": "攻撃障害を無視する"
+        },
+        {
+            "name": "デュアルアクション",
+            "required_lv": 16,
+            "explanation": "射撃攻撃と魔法行使を行う"
         }
     ],
     "main_active": [

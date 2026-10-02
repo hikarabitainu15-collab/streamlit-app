@@ -25,11 +25,11 @@ if 'life_stats_list' not in st.session_state:
         [0,0,0,0],
         [0,0,0,0]
     ]
-if 'hp_buf_1' not in st.session_state:
-    st.session_state.vital_buf_1 = 0
-    st.session_state.hp_buf_1 = 0
-    st.session_state.hp_buf_2 = 0
-    st.session_state.mp_buf_2 = 0
+if 'hp_buf' not in st.session_state:
+    st.session_state.vital_buf = [0] * 4
+    st.session_state.mental_buf = [0] * 4
+    st.session_state.hp_buf = [0] * 4
+    st.session_state.mp_buf =[0] * 4
 if 'use_exp' not in st.session_state:
     st.session_state.exp_all = 0
     st.session_state.use_exp = 0
@@ -37,7 +37,7 @@ if 'first_skill' not in st.session_state:
     st.session_state.first_skill = []
 if 'ability_mode' not in st.session_state:
     st.session_state.ability_mode = []
-    for i in range(17):
+    for i in range(18):
         st.session_state.ability_mode.append(" ")
 if 'weapon_list_num' not in st.session_state:
     st.session_state.weapon_list_num = 1
@@ -51,6 +51,8 @@ if 'item_list_num' not in st.session_state:
     st.session_state.item_list_num = 5
     st.session_state.item_list = []
     st.session_state.money = 0
+if 'honor_list_num' not in st.session_state:
+    st.session_state.honor_list_num = 3
 if 'history_list_num' not in st.session_state:
     st.session_state.history_list_num = 3
     st.session_state.history_list = []
@@ -70,17 +72,179 @@ def update_lv():
     for i in range(len(skill_data["skill"])):
         st.session_state.use_exp += exp_table_data["exp_table"][skill_data["skill"][i]["exp_table"]][st.session_state.lv_list[i]]
 def update_life_stats_list():
-    st.session_state.life_stats_list[0][1] = st.session_state.vital_buf_1
-    # st.session_state.life_stats_list[1][1] = st.session_state.mental_buf_1
-    st.session_state.life_stats_list[2][1] = st.session_state.hp_buf_1 + st.session_state.hp_buf_2
-    st.session_state.life_stats_list[3][1] = st.session_state.mp_buf_2
+    st.session_state.life_stats_list[0][1] = sum(st.session_state.vital_buf)
+    st.session_state.life_stats_list[1][1] = sum(st.session_state.mental_buf)
+    st.session_state.life_stats_list[2][1] = sum(st.session_state.hp_buf)
+    st.session_state.life_stats_list[3][1] = sum(st.session_state.mp_buf)
+def update_ability_buf():
+    if "頑強" in st.session_state.ability_mode:
+        st.session_state.hp_buf[1] = 15
+        update_life_stats_list()
+    elif "頑強" not in st.session_state.ability_mode:
+        st.session_state.hp_buf[1] = 0
+        update_life_stats_list()
+    if "超頑強" in st.session_state.ability_mode:
+        st.session_state.hp_buf[2] = 15
+        update_life_stats_list()
+    elif "超頑強" not in st.session_state.ability_mode:
+        st.session_state.hp_buf[1] = 0
+        update_life_stats_list()
+    if "キャパシティ" in st.session_state.ability_mode:
+        st.session_state.mp_buf[1] = 15
+        update_life_stats_list()
+    elif "キャパシティ" not in st.session_state.ability_mode:
+        st.session_state.mp_buf[1] = 0
+        update_life_stats_list()
+    if "抵抗強化I" in st.session_state.ability_mode:
+        st.session_state.vital_buf[1] = 1
+        st.session_state.mental_buf[1] = 1
+        update_life_stats_list()
+    elif "抵抗強化I" not in st.session_state.ability_mode:
+        st.session_state.vital_buf[1] = 0
+        st.session_state.mental_buf[1] = 0
+        update_life_stats_list()
+    if "抵抗強化II" in st.session_state.ability_mode:
+        st.session_state.vital_buf[1] = 2
+        st.session_state.mental_buf[1] = 2
+        update_life_stats_list()
+    elif "抵抗強化II" not in st.session_state.ability_mode:
+        st.session_state.vital_buf[1] = 0
+        st.session_state.mental_buf[1] = 0
+        update_life_stats_list()
+    if "回避行動I" in st.session_state.ability_mode:
+        st.session_state._buf[1] = 1
+    elif "回避行動I" not in st.session_state.ability_mode:
+        st.session_state.vital_buf[1] = 0
 def update_ability_mode(abi_num):
-    key = f"ability_selectbox_{abi_num}"
-    st.session_state.ability_mode[abi_num] = st.session_state[key]
+    st.session_state.ability_mode[abi_num] = st.session_state[f"ability_selectbox_{abi_num}"]
+    update_ability_buf()    
 def update_weapon_list_num(num):
     st.session_state.weapon_list_num = max(st.session_state.weapon_list_num + num, 1)
+def update_equipment_buf():
+    equipment_buf_list = []
+    st.session_state.equipment_buf = [0] * 15
+    for part in st.session_state.equipment_part_list:
+        i = 0
+        while(f"{part}{i}効果" in st.session_state):
+            if st.session_state[f"{part}{i}効果"] != "":
+                equipment_buf_list.append(st.session_state[f"{part}{i}効果"])
+            i += 1
+    for data in equipment_buf_list:
+        flag_str = data[-1]
+        match flag_str:
+            case "A":
+                try:
+                    buf_num = int(data.rstrip("A"))
+                    st.session_state.equipment_buf[0] += buf_num
+                except:
+                    st.empty()
+            case "B":
+                try:
+                    buf_num = int(data.rstrip("B"))
+                    st.session_state.equipment_buf[1] += buf_num
+                except:
+                    st.empty()
+            case "C":
+                try:
+                    buf_num = int(data.rstrip("C"))
+                    st.session_state.equipment_buf[2] += buf_num
+                except:
+                    st.empty()
+            case "D":
+                try:
+                    buf_num = int(data.rstrip("D"))
+                    st.session_state.equipment_buf[3] += buf_num
+                except:
+                    st.empty()
+            case "E":
+                try:
+                    buf_num = int(data.rstrip("E"))
+                    st.session_state.equipment_buf[4] += buf_num
+                except:
+                    st.empty()
+            case "F":
+                try:
+                    buf_num = int(data.rstrip("F"))
+                    st.session_state.equipment_buf[5] += buf_num
+                except:
+                    st.empty()
+            case "G":
+                try:
+                    buf_num = int(data.rstrip("G"))
+                    st.session_state.equipment_buf[6] += buf_num
+                except:
+                    st.empty()
+            case "H":
+                try:
+                    buf_num = int(data.rstrip("H"))
+                    st.session_state.equipment_buf[7] += buf_num
+                except:
+                    st.empty()
+            case "I":
+                try:
+                    buf_num = int(data.rstrip("I"))
+                    st.session_state.equipment_buf[8] += buf_num
+                except:
+                    st.empty()
+            case "J":
+                try:
+                    buf_num = int(data.rstrip("J"))
+                    st.session_state.equipment_buf[9] += buf_num
+                except:
+                    st.empty()
+            case "K":
+                try:
+                    buf_num = int(data.rstrip("K"))
+                    st.session_state.equipment_buf[10] += buf_num
+                except:
+                    st.empty()
+            case "L":
+                try:
+                    buf_num = int(data.rstrip("L"))
+                    st.session_state.equipment_buf[11] += buf_num
+                except:
+                    st.empty()
+            case "M":
+                try:
+                    buf_num = int(data.rstrip("M"))
+                    st.session_state.equipment_buf[12] += buf_num
+                except:
+                    st.empty()
+            case "N":
+                try:
+                    buf_num = int(data.rstrip("N"))
+                    st.session_state.equipment_buf[13] += buf_num
+                except:
+                    st.empty()
+            case "O":
+                try:
+                    buf_num = int(data.rstrip("O"))
+                    st.session_state.equipment_buf[14] += buf_num
+                except:
+                    st.empty()
+def update_equipment_exclusive_buf():
+    equipment_buf_list = []
+    for part in st.session_state.equipment_part_list:
+        i = 0
+        while(f"{part}{i}専用" in st.session_state):
+            equipment_buf_list.append(st.session_state[f"{part}{i}専用"])
+            i += 1
+    if(("HP" in equipment_buf_list) and (st.session_state.hp_buf[0] != 2)):
+        st.session_state.hp_buf[0] = 2
+        update_life_stats_list()
+    elif(("HP" not in equipment_buf_list) and (st.session_state.hp_buf[0] != 0)):
+        st.session_state.hp_buf[0] = 0
+        update_life_stats_list()
+    if(("MP" in equipment_buf_list) and (st.session_state.mp_buf[0] != 2)):
+        st.session_state.mp_buf[0] = 2
+        update_life_stats_list()
+    elif(("MP" not in equipment_buf_list) and (st.session_state.mp_buf[0] != 0)):
+        st.session_state.mp_buf[0] = 0
+        update_life_stats_list()
 def update_item_list_num(num):
     st.session_state.item_list_num = max(st.session_state.item_list_num + num, 1)
+def update_honor_list_num(num):
+    st.session_state.honor_list_num = max(st.session_state.honor_list_num + num, 3)
 def update_history_list_num(num):
     st.session_state.history_list_num = max(st.session_state.history_list_num + num, 1)
 def update_history():
@@ -113,18 +277,24 @@ def update_history():
             except:
                 st.error("成長欄の入力規則が間違っています")
 
-#@st.cache_data
+#外部データ読み込み
 # 種族情報ファイルを読み込む
-with open("race.json", "r", encoding="utf-8") as f:
-    race_data = json.load(f)
+@st.cache_data
+def load_race_json():
+    with open("race.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+race_data = load_race_json()
 races = race_data["race"]
 race_list = [race["name"] for race in races]
 race_list.insert(0," ") #リストの先頭に空欄を追加
 race_list.append("自由記入") #リストの最後に自由記入を追加
 
 # 技能情報ファイルを読み込む
-with open("skills.json", "r", encoding="utf-8") as f:
-    skill_data = json.load(f)
+@st.cache_data
+def load_skills_json():
+    with open("skills.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+skill_data = load_skills_json()
 #各技能のレベル格納配列を追加
 for i in range(len(skill_data["skill"])):
     skill_data["skill"][i]["lv"] = 0
@@ -136,12 +306,18 @@ other2_name_list = [item["name"] for item in skill_data["skill"] if item["type"]
 st.session_state.skill_count = len(skills_name_list)
 
 # 経験値テーブル情報ファイルを読み込む
-with open("exp_table.json", "r", encoding="utf-8") as f:
-    exp_table_data = json.load(f)
+@st.cache_data
+def load_exp_table_json():
+    with open("exp_table.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+exp_table_data = load_exp_table_json()
 
 # 戦闘特技情報ファイルを読み込む
-with open("ability.json", "r", encoding="utf-8") as f:
-    ability_data = json.load(f)
+@st.cache_data
+def load_ability_json():
+    with open("ability.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+ability_data = load_ability_json()
 ability_passive_list = [item for item in ability_data["passive"]]
 ability_active_list = [item for item in ability_data["active"]]
 ability_mian_active_list = [item for item in ability_data["main_active"]]
@@ -162,7 +338,6 @@ if len(st.session_state.lv_list) >= len(magic_name_list):
         if skill_data["skill"][i]["name"] in magic_name_list:
             magic_lv_sum += (st.session_state.lv_list[i])
 
-
 with st.container(horizontal=True, horizontal_alignment="right"):
     if st.session_state.page_layout == "centered":
         if st.button("ページをワイドにする", help="ウィンドウ幅によってはレイアウトが崩れる可能性があります", type="tertiary"):
@@ -179,9 +354,9 @@ st.set_page_config(
     layout=st.session_state.page_layout,
     initial_sidebar_state="auto",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
+        #'Get Help': 'https://www.extremelycoolapp.com/help',
+        #'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "## SNEくんが情けないために生まれた素晴らしいサイト"
     }
 )
 
@@ -321,31 +496,31 @@ with st.expander("能力値"):
             with col_stats_1:
                 st.write("")
                 st.write("")
-                st.write("\+")
+                st.write(r"\+")
             with col_stats_2:
                 stats_list[i][1] = st.number_input(stats_name_list[0][i], step=1, min_value=born_dice[0][0], max_value=born_dice[1][0])
             with col_stats_3:
                 st.write("")
                 st.write("")
-                st.write("\+")
+                st.write(r"\+")
             with col_stats_4:
                 stats_list[i][2] = st.number_input(f"成長{stats_name_list[0][i]}", value=st.session_state.growth_list[i], disabled=True)
             with col_stats_5:
                 st.write("")
                 st.write("")
-                st.write("\=")
+                st.write(r"\=")
             with col_stats_6:
                 stats_list[i][3] = st.number_input(stats_name_list[1][i], value=(stats_list[i][0]+stats_list[i][1]+stats_list[i][2]), disabled=True)
             with col_stats_7:
                 st.write("")
                 st.write("")
-                st.write("\+")
+                st.write(r"\+")
             with col_stats_8:
                 stats_list[i][4] = st.number_input(f"補正{stats_name_list[0][i]}", value=st.session_state.equipment_buf[i], step=1)
             with col_stats_9:
                 st.write("")
                 st.write("")
-                st.write("\=")
+                st.write(r"\=")
             with col_stats_10:
                 stats_list[i][5] = st.number_input(f"{stats_name_list[1][i]}B", value=int((stats_list[i][3]+stats_list[i][4])/6), disabled=True)
     st.divider()
@@ -359,38 +534,38 @@ with st.expander("能力値"):
             st.session_state.life_stats_list[0][0] = st.number_input("冒険者レベル+生命力B", value=(main_lv+stats_list[3][5]), disabled=True, label_visibility="collapsed")
         with col1_vital_2:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col1_vital_3:
-            st.number_input("生命抵抗補正_1", value=st.session_state.life_stats_list[0][1], disabled=True ,label_visibility="collapsed")
+            st.number_input("生命抵抗補正_1", value=(st.session_state.life_stats_list[0][1]+st.session_state.equipment_buf[6]), disabled=True ,label_visibility="collapsed")
         with col1_vital_4:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col1_vital_5:
             st.session_state.life_stats_list[0][2] = st.number_input("生命抵抗補正_2", value=0, step=1, label_visibility="collapsed")
         with col1_vital_6:
             st.write("")
-            st.write("\=")
+            st.write(r"\=")
         with col1_vital_7:
-            st.session_state.life_stats_list[0][3] = st.number_input("生命抵抗力", value=(st.session_state.life_stats_list[0][0]+st.session_state.life_stats_list[0][1]+st.session_state.life_stats_list[0][2]), disabled=True, label_visibility="collapsed")
+            st.session_state.life_stats_list[0][3] = st.number_input("生命抵抗力", value=(st.session_state.life_stats_list[0][0]+st.session_state.life_stats_list[0][1]+st.session_state.life_stats_list[0][2]+st.session_state.equipment_buf[6]), disabled=True, label_visibility="collapsed")
         st.write("精神抵抗力")
         col1_mental_1, col1_mental_2, col1_mental_3, col1_mental_4, col1_mental_5, col1_mental_6, col1_mental_7 = st.columns([5,1,5,1,5,1,5])
         with col1_mental_1:
             st.session_state.life_stats_list[1][0] = st.number_input("冒険者レベル+精神力B", value=(main_lv+stats_list[5][5]), disabled=True, label_visibility="collapsed")
         with col1_mental_2:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col1_mental_3:
-            st.number_input("精神抵抗補正_1", value=st.session_state.life_stats_list[1][1], disabled=True, label_visibility="collapsed")
+            st.number_input("精神抵抗補正_1", value=(st.session_state.life_stats_list[1][1]+st.session_state.equipment_buf[7]), disabled=True, label_visibility="collapsed")
         with col1_mental_4:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col1_mental_5:
             st.session_state.life_stats_list[1][2] = st.number_input("精神抵抗補正_2", value=0, step=1, label_visibility="collapsed")
         with col1_mental_6:
             st.write("")
-            st.write("\=")
+            st.write(r"\=")
         with col1_mental_7:
-            st.session_state.life_stats_list[1][3] = st.number_input("精神抵抗力", value=(st.session_state.life_stats_list[1][0]+st.session_state.life_stats_list[1][1]+st.session_state.life_stats_list[1][2]), disabled=True, label_visibility="collapsed")
+            st.session_state.life_stats_list[1][3] = st.number_input("精神抵抗力", value=(st.session_state.life_stats_list[1][0]+st.session_state.life_stats_list[1][1]+st.session_state.life_stats_list[1][2]+st.session_state.equipment_buf[7]), disabled=True, label_visibility="collapsed")
     #HP、MP
     with col2_hp_mp:
         st.write("HP")
@@ -399,38 +574,38 @@ with st.expander("能力値"):
             st.session_state.life_stats_list[2][0] = st.number_input("冒険者レベル*3+生命力", value=(main_lv*3+stats_list[3][3]+stats_list[3][4]), disabled=True, label_visibility="collapsed")
         with col2_hp_2:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col2_hp_3:
-            st.number_input("HP補正_1", value=st.session_state.life_stats_list[2][1], disabled=True, label_visibility="collapsed")
+            st.number_input("HP補正_1", value=(st.session_state.life_stats_list[2][1]+st.session_state.equipment_buf[8]), disabled=True, label_visibility="collapsed")
         with col2_hp_4:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col2_hp_5:
             st.session_state.life_stats_list[2][2] = st.number_input("HP補正_2", value=0, step=1, label_visibility="collapsed")
         with col2_hp_6:
             st.write("")
-            st.write("\=")
+            st.write(r"\=")
         with col2_hp_7:
-            st.number_input("HP", value=(st.session_state.life_stats_list[2][0]+st.session_state.life_stats_list[2][1]+st.session_state.life_stats_list[2][2]), disabled=True, label_visibility="collapsed")###################
+            st.number_input("HP", value=(st.session_state.life_stats_list[2][0]+st.session_state.life_stats_list[2][1]+st.session_state.life_stats_list[2][2]+st.session_state.equipment_buf[8]), disabled=True, label_visibility="collapsed")###################
         st.write("MP")
         col2_mp_1, col2_mp_2, col2_mp_3, col2_mp_4, col2_mp_5, col2_mp_6, col2_mp_7 = st.columns([5,1,5,1,5,1,5])
         with col2_mp_1:
             st.session_state.life_stats_list[3][0] = st.number_input("魔法使い系技能レベル*3+精神力", value=(magic_lv_sum*3+stats_list[5][3]+stats_list[5][4]), disabled=True, label_visibility="collapsed")
         with col2_mp_2:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col2_mp_3:
-            st.number_input("MP補正_1", value=st.session_state.life_stats_list[3][1], disabled=True, label_visibility="collapsed")
+            st.number_input("MP補正_1", value=(st.session_state.life_stats_list[3][1]+st.session_state.equipment_buf[9]), disabled=True, label_visibility="collapsed")
         with col2_mp_4:
             st.write("")
-            st.write("\+")
+            st.write(r"\+")
         with col2_mp_5:
             st.session_state.life_stats_list[3][2] = st.number_input("MP補正_2", value=0, step=1, label_visibility="collapsed")
         with col2_mp_6:
             st.write("")
-            st.write("\=")
+            st.write(r"\=")
         with col2_mp_7:
-            st.number_input("MP", value=(st.session_state.life_stats_list[3][0]+st.session_state.life_stats_list[3][1]+st.session_state.life_stats_list[3][2]), disabled=True, label_visibility="collapsed")
+            st.number_input("MP", value=(st.session_state.life_stats_list[3][0]+st.session_state.life_stats_list[3][1]+st.session_state.life_stats_list[3][2]+st.session_state.equipment_buf[9]), disabled=True, label_visibility="collapsed")
 
 #技能タブ
 with st.expander("技能"):
@@ -512,12 +687,20 @@ with st.expander("戦闘特技"):
                 break
     if skill_data["skill"][skills_name_list.index("ファイター")]["lv"] >= 7:
         auto_ability_name = "タフネス"
+        if st.session_state.hp_buf[3] != 15:
+            st.session_state.hp_buf[3] = 15
+            update_life_stats_list()
+            st.rerun()
         with col_ability_1:
             st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
         with col_ability_2:
             st.text_input(f"戦闘特技_{auto_ability_name}", value=auto_ability_name, label_visibility="collapsed", key=f"ability_{auto_ability_name}")
         with col_ability_3:
             st.text_input(f"説明_{auto_ability_name}", value="最大HP+15", label_visibility="collapsed")
+    elif st.session_state.hp_buf[3] != 0:
+        st.session_state.hp_buf[3] = 0
+        update_life_stats_list()
+        st.rerun()
     if skill_data["skill"][skills_name_list.index("グラップラー")]["lv"] >= 1:
         auto_ability_name = "追加攻撃"
         with col_ability_1:
@@ -812,16 +995,6 @@ with st.expander("戦闘特技"):
                 st.text_input(f"説明{abi_lv}", value=ability_all_list[ability_all_name_list.index(abi)]["explanation"], label_visibility="collapsed")
     st.info("※戦闘特技の置き換えは手動で行ってください")
 
-#戦闘特技によるバフ処理
-if ("頑強" in st.session_state.ability_mode) and (st.session_state.hp_buf_1 != 15):
-    st.session_state.hp_buf_1 = 15
-    update_life_stats_list()
-    st.rerun()
-elif ("頑強" not in st.session_state.ability_mode) and (st.session_state.hp_buf_1 != 0):
-    st.session_state.hp_buf_1 = 0
-    update_life_stats_list()
-    st.rerun()
-
 #武器
 with st.expander("武器"):
     col_weapon_name, col_weapon_other = st.columns([1,4])
@@ -1018,7 +1191,7 @@ with st.expander("防具"):
                 avoidance = skill_data["skill"][skills_name_list.index("フィジカルマスター")]["lv"] + int((stats_list[1][3]+stats_list[1][4]+armor_list[1][1])/6)
             case _:
                 avoidance = 0
-        st.write(f"={(avoidance + armor_list[0][3] + armor_list[1][3] + armor_list[2][3])}")
+        st.write(f"={(avoidance + armor_list[0][3] + armor_list[1][3] + armor_list[2][3] + st.session_state.equipment_buf[10])}")
     with col_armor_protection:
         armor_mastery_protection = 0
         if f"防具習熟A/{armor_mastery}" in st.session_state.ability_mode:
@@ -1029,7 +1202,7 @@ with st.expander("防具"):
             armor_mastery_protection += 1
             if f"防具習熟S/盾" in st.session_state.ability_mode:
                 armor_mastery_protection += 2
-        st.write(f"={armor_mastery_protection + armor_list[0][4] + armor_list[1][4] + armor_list[2][4]}")
+        st.write(f"={armor_mastery_protection + armor_list[0][4] + armor_list[1][4] + armor_list[2][4] + st.session_state.equipment_buf[11]}")
 
 #装飾品
 with st.expander("装飾品"):
@@ -1048,14 +1221,10 @@ with st.expander("装飾品"):
         st.write("効果")
     with col_equipment_add:
         st.write("")
-
-    #equipment_part_list = ["頭", "顔", "耳", "首", "背中", "右手", "左手", "腰", "足", "他"]
-    st.session_state.equipment_list = []
     for part in st.session_state.equipment_part_list:
         equipment_add_check = True
         i = 0
         while(equipment_add_check):
-            equipment_list = []
             col_equipment_part2, col_equipment_name2, col_equipment_exclusive2, col_equipment_cost2, col_equipment_other2, col_equipment_buf2, col_equipment_add2 = st.columns([0.7,2,1.1,1,3,1,0.4])
             with col_equipment_part2:
                 if(i == 0):
@@ -1063,143 +1232,27 @@ with st.expander("装飾品"):
                 else:
                     st.write("┗")
             with col_equipment_name2:
-                equipment_list.append(st.text_input(f"{part}{i}名称", label_visibility="collapsed"))
+                st.text_input(f"{part}{i}名称", key=f"{part}{i}名称", label_visibility="collapsed")
             with col_equipment_exclusive2:
-                equipment_list.append(st.selectbox(f"{part}{i}専用", [" ", "HP", "MP"],label_visibility="collapsed"))
+                st.selectbox(f"{part}{i}専用", [" ", "HP", "MP"], key=f"{part}{i}専用", label_visibility="collapsed", on_change=update_equipment_exclusive_buf)
             with col_equipment_cost2:
-                equipment_list.append(st.number_input(f"{part}{i}価格", step=1, label_visibility="collapsed"))
+                st.number_input(f"{part}{i}価格", step=1, key=f"{part}{i}価格", label_visibility="collapsed")
             with col_equipment_other2:
-                equipment_list.append(st.text_input(f"{part}{i}備考", label_visibility="collapsed"))
+                st.text_input(f"{part}{i}備考", key=f"{part}{i}備考", label_visibility="collapsed")
             with col_equipment_buf2:
-                equipment_list.append(st.text_input(f"{part}{i}効果", label_visibility="collapsed"))
+                st.text_input(f"{part}{i}効果", key=f"{part}{i}効果", label_visibility="collapsed", on_change=update_equipment_buf)
             with col_equipment_add2:
                 equipment_add_check = st.checkbox(f"{part}{i}増減" ,label_visibility="collapsed")
-            st.session_state.equipment_list.append(equipment_list)
             i += 1
-    st.info("""
-        ※右のチェックボックスにチェックを入れると欄が増えます。\n
-        ※効果欄に(数値)(既定の文字)とすると自動計算します。例)器用を1増やす→1A\n
-        　器用～精神:A～F, 生命抵抗力:G, 精神抵抗力:H, HP:I, MP:J,\n
-        　回避力:K, 防護点:L, 魔力:M, 行使判定:N, 移動力:O
-        """)
-    
-#装飾品によるバフ処理
-equipment_buf_list = [data[4] for data in st.session_state.equipment_list if data[4]!=""]
-equipment_buf_list_buffer = [0] * 15
-for data in equipment_buf_list:
-    flag_str = data[-1]
-    match flag_str:
-        case "A":
-            try:
-                buf_num = int(data.rstrip("A"))
-                equipment_buf_list_buffer[0] += buf_num
-            except:
-                st.empty()
-        case "B":
-            try:
-                buf_num = int(data.rstrip("B"))
-                equipment_buf_list_buffer[1] += buf_num
-            except:
-                st.empty()
-        case "C":
-            try:
-                buf_num = int(data.rstrip("C"))
-                equipment_buf_list_buffer[2] += buf_num
-            except:
-                st.empty()
-        case "D":
-            try:
-                buf_num = int(data.rstrip("D"))
-                equipment_buf_list_buffer[3] += buf_num
-            except:
-                st.empty()
-        case "E":
-            try:
-                buf_num = int(data.rstrip("E"))
-                equipment_buf_list_buffer[4] += buf_num
-            except:
-                st.empty()
-        case "F":
-            try:
-                buf_num = int(data.rstrip("F"))
-                equipment_buf_list_buffer[5] += buf_num
-            except:
-                st.empty()
-        case "G":
-            try:
-                buf_num = int(data.rstrip("G"))
-                equipment_buf_list_buffer[6] += buf_num
-            except:
-                st.empty()
-        case "H":
-            try:
-                buf_num = int(data.rstrip("H"))
-                equipment_buf_list_buffer[7] += buf_num
-            except:
-                st.empty()
-        case "I":
-            try:
-                buf_num = int(data.rstrip("I"))
-                equipment_buf_list_buffer[8] += buf_num
-            except:
-                st.empty()
-        case "J":
-            try:
-                buf_num = int(data.rstrip("J"))
-                equipment_buf_list_buffer[9] += buf_num
-            except:
-                st.empty()
-        case "K":
-            try:
-                buf_num = int(data.rstrip("K"))
-                equipment_buf_list_buffer[10] += buf_num
-            except:
-                st.empty()
-        case "L":
-            try:
-                buf_num = int(data.rstrip("L"))
-                equipment_buf_list_buffer[11] += buf_num
-            except:
-                st.empty()
-        case "M":
-            try:
-                buf_num = int(data.rstrip("M"))
-                equipment_buf_list_buffer[12] += buf_num
-            except:
-                st.empty()
-        case "N":
-            try:
-                buf_num = int(data.rstrip("N"))
-                equipment_buf_list_buffer[13] += buf_num
-            except:
-                st.empty()
-        case "O":
-            try:
-                buf_num = int(data.rstrip("O"))
-                equipment_buf_list_buffer[14] += buf_num
-            except:
-                st.empty()
-if(st.session_state.equipment_buf != equipment_buf_list_buffer):
-    st.session_state.equipment_buf = copy.deepcopy(equipment_buf_list_buffer)
-    st.rerun()
-equipment_buf_list = [data[1] for data in st.session_state.equipment_list]
-if(("HP" in equipment_buf_list) and (st.session_state.hp_buf_2 != 2)):
-    st.session_state.hp_buf_2 = 2
-    update_life_stats_list()
-    st.rerun()
-elif(("HP" not in equipment_buf_list) and (st.session_state.hp_buf_2 != 0)):
-    st.session_state.hp_buf_2 = 0
-    update_life_stats_list()
-    st.rerun()
-if(("MP" in equipment_buf_list) and (st.session_state.mp_buf_2 != 2)):
-    st.session_state.mp_buf_2 = 2
-    update_life_stats_list()
-    st.rerun()
-elif(("MP" not in equipment_buf_list) and (st.session_state.mp_buf_2 != 0)):
-    st.session_state.mp_buf_2 = 0
-    update_life_stats_list()
-    st.rerun()
+    with st.expander("", icon="ℹ️", type="step"):
+        st.info("""
+            ※右のチェックボックスにチェックを入れると欄が増えます。\n
+            ※効果欄に(数値)(既定の文字)とすると自動計算します。例)器用を1増やす→1A\n
+            　器用～精神:A～F, 生命抵抗力:G, 精神抵抗力:H, HP:I, MP:J,\n
+            　回避力:K, 防護点:L, 魔力:M, 魔物知識:N, 移動力:O
+            """)
 
+#所持品・所持金
 with st.expander("所持品・所持金"):
     col_item_name, col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([3,1,1,1,5])
     with col_item_name:
@@ -1245,6 +1298,175 @@ with st.expander("所持品・所持金"):
             payment += data[1] * (data[2] + data[3])
         st.write(f"##### 所持金:{(st.session_state.money - payment)}")
 
+#その他ステータス
+with st.expander("その他ステータス"):
+    col_other_stats_1, col_other_stats_2 = st.columns([1,1])
+    with col_other_stats_1:
+        col_move_1, col_move_2, col_move_3, col_move_4, col_move_5 = st.columns([4,1,4,1,4])
+        with col_move_1:
+            move_power_1 = st.number_input("移動力", value=(stats_list[1][3]+stats_list[1][4]+st.session_state.equipment_buf[14]), step=1, disabled=True)
+        with col_move_2:
+            st.write("######")
+            st.write(r"\+")
+        with col_move_3:
+            move_power_2 = st.number_input("移_補", value=0, step=1, label_visibility="hidden")
+        with col_move_4:
+            st.write("######")
+            st.write(r"\=")
+        with col_move_5:
+            move_power_3 = st.number_input("移_結", value=(move_power_1 + move_power_2), step=1, disabled=True, label_visibility="hidden")
+    with col_other_stats_2:
+        col_move_6, col_move_7 = st.columns([4,10])
+        with col_move_6:
+            st.number_input("全力移動", value=(move_power_3 * 3), step=1, disabled=True)
+        with col_move_7:
+            st.write("######")
+            gunti = st.checkbox("【軍師の知略】を用いる")
+    with col_other_stats_1:
+        col_mamotiki_1, col_mamotiki_2, col_mamotiki_3, col_mamotiki_4, col_mamotiki_5, col_mamotiki_6 = st.columns([4,3,1,3,1,3])
+        mamotiki_skill_list = {"賢":"セージ", "騎":"ライダー", "狩":"ダークハンター"}
+        with col_mamotiki_1:
+            mamotiki_0 = skill_data["skill"][skills_name_list.index(mamotiki_skill_list[st.selectbox("魔物知識", options=mamotiki_skill_list)])]["lv"]
+            mamotiki_0 = (mamotiki_0 + stats_list[4][5] + st.session_state.equipment_buf[13]) if mamotiki_0 != 0 else 0
+        with col_mamotiki_2:
+            mamotiki_1 = st.number_input("魔知", value=(mamotiki_0), step=1, disabled=True, label_visibility="hidden")
+        with col_mamotiki_3:
+            st.write("######")
+            st.write(r"\+")
+        with col_mamotiki_4:
+            mamotiki_2 = st.number_input("魔知_補", value=0, step=1, label_visibility="hidden")
+        with col_mamotiki_5:
+            st.write("######")
+            st.write(r"\=")
+        with col_mamotiki_6:
+            st.number_input("魔知_結", value=(mamotiki_1 + mamotiki_2), step=1, label_visibility="hidden")
+    with col_other_stats_2:
+        col_sensei_1, col_sensei_2, col_sensei_3, col_sensei_4, col_sensei_5, col_sensei_6 = st.columns([4,3,1,3,1,3])
+        sensei_skill_list = {"斥":"スカウト", "軍":"ウォーリーダー"}
+        with col_sensei_1:
+            sensei_0 = skill_data["skill"][skills_name_list.index(sensei_skill_list[st.selectbox("先制力", options=sensei_skill_list, key="先制技能")])]["lv"]
+            if sensei_0 != 0:
+                if (gunti and (st.session_state["先制技能"] == "軍")):
+                    sensei_0 = sensei_0 + stats_list[4][5] +1
+                else:
+                    sensei_0 = sensei_0 + stats_list[1][5]
+        with col_sensei_2:
+            sensei_1 = st.number_input("先制", value=(sensei_0), step=1, disabled=True, label_visibility="hidden")
+        with col_sensei_3:
+            st.write("######")
+            st.write(r"\+")
+        with col_sensei_4:
+            sensei_2 = st.number_input("先制_補", value=0, step=1, label_visibility="hidden")
+        with col_sensei_5:
+            st.write("######")
+            st.write(r"\=")
+        with col_sensei_6:
+            st.number_input("先制_結", value=(sensei_1 + sensei_2), step=1, label_visibility="hidden")
+
+#言語
+with st.expander("言語"):
+    st.write("まだないよ")
+
+#魔力
+if magic_lv_sum > 0:
+    with st.expander("魔力"):
+        st.write("まだないよ")
+
+#秘奥魔法
+if skill_data["skill"][skills_name_list.index("ビブリオマンサー")]["lv"] > 0:
+    with st.expander("秘奥魔法"):
+        st.write("準備行使枠")
+        st.divider()
+        st.write("応急行使枠")
+
+#練技
+if skill_data["skill"][skills_name_list.index("エンハンサー")]["lv"] > 0:
+    with st.expander("練技"):
+        st.write("まだないよ")
+        
+#呪歌
+if skill_data["skill"][skills_name_list.index("バード")]["lv"] > 0:
+    with st.expander("呪歌"):
+        st.write("まだないよ")
+        
+#騎芸
+if skill_data["skill"][skills_name_list.index("ライダー")]["lv"] > 0:
+    with st.expander("騎芸"):
+        st.write("まだないよ")
+
+#賦術
+if skill_data["skill"][skills_name_list.index("アルケミスト")]["lv"] > 0:
+    with st.expander("賦術"):
+        st.write("まだないよ")
+        
+#相域
+if skill_data["skill"][skills_name_list.index("ジオマンサー")]["lv"] > 0:
+    with st.expander("相域"):
+        st.write("まだないよ")
+
+#鼓咆・陣率
+if skill_data["skill"][skills_name_list.index("ウォーリーダー")]["lv"] > 0:
+    with st.expander("鼓咆・陣率"):
+        st.write("まだないよ")
+        
+#操気
+if skill_data["skill"][skills_name_list.index("ダークハンター")]["lv"] > 0:
+    with st.expander("操気"):
+        st.write("まだないよ")
+
+#魔装
+if skill_data["skill"][skills_name_list.index("フィジカルマスター")]["lv"] > 0:
+    with st.expander("魔装"):
+        st.write("まだないよ")
+
+#占瞳
+if skill_data["skill"][skills_name_list.index("ミスティック")]["lv"] > 0:
+    with st.expander("占瞳"):
+        st.write("まだないよ")
+        
+#呪印
+if skill_data["skill"][skills_name_list.index("アーティザン")]["lv"] > 0:
+    with st.expander("呪印"):
+        st.write("まだないよ")
+
+#貴格
+if skill_data["skill"][skills_name_list.index("アリストクラシー")]["lv"] > 0:
+    with st.expander("貴格"):
+        st.write("まだないよ")
+
+
+
+#名誉点
+with st.expander("名誉点"):
+    col_honor_name, col_honor_point, col_honor_other = st.columns([2.5,1,5])
+    with col_honor_name:
+        st.write("名誉アイテム")
+    with col_honor_point:
+        st.write("点数")
+    with col_honor_other:
+        st.write("メモ")
+    with col_honor_name:
+        st.text_input("冒険者ランク", placeholder="冒険者ランク", label_visibility="collapsed")
+    with col_honor_point:
+        rank_honor_point = int(st.number_input("冒険者ランク点数", step=1, label_visibility="collapsed") / 10)
+    with col_honor_other:
+        st.text_input("冒険者ランクメモ", placeholder="この点数の10分の1以下の点数消費は自動返還されます", label_visibility="collapsed")    
+    honor_point_used = 0
+    for i in range(st.session_state.honor_list_num):
+        with col_honor_name:
+            st.text_input(f"名誉アイテム{i}", label_visibility="collapsed")
+        with col_honor_point:
+            honor_point = st.number_input(f"名誉点数{i}", step=1, label_visibility="collapsed")
+            honor_point_used += honor_point if honor_point > rank_honor_point else 0
+        with col_honor_other:
+            st.text_input(f"名誉メモ{i}", label_visibility="collapsed")
+    with st.container(horizontal_alignment="left", horizontal=True):
+        st.button("増加", on_click=update_honor_list_num, args=(1,), key="honor_list_add")
+        st.button("減少", on_click=update_honor_list_num, args=(-1,), key="honor_list_sub")
+        st.write(f"##### 消費名誉点:{honor_point_used}")
+        st.write(f"##### 所持名誉点:{(st.session_state.honor - honor_point_used)}")
+
+#セッション履歴
 with st.expander("セッション履歴"):
     col_history_date0, col_history_exp0, col_history_pinzoro0, col_history_money0, col_history_honor0, col_history_growth0, col_history_other0, col_history_fool0 = st.columns([1,1.2,0.8,1.2,0.9,1.5,2.5,0.3])
     with col_history_date0:
@@ -1291,7 +1513,7 @@ with st.expander("セッション履歴"):
             ※成長欄の入力規則:(能力値の頭文字)(数値)で複数可　例) 器1敏2知34
             """)
     st.divider()
-    col_history_date2, col_history_exp2, col_history_pinzoro2, col_history_money2, col_history_honor2, col_history_growth2, col_history_other2, col_history_fool2 = st.columns([1,1.2,0.8,1.2,0.9,0.8,1.6,1.2])
+    col_history_date2, col_history_exp2, col_history_pinzoro2, col_history_money2, col_history_honor2, col_history_growth2, col_history_other2, col_history_fool2 = st.columns([1,1.2,0.8,1.2,0.9,1.2,1.8,1.3])
     # growth_list = [0]*6
     # for data in st.session_state.history_list:
     #     if data[5] != "":
@@ -1325,6 +1547,9 @@ with st.expander("セッション履歴"):
     with col_history_fool2:
         st.text_input(f"セッション履歴総経験点", value=st.session_state.exp_all, label_visibility="collapsed", disabled=True)
 
+#その他
+with st.expander("その他メモ", expanded=True):
+    st.text_area("その他メモ", label_visibility="collapsed")
 
 # with st.expander("ゴミ", expanded=True):
 #     st.number_input("testta", step=1, key="vital_buf_1", on_change=update_life_stats_list)
