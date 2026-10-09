@@ -2038,11 +2038,11 @@ if st.sidebar.button("キャッシュのクリア"):
     st.cache_data.clear()
     st.rerun()
 
-omake = st.text_input("変数名を入力")
-if omake in locals():
-    locals()[omake]
-else:
-    st.write(f"変数名:{omake}は存在しません")
+# omake = st.text_input("変数名を入力")
+# if omake in locals():
+#     locals()[omake]
+# else:
+#     st.write(f"変数名:{omake}は存在しません")
 
 # with st.expander("ゴミ", expanded=True):
 #     st.number_input("testta", step=1, key="vital_buf_1", on_change=update_life_stats_list)
