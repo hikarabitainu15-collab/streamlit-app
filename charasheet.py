@@ -75,7 +75,7 @@ def update_born():
         st.session_state[f"stats_技"] = borns[born_list.index(born_name)-1]["stats"][0]
         st.session_state[f"stats_体"] = borns[born_list.index(born_name)-1]["stats"][1]
         st.session_state[f"stats_心"] = borns[born_list.index(born_name)-1]["stats"][2]
-    elif load_data is not None:
+    elif 'load_data' in locals():
         st.session_state[f"stats_技"] = load_data["stats_list"][0][0]
         st.session_state[f"stats_体"] = load_data["stats_list"][2][0]
         st.session_state[f"stats_心"] = load_data["stats_list"][4][0]
