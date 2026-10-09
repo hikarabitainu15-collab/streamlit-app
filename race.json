@@ -3,6 +3,7 @@
     {
       "name": "人間",
       "feature": "[剣の加護/運命変転]",
+      "language": [["交易共通語", true, true], ["地方語", true, true]],
       "born": [
         {
           "job": "戦士",
@@ -28,6 +29,7 @@
     {
       "name": "エルフ",
       "feature": "[剣の加護/優しき水], [暗視]",
+      "language": [["交易共通語", true, true], ["エルフ語", true, true]],
       "born": [
         {
           "job": "軽戦士",

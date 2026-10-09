@@ -1,0 +1,52 @@
+{
+    "language":[
+        {
+            "name": "交易共通語",
+            "exist": [true, true]
+        },
+        {
+            "name": "魔動機文明語",
+            "exist": [true, true]
+        },
+        {
+            "name": "魔法文明語",
+            "exist": [true, true]
+        },
+        {
+            "name": "神紀文明語",
+            "exist": [false, true]
+        },
+        {
+            "name": "エルフ語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ドワーフ語",
+            "exist": [true, true]
+        },
+        {
+            "name": "リカント語",
+            "exist": [true, true]
+        },
+        {
+            "name": "グラスランナー語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ドラゴン語",
+            "exist": [true, false]
+        },
+        {
+            "name": "妖精語",
+            "exist": [true, false]
+        },
+        {
+            "name": "魔神語",
+            "exist": [true, false]
+        },
+        {
+            "name": "巨人語",
+            "exist": [true, true]
+        }
+    ]
+}

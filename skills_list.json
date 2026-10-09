@@ -1,0 +1,449 @@
+{
+    "秘奥": [
+        {
+            "name": "ランケア=ルイナス",
+            "required_lv": 1,
+            "mp": 6,
+            "explanation": "威力20、純エネルギー"
+        },
+        {
+            "name": "アクス=マリスティアス",
+            "required_lv": 1,
+            "mp": 3,
+            "explanation": "2点、呪い"
+        },
+        {
+            "name": "アクティオ=エクソキスムス",
+            "required_lv": 4,
+            "mp": 6,
+            "explanation": "魔力+4で自身にかかっている効果を解除"
+        },
+        {
+            "name": "アディシオ=エレメントゥム",
+            "required_lv": 4,
+            "mp": 5,
+            "explanation": "秘奥魔法に属性を追加"
+        },
+        {
+            "name": "ランケア=ダムナトリウス",
+            "required_lv": 7,
+            "mp": 10,
+            "explanation": "威力50、純エネルギー"
+        },
+        {
+            "name": "レナトゥス=イニシアトゥス",
+            "required_lv": 7,
+            "mp": 12,
+            "explanation": "気絶を回復し、威力40回復"
+        },
+        {
+            "name": "デネブラス=カイエンデンス=ルミナス",
+            "required_lv": 10,
+            "mp": 15,
+            "explanation": "威力60、純エネルギー、貫通"
+        },
+        {
+            "name": "モルス=ウィルトゥアリス",
+            "required_lv": 10,
+            "mp": 20,
+            "explanation": "生死判定に失敗時、最大HPとMPを-10で死亡しない"
+        },
+        {
+            "name": "スパティウム=テレポータス",
+            "required_lv": 13,
+            "mp": 25,
+            "explanation": "空間テレポート"
+        },
+        {
+            "name": "ランケア=フェリオデウス",
+            "required_lv": 13,
+            "mp": 18,
+            "explanation": "威力100、純エネルギー"
+        }
+    ],
+    "練技": [
+        {
+            "name": "キャッツアイ",
+            "required_lv": 1,
+            "explanation": "命中力+1"
+        },
+        {
+            "name": "ガゼルフット",
+            "required_lv": 1,
+            "explanation": "回避力+1"
+        },
+        {
+            "name": "デーモンフィンガー",
+            "required_lv": 5,
+            "explanation": "器用度+6"
+        },
+        {
+            "name": "ケンタウロスレッグ",
+            "required_lv": 5,
+            "explanation": "敏捷度+6"
+        },
+        {
+            "name": "フェンリルバイト",
+            "required_lv": 10,
+            "explanation": "牙を生やし補助動作で攻撃可能、牙の命中+1/ダメージ+2(累積+2/+4)"
+        },
+        {
+            "name": "バルーンシードショット",
+            "required_lv": 10,
+            "explanation": "口から補助動作で投擲可能"
+        },
+        {
+            "name": "ヴジャトーアイ",
+            "required_lv": 16,
+            "explanation": "ダイスを振った後に行為判定+2"
+        },
+        {
+            "name": "ウェンディゴハイド",
+            "required_lv": 16,
+            "explanation": "広範囲の効果に2分の1で巻き込まれない"
+        }
+    ],
+    "呪歌": [
+        {
+            "name": "モラル",
+            "required_lv": 1,
+            "gakuso": ["-", "↑", "↑"],
+            "explanation": "命中力+1"
+        },
+        {
+            "name": "レジスタンス",
+            "required_lv": 1,
+            "gakuso": ["-", "↓", "↑"],
+            "explanation": "生命・精神抵抗力+1"
+        },
+        {
+            "name": "レクイエム",
+            "required_lv": 1,
+            "gakuso": ["↓♡", "↓", "♡"],
+            "explanation": "アンデッドの行為判定-2"
+        },
+        {
+            "name": "アトリビュート",
+            "required_lv": 5,
+            "gakuso": ["-", "♡2", "♡"],
+            "explanation": "属性ダメージ+2"
+        },
+        {
+            "name": "ララバイ",
+            "required_lv": 5,
+            "gakuso": ["↓2♡4", "♡2", "↓"],
+            "explanation": "眠らせる"
+        },
+        {
+            "name": "ダル",
+            "required_lv": 10,
+            "gakuso": ["-", "↓2", "↓2"],
+            "explanation": "宣言特技禁止"
+        },
+        {
+            "name": "春の強風",
+            "required_lv": 1,
+            "gakuso": ["↑2", "-", "-"],
+            "explanation": "1体、威力10、風魔法ダメ"
+        },
+        {
+            "name": "冬の寒風",
+            "required_lv": 1,
+            "gakuso": ["↓2", "-", "-"],
+            "explanation": "1体、威力10、水氷魔法ダメ"
+        },
+        {
+            "name": "蛇穴の苦鳴",
+            "required_lv": 5,
+            "gakuso": ["↓4", "-", "-"],
+            "explanation": "3体、威力20、呪い魔法ダメ"
+        },
+        {
+            "name": "火竜の舞",
+            "required_lv": 10,
+            "gakuso": ["↑6", "-", "-"],
+            "explanation": "5体、威力30、炎かつ風魔法ダメ"
+        }
+    ],
+    "騎芸": [
+        {
+            "name": "高所攻撃",
+            "required_lv": 1,
+            "explanation": "物理ダメージ+1"
+        },
+        {
+            "name": "攻撃阻害",
+            "required_lv": 1,
+            "explanation": "回避力+1"
+        },
+        {
+            "name": "姿勢堅持",
+            "required_lv": 5,
+            "explanation": "判定-4で通常移動で補助動作の行動が可能、騎獣の行動なし"
+        },
+        {
+            "name": "人馬一体",
+            "required_lv": 5,
+            "explanation": "両手が使用可能"
+        },
+        {
+            "name": "極高所攻撃",
+            "required_lv": 10,
+            "explanation": "物理ダメージ+1"
+        },
+        {
+            "name": "バランス",
+            "required_lv": 10,
+            "explanation": "姿勢堅持時にも騎獣が行動可能"
+        },
+        {
+            "name": "超越騎獣",
+            "required_lv": 16,
+            "explanation": "最大Lvが15の騎獣の上限を開放する"
+        }
+    ],
+    "賦術": [
+        {
+            "name": "パラライズミスト",
+            "required_lv": 1,
+            "color": "緑",
+            "rank": "-/-1/-2/-4",
+            "explanation": "回避ペナルティ",
+            "length": "10m/射撃"
+        },
+        {
+            "name": "ヒールスプレー",
+            "required_lv": 1,
+            "color": "緑2",
+            "rank": "3/10/20/50",
+            "explanation": "HP回復",
+            "length": "30m/射撃"
+        },
+        {
+            "name": "イニシアチブブースト",
+            "required_lv": 5,
+            "color": "赤2",
+            "rank": "+1/+2/+4/+8",
+            "explanation": "先制判定ボーナス",
+            "length": "-/接触"
+        },
+        {
+            "name": "バインドアビリティ",
+            "required_lv": 5,
+            "color": "白",
+            "rank": "-1/-2/-3/-4",
+            "explanation": "特殊能力の判定ペナルティ",
+            "length": "10m/射撃"
+        },
+        {
+            "name": "フレイムフィールド",
+            "required_lv": 10,
+            "color": "赤2金2",
+            "rank": "10秒/30秒/1分/3分",
+            "explanation": "30m空間を炎無効、水氷+5にする",
+            "length": "10m/射撃"
+        }
+    ],
+    "相域": [
+        {
+            "name": "天相:降雷",
+            "required_lv": 1,
+            "meimyaku": "天1～3",
+            "explanation": "(消費命脈点)*2点の雷属性確定ダメージ"
+        },
+        {
+            "name": "地相:地脈の吸収",
+            "required_lv": 1,
+            "meimyaku": "地1～3",
+            "explanation": "(消費命脈点)点のHP回復"
+        },
+        {
+            "name": "地相:属性の乖離",
+            "required_lv": 5,
+            "meimyaku": "地3",
+            "explanation": "属性ダメージを受けず、発生させられない"
+        },
+        {
+            "name": "地相:巻き上がる砂塵",
+            "required_lv": 5,
+            "meimyaku": "地1～3",
+            "explanation": "防護点+(消費命脈点)"
+        },
+        {
+            "name": "人相:夢食い",
+            "required_lv": 5,
+            "meimyaku": "人1～3",
+            "explanation": "(消費命脈点)*2の呪い属性確定ダメージ"
+        },
+        {
+            "name": "天相:七星流れ",
+            "required_lv": 10,
+            "meimyaku": "天1～3",
+            "explanation": "サイコロで出目7を出すたびにHPとMPを(消費命脈点)点回復"
+        },
+        {
+            "name": "人相:人写し",
+            "required_lv": 10,
+            "meimyaku": "人1～3",
+            "explanation": "天地使いがダメージを受けるたびに適用ダメージと(消費命脈点)*2の大きい方を確定ダメージで与える"
+        }
+    ],
+    "鼓咆・陣率": [
+        {
+            "name": "神展の構え",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "制限移動+2m、移動力+5m"
+        },
+        {
+            "name": "大いなる挑発",
+            "required_lv": 10,
+            "jinki": "-1",
+            "explanation": "回避、抵抗+1、軍師の回避、抵抗-3"
+        },
+        {
+            "name": "怒涛の攻陣I",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "物理ダメージ+1"
+        },
+        {
+            "name": "怒涛の攻陣III:轟炎",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "物理ダメージ+3"
+        },
+        {
+            "name": "怒涛の攻陣III:旋刃",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "命中力+1、物理ダメージ+1"
+        },
+        {
+            "name": "怒涛の攻陣V:獄火",
+            "required_lv": 10,
+            "jinki": "-5",
+            "explanation": "物理ダメージ+8"
+        },
+        {
+            "name": "陣率:軍師の知略",
+            "required_lv": 1,
+            "jinki": "-",
+            "explanation": "先制判定を軍+知+1で行う"
+        },
+        {
+            "name": "陣率:掃討の勝鬨",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "軍師が敵を倒したとき陣気+1"
+        },
+        {
+            "name": "陣率:効力行進I",
+            "required_lv": 1,
+            "jinki": "-3",
+            "explanation": "魔法ダメージ、回復量+4"
+        }
+    ],
+    "操気": [
+        {
+            "name": "気防陣",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "受けるダメージ-2、アンデッド/魔神なら-3"
+        },
+        {
+            "name": "念縛術I",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "回避-1"
+        },
+        {
+            "name": "念縛術II",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "能動的な判定-1"
+        },
+        {
+            "name": "念縛術III",
+            "required_lv": 10,
+            "hp": "1d",
+            "explanation": "行動判定-1"
+        },
+        {
+            "name": "縛術強化",
+            "required_lv": 10,
+            "hp": "1d",
+            "explanation": "念縛術のペナルティ修正を‐2にする"
+        }
+    ],
+    "魔装": [
+        {
+            "name": "その他部位強化",
+            "required_lv": 1,
+            "explanation": "その他部位の命中・回避+1"
+        },
+        {
+            "name": "即応変身",
+            "required_lv": 1,
+            "explanation": "変身した際にその他部位は行動できる"
+        }
+    ],
+    "占瞳": [
+        {
+            "name": "光る星の導きを知る",
+            "required_lv": 1,
+            "explanation": "ラッキーアイテムを知る",
+            "effect": "8~:知る,HP3/12~:持っていれば+1,HP3/17~:持っていれば+2,HPMP10"
+        },
+        {
+            "name": "無色なる不備の幻影",
+            "required_lv": 10,
+            "explanation": "買い物をする",
+            "effect": "15~:価格2倍,HP5/18~:買い物,HPMP12/21~:買い物,MP5"
+        }
+    ],
+    "呪印": [
+        {
+            "name": "命中強化",
+            "required_lv": 1,
+            "target": "武器",
+            "explanation": "命中+1"
+        },
+        {
+            "name": "生死判定増強",
+            "required_lv": 1,
+            "target": "ネックレス",
+            "explanation": "生死判定+3"
+        },
+        {
+            "name": "武器巨大化",
+            "required_lv": 5,
+            "target": "武器",
+            "explanation": "必筋+10、威力+10"
+        },
+        {
+            "name": "回復効果クリティカル",
+            "required_lv": 5,
+            "target": "ネックレス",
+            "explanation": "操霊・秘奥魔法の回復魔法のC値を10にする"
+        },
+        {
+            "name": "武器超巨大化",
+            "required_lv": 10,
+            "target": "武器",
+            "explanation": "必筋+10、威力+10"
+        }
+    ],
+    "貴格": [
+        {
+            "name": "貴格1",
+            "required_lv": 1,
+            "explanation": "なんも覚えてない1"
+        },
+        {
+            "name": "貴格2",
+            "required_lv": 1,
+            "explanation": "なんも覚えてない2"
+        }
+    ]
+}
