@@ -2,1081 +2,1439 @@
     "passive": [
         {
             "name": "足さばき",
-            "required_lv": 9,
-            "replace_lv": 9,
-            "explanation": "制限移動の距離を10mにする"
+            "required_lv": [["冒険者"], 9],
+            "replace_lv": [["冒険者"], 9],
+            "required_skill": [],
+            "explanation": "制限移動の距離を10mにする",
+            "flag": ""
         },
         {
             "name": "追い打ち",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "シールドバッシュで転倒させた対象に攻撃できる"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": ["シールドバッシュI", "シールドバッシュII"],
+            "explanation": "シールドバッシュで転倒させた対象に攻撃できる",
+            "flag": "R"
         },
         {
             "name": "ガーディアンI",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "かばう回数を3回にする"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["かばうI", "かばうII"],
+            "explanation": "かばう回数を3回にする",
+            "flag": "R"
         },
         {
             "name": "ガーディアンII",
-            "required_lv": 5,
-            "replace_lv": 9,
-            "explanation": "かばう回数を5回にする"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 9],
+            "required_skill": ["かばうI", "かばうII"],
+            "explanation": "かばう回数を5回にする",
+            "flag": "R"
         },
         {
             "name": "かいくぐり",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "回避成功数だけC値減少"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "回避成功数だけC値減少",
+            "flag": ""
         },
         {
             "name": "回避行動I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "回避力+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "回避力+1",
+            "flag": ""
         },
         {
             "name": "回避行動II",
-            "required_lv": 1,
-            "replace_lv": 9,
-            "explanation": "回避力+2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["フェンサー", "バトルダンサー"], 9],
+            "required_skill": [],
+            "explanation": "回避力+2",
+            "flag": ""
         },
         {
             "name": "頑強",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "最大HP+15"
+            "required_lv": [["ファイター", "グラップラー", "バトルダンサー", "フェンサー"], 5],
+            "replace_lv": [["ファイター", "グラップラー", "バトルダンサー", "フェンサー"], 5],
+            "required_skill": [],
+            "explanation": "最大HP+15",
+            "flag": ""
         },
         {
             "name": "超頑強",
-            "required_lv": 7,
-            "replace_lv": 7,
-            "explanation": "最大HP+15"
+            "required_lv": [["ファイター", "グラップラー"], 7],
+            "replace_lv": [["ファイター", "グラップラー"], 7],
+            "required_skill": ["頑強"],
+            "explanation": "最大HP+15",
+            "flag": ""
         },
         {
             "name": "キャパシティ",
-            "required_lv": 11,
-            "replace_lv": 11,
-            "explanation": "最大MP+15"
+            "required_lv": [["冒険者"], 11],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": [],
+            "explanation": "最大MP+15",
+            "flag": ""
         },
         {
             "name": "鼓咆陣率追加I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "鼓咆陣率の取得数+1"
+            "required_lv": [["ウォーリーダー"], 1],
+            "replace_lv": [["ウォーリーダー"], 1],
+            "required_skill": [],
+            "explanation": "鼓咆陣率の取得数+1",
+            "flag": ""
         },
         {
             "name": "鼓咆陣率追加II",
-            "required_lv": 1,
-            "replace_lv": 5,
-            "explanation": "鼓咆陣率の取得数+2"
+            "required_lv": [["ウォーリーダー"], 1],
+            "replace_lv": [["ウォーリーダー"], 5],
+            "required_skill": [],
+            "explanation": "鼓咆陣率の取得数+2",
+            "flag": ""
         },
         {
             "name": "鼓咆陣率追加III",
-            "required_lv": 1,
-            "replace_lv": 11,
-            "explanation": "鼓咆陣率の取得数+3"
+            "required_lv": [["ウォーリーダー"], 1],
+            "replace_lv": [["ウォーリーダー"], 11],
+            "required_skill": [],
+            "explanation": "鼓咆陣率の取得数+3",
+            "flag": ""
         },
         {
             "name": "射手の体術",
-            "required_lv": 7,
-            "replace_lv": 7,
-            "explanation": "シューター技能で回避可能になる"
+            "required_lv": [["シューター"], 7],
+            "replace_lv": [["シューター"], 7],
+            "required_skill": [],
+            "explanation": "シューター技能で回避可能になる",
+            "flag": ""
         },
         {
             "name": "終律増強",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "終律の威力+10"
+            "required_lv": [["バード"], 3],
+            "replace_lv": [["バード"], 3],
+            "required_skill": [],
+            "explanation": "終律の威力+10",
+            "flag": ""
         },
         {
             "name": "呪歌追加I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "呪歌の取得数+1"
+            "required_lv": [["バード"], 1],
+            "replace_lv": [["バード"], 1],
+            "required_skill": [],
+            "explanation": "呪歌の取得数+1",
+            "flag": ""
         },
         {
             "name": "呪歌追加II",
-            "required_lv": 1,
-            "replace_lv": 5,
-            "explanation": "呪歌の取得数+2"
+            "required_lv": [["バード"], 1],
+            "replace_lv": [["バード"], 5],
+            "required_skill": [],
+            "explanation": "呪歌の取得数+2",
+            "flag": ""
         },
         {
             "name": "呪歌追加III",
-            "required_lv": 1,
-            "replace_lv": 11,
-            "explanation": "呪歌の取得数+3"
+            "required_lv": [["バード"], 1],
+            "replace_lv": [["バード"], 11],
+            "required_skill": [],
+            "explanation": "呪歌の取得数+3",
+            "flag": ""
         },
         {
             "name": "ハーモニー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ペットと同時に呪歌を奏でられる"
+            "required_lv": [["バード"], 5],
+            "replace_lv": [["バード"], 5],
+            "required_skill": [],
+            "explanation": "ペットと同時に呪歌を奏でられる",
+            "flag": ""
         },
         {
             "name": "特殊楽器習熟",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "特殊楽器を装備可能"
+            "required_lv": [["バード"], 3],
+            "replace_lv": [["バード"], 3],
+            "required_skill": [],
+            "explanation": "特殊楽器を装備可能",
+            "flag": ""
         },
         {
             "name": "スローイングI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "投擲の命中+1、ポーションボール使用可"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "投擲の命中+1、ポーションボール使用可",
+            "flag": ""
         },
         {
             "name": "スローイングII",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "投擲の命中+2、ポーションボール使用可"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "投擲の命中+2、ポーションボール使用可",
+            "flag": ""
         },
         {
             "name": "相克の標的",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "相域の対象数を2体にする"
+            "required_lv": [["ジオマンサー"], 1],
+            "replace_lv": [["ジオマンサー"], 1],
+            "required_skill": [],
+            "explanation": "相域の対象数を2体にする",
+            "flag": ""
         },
         {
             "name": "相克の別離",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "相域の効果を対象ごとに選べるようにする"
+            "required_lv": [["ジオマンサー"], 3],
+            "replace_lv": [["ジオマンサー"], 3],
+            "required_skill": [],
+            "explanation": "相域の効果を対象ごとに選べるようにする",
+            "flag": ""
         },
         {
             "name": "ターゲッティング",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "誤射を起こさなくなる"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "誤射を起こさなくなる",
+            "flag": ""
         },
         {
             "name": "鷹の目",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "遮蔽の奥を対象にできるようになる"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": ["ターゲッティング"],
+            "explanation": "遮蔽の奥を対象にできるようになる",
+            "flag": ""
         },
         {
             "name": "抵抗強化I",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "生命抵抗力、精神抵抗力、生死判定+1"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": [],
+            "explanation": "生命抵抗力、精神抵抗力、生死判定+1",
+            "flag": ""
         },
         {
             "name": "抵抗強化II",
-            "required_lv": 3,
-            "replace_lv": 11,
-            "explanation": "生命抵抗力、精神抵抗力、生死判定+2"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": [],
+            "explanation": "生命抵抗力、精神抵抗力、生死判定+2",
+            "flag": ""
         },
         {
             "name": "飛び蹴り",
-            "required_lv": 9,
-            "replace_lv": 9,
-            "explanation": "10m以上移動した際にキックで攻撃可能"
+            "required_lv": [["グラップラー"], 9],
+            "replace_lv": [["グラップラー"], 9],
+            "required_skill": [],
+            "explanation": "10m以上移動した際にキックで攻撃可能",
+            "flag": ""
         },
         {
             "name": "投げ強化I",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "2部位まで投げの対象にできる"
+            "required_lv": [["グラップラー"], 3],
+            "replace_lv": [["グラップラー"], 3],
+            "required_skill": [],
+            "explanation": "2部位まで投げの対象にできる",
+            "flag": ""
         },
         {
             "name": "投げ強化II",
-            "required_lv": 3,
-            "replace_lv": 7,
-            "explanation": "3部位まで投げの対象にできる"
+            "required_lv": [["グラップラー"], 3],
+            "replace_lv": [["グラップラー"], 7],
+            "required_skill": [],
+            "explanation": "3部位まで投げの対象にできる",
+            "flag": ""
         },
         {
             "name": "踏みつけ",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "投げた対象に追加攻撃を行う"
+            "required_lv": [["グラップラー"], 5],
+            "replace_lv": [["グラップラー"], 5],
+            "required_skill": [],
+            "explanation": "投げた対象に追加攻撃を行う",
+            "flag": ""
         },
         {
             "name": "賦術強化I",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "賦術判定+1"
+            "required_lv": [["アルケミスト"], 3],
+            "replace_lv": [["アルケミスト"], 3],
+            "required_skill": [],
+            "explanation": "賦術判定+1",
+            "flag": ""
         },
         {
             "name": "賦術強化II",
-            "required_lv": 3,
-            "replace_lv": 9,
-            "explanation": "賦術判定+2"
+            "required_lv": [["アルケミスト"], 3],
+            "replace_lv": [["アルケミスト"], 9],
+            "required_skill": [],
+            "explanation": "賦術判定+2",
+            "flag": ""
         },
         {
             "name": "賦術全遠隔化",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "賦術の射程+10m、接触のものも10mにする"
+            "required_lv": [["アルケミスト"], 5],
+            "replace_lv": [["アルケミスト"], 5],
+            "required_skill": [],
+            "explanation": "賦術の射程+10m、接触のものも10mにする",
+            "flag": ""
         },
         {
             "name": "連続賦術",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "主動作での賦術使用を2回行う"
+            "required_lv": [["アルケミスト"], 5],
+            "replace_lv": [["アルケミスト"], 5],
+            "required_skill": [],
+            "explanation": "主動作での賦術使用を2回行う",
+            "flag": ""
         },
         {
             "name": "ブロッキング",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "自身の部位数を2として扱う"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "自身の部位数を2として扱う",
+            "flag": ""
         },
         {
             "name": "変幻自在I",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "複数宣言=2回、両方とも使用:グラップラー/バトルダンサー/フェンサーに限る"
+            "required_lv": [["グラップラー" ,"フェンサー", "バトルダンサー"], 5],
+            "replace_lv": [["グラップラー" ,"フェンサー", "バトルダンサー"], 5],
+            "required_skill": [],
+            "explanation": "複数宣言=2回、両方とも使用:グラップラー/バトルダンサー/フェンサーに限る",
+            "flag": ""
         },
         {
             "name": "変幻自在II",
-            "required_lv": 5,
-            "replace_lv": 13,
-            "explanation": "複数宣言=3回、すべて使用:グラップラー/バトルダンサー/フェンサーに限る"
+            "required_lv": [["グラップラー" ,"フェンサー", "バトルダンサー"], 5],
+            "replace_lv": [["グラップラー" ,"フェンサー", "バトルダンサー"], 13],
+            "required_skill": [],
+            "explanation": "複数宣言=3回、すべて使用:グラップラー/バトルダンサー/フェンサーに限る",
+            "flag": ""
         },
         {
             "name": "魔晶石の達人",
-            "required_lv": 9,
-            "replace_lv": 9,
-            "explanation": "魔晶石を一度に2つ使用可能"
+            "required_lv": [["冒険者"], 9],
+            "replace_lv": [["冒険者"], 9],
+            "required_skill": [],
+            "explanation": "魔晶石を一度に2つ使用可能",
+            "flag": ""
         },
         {
             "name": "魔法拡大の達人",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "対象ごとに魔法拡大の効果の適用を選べる"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["魔法拡大すべて"],
+            "explanation": "対象ごとに魔法拡大の効果の適用を選べる",
+            "flag": ""
         },
         {
             "name": "マリオネット",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ゴーレム等を自由な手番で動かせる"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "ゴーレム等を自由な手番で動かせる",
+            "flag": ""
         },
         {
             "name": "魔力強化I",
-            "required_lv": 7,
-            "replace_lv": 7,
-            "explanation": "すべての魔力+1"
+            "required_lv": [["魔法使い"], 6],
+            "replace_lv": [["魔法使い"], 6],
+            "required_skill": [],
+            "explanation": "すべての魔力+1",
+            "flag": "M"
         },
         {
             "name": "魔力強化II",
-            "required_lv": 7,
-            "replace_lv": 11,
-            "explanation": "すべての魔力+2"
+            "required_lv": [["魔法使い"], 6],
+            "replace_lv": [["魔法使い"], 11],
+            "required_skill": [],
+            "explanation": "すべての魔力+2",
+            "flag": "M"
         },
         {
             "name": "命中強化I",
-            "required_lv": 7,
-            "replace_lv": 7,
-            "explanation": "命中力+1"
+            "required_lv": [["冒険者"], 7],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "命中力+1",
+            "flag": ""
         },
         {
             "name": "命中強化II",
-            "required_lv": 7,
-            "replace_lv": 11,
-            "explanation": "命中力+2"
+            "required_lv": [["冒険者"], 7],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": [],
+            "explanation": "命中力+2",
+            "flag": ""
         },
         {
             "name": "両手利き",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "命中-2で両手の武器で攻撃可能"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "命中-2で両手の武器で攻撃可能",
+            "flag": ""
         },
         {
             "name": "双撃",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "両手利きで別の対象を攻撃可能"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": ["両手利き"],
+            "explanation": "両手利きで別の対象を攻撃可能",
+            "flag": ""
         },
         {
             "name": "二刀流",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "両手利きのペナルティを無効化"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "両手利きのペナルティを無効化",
+            "flag": ""
         },
         {
             "name": "二刀無双",
-            "required_lv": 11,
-            "replace_lv": 11,
-            "explanation": "両手利きの必筋制限を撤廃"
+            "required_lv": [["冒険者"], 11],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": ["両手利き"],
+            "explanation": "両手利きの必筋制限を撤廃",
+            "flag": ""
         },
         {
             "name": "練体の極意",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "練技の効果時間3倍"
+            "required_lv": [["エンハンサー"], 5],
+            "replace_lv": [["エンハンサー"], 5],
+            "required_skill": [],
+            "explanation": "練技の効果時間3倍",
+            "flag": ""
         },
         {
             "name": "武器習熟A/ソード",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのソードを装備可能、ソードの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのソードを装備可能、ソードの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/アックス",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのアックスを装備可能、アックスの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのアックスを装備可能、アックスの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/スピア",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのスピアを装備可能、スピアの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのスピアを装備可能、スピアの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/スタッフ",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのスタッフを装備可能、スタッフの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのスタッフを装備可能、スタッフの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/フレイル",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのフレイルを装備可能、フレイルの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのフレイルを装備可能、フレイルの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/ウォーハンマー",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのウォーハンマーを装備可能、ウォーハンマーの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのウォーハンマーを装備可能、ウォーハンマーの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/格闘",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAの格闘を装備可能、格闘の追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAの格闘を装備可能、格闘の追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/投擲",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAの投擲を装備可能、投擲の追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAの投擲を装備可能、投擲の追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/ボウ",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのボウを装備可能、ボウの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのボウを装備可能、ボウの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/クロスボウ",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのクロスボウを装備可能、クロスボウの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのクロスボウを装備可能、クロスボウの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟A/ガン",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAのガンを装備可能、ガンの追加ダメージ+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAのガンを装備可能、ガンの追加ダメージ+1",
+            "flag": ""
         },
         {
             "name": "武器習熟S/ソード",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのソードを装備可能、ソードの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/ソード"],
+            "explanation": "ランクSのソードを装備可能、ソードの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/アックス",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのアックスを装備可能、アックスの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/アックス"],
+            "explanation": "ランクSのアックスを装備可能、アックスの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/スピア",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのスピアを装備可能、スピアの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/スピア"],
+            "explanation": "ランクSのスピアを装備可能、スピアの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/スタッフ",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのスタッフを装備可能、スタッフの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/スタッフ"],
+            "explanation": "ランクSのスタッフを装備可能、スタッフの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/フレイル",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのフレイルを装備可能、フレイルの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/フレイル"],
+            "explanation": "ランクSのフレイルを装備可能、フレイルの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/ウォーハンマー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのウォーハンマーを装備可能、ウォーハンマーの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/ウォーハンマー"],
+            "explanation": "ランクSのウォーハンマーを装備可能、ウォーハンマーの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/格闘",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSの格闘を装備可能、格闘の追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/格闘"],
+            "explanation": "ランクSの格闘を装備可能、格闘の追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/投擲",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSの投擲を装備可能、投擲の追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/投擲"],
+            "explanation": "ランクSの投擲を装備可能、投擲の追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/ボウ",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのボウを装備可能、ボウの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/ボウ"],
+            "explanation": "ランクSのボウを装備可能、ボウの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/クロスボウ",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのクロスボウを装備可能、クロスボウの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/クロスボウ"],
+            "explanation": "ランクSのクロスボウを装備可能、クロスボウの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器習熟S/ガン",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSのガンを装備可能、ガンの追加ダメージ+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["武器習熟A/ガン"],
+            "explanation": "ランクSのガンを装備可能、ガンの追加ダメージ+2",
+            "flag": ""
         },
         {
             "name": "武器の達人",
-            "required_lv": 11,
-            "replace_lv": 11,
-            "explanation": "すべての武器を装備可能"
+            "required_lv": [["冒険者"], 11],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": ["武器習熟S/ソード", "武器習熟S/アックス", "武器習熟S/スピア", "武器習熟S/スタッフ", "武器習熟S/メイス", "武器習熟S/フレイル", "武器習熟S/ウォーハンマー", "武器習熟S/格闘", "武器習熟S/投擲", "武器習熟S/ボウ", "武器習熟S/クロスボウ", "武器習熟S/ガン"],
+            "explanation": "すべての武器を装備可能",
+            "flag": "R"
         },
         {
             "name": "魔器習熟A",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAの魔器を装備可能、魔器の追加ダメージ+1、防護点+1"
+            "required_lv": [["アーティザン"], 1],
+            "replace_lv": [["アーティザン"], 1],
+            "required_skill": [],
+            "explanation": "ランクAの魔器を装備可能、魔器の追加ダメージ+1、防護点+1",
+            "flag": ""
         },
         {
             "name": "魔器習熟S",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSの魔器を装備可能、魔器の追加ダメージ+1、防護点+1"
+            "required_lv": [["アーティザン"], 5],
+            "replace_lv": [["アーティザン"], 5],
+            "required_skill": ["魔器習熟A"],
+            "explanation": "ランクSの魔器を装備可能、魔器の追加ダメージ+1、防護点+1",
+            "flag": ""
         },
         {
             "name": "魔器の達人",
-            "required_lv": 11,
-            "replace_lv": 11,
-            "explanation": "すべての魔器を装備可能、魔器の追加ダメージ+1、防護点+1"
+            "required_lv": [["アーティザン"], 11],
+            "replace_lv": [["アーティザン"], 11],
+            "required_skill": ["魔器習熟S"],
+            "explanation": "すべての魔器を装備可能、魔器の追加ダメージ+1、防護点+1",
+            "flag": ""
         },
         {
             "name": "魔導書習熟A",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAの魔導書を装備可能"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAの魔導書を装備可能",
+            "flag": ""
         },
         {
             "name": "魔導書習熟S",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSの魔導書を装備可能"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["魔導書習熟A"],
+            "explanation": "ランクSの魔導書を装備可能",
+            "flag": ""
         },
         {
             "name": "魔導書の達人",
-            "required_lv": 11,
-            "replace_lv": 11,
-            "explanation": "すべての魔導書を装備可能"
+            "required_lv": [["冒険者"], 11],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": ["魔導書習熟S"],
+            "explanation": "すべての魔導書を装備可能",
+            "flag": ""
         },
         {
             "name": "防具習熟A/金属鎧",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAの金属鎧を装備可能、金属鎧の防護点+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAの金属鎧を装備可能、金属鎧の防護点+1",
+            "flag": ""
         },
         {
             "name": "防具習熟A/非金属鎧",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAの非金属鎧を装備可能、非金属鎧の防護点+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAの非金属鎧を装備可能、非金属鎧の防護点+1",
+            "flag": ""
         },
         {
             "name": "防具習熟A/盾",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ランクAの盾を装備可能、盾の防護点+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ランクAの盾を装備可能、盾の防護点+1",
+            "flag": ""
         },
         {
             "name": "防具習熟S/金属鎧",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSの金属鎧を装備可能、金属鎧の防護点+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["防具習熟A/金属鎧"],
+            "explanation": "ランクSの金属鎧を装備可能、金属鎧の防護点+2",
+            "flag": ""
         },
         {
             "name": "防具習熟S/非金属鎧",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSの非金属鎧を装備可能、非金属鎧の防護点+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["防具習熟A/非金属鎧"],
+            "explanation": "ランクSの非金属鎧を装備可能、非金属鎧の防護点+2",
+            "flag": ""
         },
         {
             "name": "防具習熟S/盾",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "ランクSの盾を装備可能、盾の防護点+2"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["防具習熟A/盾"],
+            "explanation": "ランクSの盾を装備可能、盾の防護点+2",
+            "flag": ""
         },
         {
             "name": "防具の達人",
-            "required_lv": 11,
-            "replace_lv": 11,
-            "explanation": "すべての防具を装備可能"
+            "required_lv": [["冒険者"], 11],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": ["防具習熟S/金属鎧", "防具習熟S/非金属鎧", "防具習熟S/盾"],
+            "explanation": "すべての防具を装備可能",
+            "flag": "R"
         },
         {
             "name": "MP軽減/ソーサラー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "真語魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "真語魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/コンジャラー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "操霊魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "操霊魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/プリースト",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "神聖魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "神聖魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/マギテック",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "魔動機術の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "魔動機術の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/フェアリーテイマー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "妖精魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "妖精魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/ドルイド",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "森羅魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "森羅魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/デーモンルーラー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "召異魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "召異魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/アビスゲイザー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "奈落魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "奈落魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "MP軽減/ビブリオマンサー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "秘奥魔法の消費MP-1"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "秘奥魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "自己占瞳",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "奈落魔法の消費MP-1"
+            "required_lv": [["ミスティック"], 5],
+            "replace_lv": [["ミスティック"], 5],
+            "required_skill": [],
+            "explanation": "奈落魔法の消費MP-1",
+            "flag": ""
         },
         {
             "name": "占瞳操作",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "占瞳判定の達成値を±1できる"
+            "required_lv": [["ミスティック"], 5],
+            "replace_lv": [["ミスティック"], 5],
+            "required_skill": [],
+            "explanation": "占瞳判定の達成値を±1できる",
+            "flag": ""
         },
         {
             "name": "代償軽減I",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "代償のコスト-1"
+            "required_lv": [["ミスティック"], 3],
+            "replace_lv": [["ミスティック"], 3],
+            "required_skill": [],
+            "explanation": "代償のコスト-1",
+            "flag": ""
         },
         {
             "name": "代償軽減II",
-            "required_lv": 3,
-            "replace_lv": 7,
-            "explanation": "代償のコスト半減"
+            "required_lv": [["ミスティック"], 3],
+            "replace_lv": [["ミスティック"], 7],
+            "required_skill": [],
+            "explanation": "代償のコスト半減",
+            "flag": ""
         },
         {
             "name": "切り払い",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "射撃攻撃や対象:1体の形状:射撃を命中で消滅にできる"
+            "required_lv": [["ファイター"], 16],
+            "replace_lv": [["ファイター"], 16],
+            "required_skill": [],
+            "explanation": "射撃攻撃や対象:1体の形状:射撃を命中で消滅にできる",
+            "flag": ""
         },
         {
             "name": "無尽の盾",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "範囲攻撃をかばえる"
+            "required_lv": [["ファイター"], 16],
+            "replace_lv": [["ファイター"], 16],
+            "required_skill": ["ガーディアンI", "ガーディアンII"],
+            "explanation": "範囲攻撃をかばえる",
+            "flag": "R"
         },
         {
             "name": "ファントムカウンター",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "何回でもカウンターを試みられる、試みるたびに達成値-2"
-        },
-        {
-            "name": "切り払い",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "射撃攻撃や対象:1体の形状:射撃を命中で消滅にできる"
+            "required_lv": [["グラップラー"], 16],
+            "replace_lv": [["グラップラー"], 16],
+            "required_skill": [],
+            "explanation": "何回でもカウンターを試みられる、試みるたびに達成値-2",
+            "flag": ""
         },
         {
             "name": "急所狙い",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "必殺攻撃時、C値-1(下限7)"
+            "required_lv": [["フェンサー"], 16],
+            "replace_lv": [["フェンサー"], 16],
+            "required_skill": [],
+            "explanation": "必殺攻撃時、C値-1(下限7)",
+            "flag": ""
         },
         {
             "name": "心眼",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "回避+4、透明を無視"
+            "required_lv": [["フェンサー"], 16],
+            "replace_lv": [["フェンサー"], 16],
+            "required_skill": [],
+            "explanation": "回避+4、透明を無視",
+            "flag": ""
         },
         {
             "name": "零距離射撃",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "余分な射程5mごとにダメージ+1"
+            "required_lv": [["シューター"], 16],
+            "replace_lv": [["シューター"], 16],
+            "required_skill": [],
+            "explanation": "余分な射程5mごとにダメージ+1",
+            "flag": ""
         }
     ],
     "active": [
         {
             "name": "インファイトI",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "命中+2、同対象しか攻撃できない"
+            "required_lv": [["グラップラー"], 1],
+            "replace_lv": [["グラップラー"], 5],
+            "required_skill": [],
+            "explanation": "命中+2、同対象しか攻撃できない",
+            "flag": ""
         },
         {
             "name": "インファイトII",
-            "required_lv": 5,
-            "replace_lv": 9,
-            "explanation": "命中+2、ダメージ+4、同対象しか攻撃できない"
+            "required_lv": [["グラップラー"], 1],
+            "replace_lv": [["グラップラー"], 9],
+            "required_skill": [],
+            "explanation": "命中+2、ダメージ+4、同対象しか攻撃できない",
+            "flag": ""
         },
         {
             "name": "囮攻撃I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "命中-1、ダメージ+2、回避されたら失敗するまで対象の回避-1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "命中-1、ダメージ+2、回避されたら失敗するまで対象の回避-1",
+            "flag": "B"
         },
         {
             "name": "囮攻撃II",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "命中-2、ダメージ+8、回避されたら失敗するまで対象の回避-2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "命中-2、ダメージ+8、回避されたら失敗するまで対象の回避-2",
+            "flag": "B"
         },
         {
             "name": "カード軽減",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "カード消費量-1"
+            "required_lv": [["アルケミスト"], 5],
+            "replace_lv": [["アルケミスト"], 5],
+            "required_skill": [],
+            "explanation": "カード消費量-1",
+            "flag": ""
         },
         {
             "name": "楽素転換",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "楽素1つを任意の楽素に変換する"
+            "required_lv": [["バード"], 3],
+            "replace_lv": [["バード"], 3],
+            "required_skill": [],
+            "explanation": "楽素1つを任意の楽素に変換する",
+            "flag": ""
         },
         {
             "name": "影矢",
-            "required_lv": 9,
-            "replace_lv": 9,
-            "explanation": "矢弾を2倍消費することで命中判定を2回行う"
+            "required_lv": [["シューター"], 9],
+            "replace_lv": [["シューター"], 9],
+            "required_skill": [],
+            "explanation": "矢弾を2倍消費することで命中判定を2回行う",
+            "flag": ""
         },
         {
             "name": "カニングキャストI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "一度使用した魔法の行使判定+2"
+            "required_lv": [["魔法使い"], 1],
+            "replace_lv": [["魔法使い"], 1],
+            "required_skill": [],
+            "explanation": "一度使用した魔法の行使判定+2",
+            "flag": ""
         },
         {
             "name": "カニングキャストII",
-            "required_lv": 1,
-            "replace_lv": 11,
-            "explanation": "一度使用した魔法の行使判定+3"
+            "required_lv": [["魔法使い"], 1],
+            "replace_lv": [["魔法使い"], 11],
+            "required_skill": [],
+            "explanation": "一度使用した魔法の行使判定+3",
+            "flag": ""
         },
         {
             "name": "かばうI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "かばえる"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "かばえる",
+            "flag": ""
         },
         {
             "name": "かばうII",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "かばえる、宣言回数に含めない"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "かばえる、宣言回数に含めない",
+            "flag": ""
         },
         {
             "name": "斬り返しI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "命中に失敗したらもう一度だけ行う"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "命中に失敗したらもう一度だけ行う",
+            "flag": "B"
         },
         {
             "name": "斬り返しII",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "1回目の命中でダメージ+4、命中に失敗したらもう一度だけ行う"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "1回目の命中でダメージ+4、命中に失敗したらもう一度だけ行う",
+            "flag": "B"
         },
         {
             "name": "牙折り",
-            "required_lv": 9,
-            "replace_lv": 9,
-            "explanation": "対象の発生させる物理ダメージ―8"
+            "required_lv": [["グラップラー", "バトルダンサー"], 9],
+            "replace_lv": [["グラップラー", "バトルダンサー"], 9],
+            "required_skill": [],
+            "explanation": "対象の発生させる物理ダメージ―8",
+            "flag": ""
         },
         {
             "name": "クイックキャスト",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "抵抗:消滅の魔法の消費MP半減"
+            "required_lv": [["魔法使い"], 1],
+            "replace_lv": [["魔法使い"], 1],
+            "required_skill": [],
+            "explanation": "抵抗:消滅の魔法の消費MP半減",
+            "flag": ""
         },
         {
             "name": "クリティカルキャストI",
-            "required_lv": 7,
-            "replace_lv": 7,
-            "explanation": "C値-1"
+            "required_lv": [["魔法使い"], 7],
+            "replace_lv": [["魔法使い"], 7],
+            "required_skill": [],
+            "explanation": "C値-1",
+            "flag": ""
         },
         {
             "name": "クリティカルキャストII",
-            "required_lv": 7,
-            "replace_lv": 11,
-            "explanation": "C値-1、抵抗されてもクリティカルする"
+            "required_lv": [["魔法使い"], 7],
+            "replace_lv": [["魔法使い"], 11],
+            "required_skill": [],
+            "explanation": "C値-1、抵抗されてもクリティカルする",
+            "flag": ""
         },
         {
             "name": "牽制攻撃I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "命中力判定+1、C値+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "命中力判定+1、C値+1",
+            "flag": "B"
         },
         {
             "name": "牽制攻撃II",
-            "required_lv": 1,
-            "replace_lv": 5,
-            "explanation": "命中力判定+2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "命中力判定+2",
+            "flag": "B"
         },
         {
             "name": "牽制攻撃III",
-            "required_lv": 1,
-            "replace_lv": 11,
-            "explanation": "命中力判定+3"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 11],
+            "required_skill": [],
+            "explanation": "命中力判定+3",
+            "flag": "B"
         },
         {
             "name": "高度な柔軟性",
-            "required_lv": 9,
-            "replace_lv": 9,
-            "explanation": "鼓咆のランクを2段階下げると陣気+2"
+            "required_lv": [["ウォーリーダー"], 9],
+            "replace_lv": [["ウォーリーダー"], 9],
+            "required_skill": [],
+            "explanation": "鼓咆のランクを2段階下げると陣気+2",
+            "flag": ""
         },
         {
             "name": "シールドバッシュI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "盾で攻撃し、1部位なら転倒させる"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "盾で攻撃し、1部位なら転倒させる",
+            "flag": ""
         },
         {
             "name": "シールドバッシュII",
-            "required_lv": 1,
-            "replace_lv": 5,
-            "explanation": "盾で攻撃し、2部位までなら転倒させる"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "盾で攻撃し、2部位までなら転倒させる",
+            "flag": ""
         },
         {
             "name": "シャドウステップI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "回避失敗時もう一度行う、または乱戦内の味方部位数が多いならダメージ+2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "回避失敗時もう一度行う、または乱戦内の味方部位数が多いならダメージ+2",
+            "flag": ""
         },
         {
             "name": "シャドウステップII",
-            "required_lv": 1,
-            "replace_lv": 5,
-            "explanation": "回避失敗時もう一度行う、または乱戦内の味方部位数が多いならダメージ+4"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "回避失敗時もう一度行う、または乱戦内の味方部位数が多いならダメージ+4",
+            "flag": ""
         },
         {
             "name": "シュアパフォーマー",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "終律をC値なしにし、必中にする"
+            "required_lv": [["バード"], 5],
+            "replace_lv": [["バード"], 5],
+            "required_skill": [],
+            "explanation": "終律をC値なしにし、必中にする",
+            "flag": ""
         },
         {
             "name": "スキルフルプレイ",
-            "required_lv": 7,
-            "replace_lv": 7,
-            "explanation": "演奏判定を2回行う"
+            "required_lv": [["バード"], 7],
+            "replace_lv": [["バード"], 7],
+            "required_skill": [],
+            "explanation": "演奏判定を2回行う",
+            "flag": ""
         },
         {
             "name": "捨て身攻撃I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ダメージ+5、命中時自身に確定ダメージ5点"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ダメージ+5、命中時自身に確定ダメージ5点",
+            "flag": ""
         },
         {
             "name": "捨て身攻撃II",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "ダメージ+10、命中時自身に確定ダメージ10点"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "ダメージ+10、命中時自身に確定ダメージ10点",
+            "flag": ""
         },
         {
             "name": "捨て身攻撃III",
-            "required_lv": 1,
-            "replace_lv": 15,
-            "explanation": "ダメージ+30、命中時自身に確定ダメージ30点"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 15],
+            "required_skill": [],
+            "explanation": "ダメージ+30、命中時自身に確定ダメージ30点",
+            "flag": ""
         },
         {
             "name": "先陣の才覚",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "先制判定成功時、陣気+2"
+            "required_lv": [["ウォーリーダー"], 5],
+            "replace_lv": [["ウォーリーダー"], 5],
+            "required_skill": [],
+            "explanation": "先制判定成功時、陣気+2",
+            "flag": ""
         },
         {
             "name": "全力攻撃I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ダメージ+4、リスク:回避力-2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ダメージ+4、リスク:回避力-2",
+            "flag": "B"
         },
         {
             "name": "全力攻撃II",
-            "required_lv": 1,
-            "replace_lv": 9,
-            "explanation": "ダメージ+12、リスク:回避力-2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 9],
+            "required_skill": [],
+            "explanation": "ダメージ+12、リスク:回避力-2",
+            "flag": "B"
         },
         {
             "name": "全力攻撃III",
-            "required_lv": 1,
-            "replace_lv": 15,
-            "explanation": "ダメージ+20、リスク:回避力-2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["ファイター"], 15],
+            "required_skill": [],
+            "explanation": "ダメージ+20、リスク:回避力-2、2H限定",
+            "flag": ""
         },
         {
             "name": "ダブルキャスト",
-            "required_lv": 9,
-            "replace_lv": 9,
-            "explanation": "魔法行使を2回行う、2回目はレベル半減、魔力-10"
+            "required_lv": [["魔法使い"], 9],
+            "replace_lv": [["魔法使い"], 9],
+            "required_skill": [],
+            "explanation": "魔法行使を2回行う、2回目はレベル半減、魔力-10",
+            "flag": ""
         },
         {
             "name": "挑発攻撃I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ダメージ-2、可能な限り挑発した対象を攻撃する"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ダメージ-2、可能な限り挑発した対象を攻撃する",
+            "flag": "B"
         },
         {
             "name": "挑発攻撃II",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "可能な限り挑発した対象を攻撃する"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "可能な限り挑発した対象を攻撃する",
+            "flag": "B"
         },
         {
             "name": "露払い",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "命中判定の出目を5に固定、威力表の出目+1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "命中判定の出目を5に固定、威力表の出目+1",
+            "flag": ""
         },
         {
             "name": "ディフェンススタンス",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "回避、生命抵抗、精神抵抗のいずれか+4、回避以外のすべての行動判定-4"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "回避、生命抵抗、精神抵抗のいずれか+4、回避以外のすべての行動判定-4",
+            "flag": ""
         },
         {
             "name": "テイルスイングI",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "命中-1、尻尾で3体まで攻撃"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": [],
+            "explanation": "命中-1、尻尾で3体まで攻撃",
+            "flag": ""
         },
         {
             "name": "テイルスイングII",
-            "required_lv": 3,
-            "replace_lv": 7,
-            "explanation": "尻尾で5体まで攻撃"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "尻尾で5体まで攻撃",
+            "flag": ""
         },
         {
             "name": "薙ぎ払いI",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "ダメージ-3、3体まで攻撃"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": [],
+            "explanation": "ダメージ-3、3体まで攻撃",
+            "flag": ""
         },
         {
             "name": "薙ぎ払いII",
-            "required_lv": 3,
-            "replace_lv": 7,
-            "explanation": "5体まで攻撃"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "5体まで攻撃",
+            "flag": ""
         },
         {
             "name": "バイオレントキャストI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "魔法行使判定+2、攻撃魔法のみ"
+            "required_lv": [["魔法使い"], 1],
+            "replace_lv": [["魔法使い"], 1],
+            "required_skill": [],
+            "explanation": "魔法行使判定+2、攻撃魔法のみ",
+            "flag": ""
         },
         {
             "name": "バイオレントキャストII",
-            "required_lv": 1,
-            "replace_lv": 13,
-            "explanation": "魔法行使判定+3、攻撃魔法のみ"
+            "required_lv": [["魔法使い"], 1],
+            "replace_lv": [["魔法使い"], 3],
+            "required_skill": [],
+            "explanation": "魔法行使判定+3、攻撃魔法のみ",
+            "flag": ""
         },
         {
             "name": "必殺攻撃I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "威力表の出目+1、リスク:回避力-2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "威力表の出目+1、リスク:回避力-2",
+            "flag": "B"
         },
         {
             "name": "必殺攻撃II",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "威力表の出目+1、リスク:回避力-1"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 7],
+            "required_skill": [],
+            "explanation": "威力表の出目+1、リスク:回避力-1",
+            "flag": "B"
         },
         {
             "name": "必殺攻撃III",
-            "required_lv": 1,
-            "replace_lv": 11,
-            "explanation": "威力表の出目+1、クリティカル無効を無視"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["フェンサー", "バトルダンサー"], 11],
+            "required_skill": [],
+            "explanation": "威力表の出目+1、クリティカル無効を無視",
+            "flag": "B"
         },
         {
             "name": "魔法収束",
-            "required_lv": 3,
-            "replace_lv": 3,
-            "explanation": "範囲魔法を対象1体にする"
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": [],
+            "explanation": "範囲魔法を対象1体にする",
+            "flag": ""
         },
         {
             "name": "魔法制御",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "範囲魔法で任意の対象を除外する"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": ["ターゲッティング", "魔法収束"],
+            "explanation": "範囲魔法で任意の対象を除外する",
+            "flag": ""
         },
         {
             "name": "魔力撃",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "ダメージ+任意の魔力、リスク:生命・精神抵抗力-2"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "ダメージ+任意の魔力、リスク:生命・精神抵抗力-2",
+            "flag": "B"
         },
         {
             "name": "マルチアクション",
-            "required_lv": 5,
-            "replace_lv": 5,
-            "explanation": "近接攻撃と魔法行使を行う"
+            "required_lv": [["冒険者"], 5],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "近接攻撃と魔法行使を行う",
+            "flag": ""
         },
         {
             "name": "鎧貫きI",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "対象の防護点を半分でダメージ計算、C値+1"
+            "required_lv": [["グラップラー"], 1],
+            "replace_lv": [["グラップラー"], 1],
+            "required_skill": [],
+            "explanation": "対象の防護点を半分でダメージ計算、C値+1",
+            "flag": ""
         },
         {
             "name": "鎧貫きII",
-            "required_lv": 1,
-            "replace_lv": 7,
-            "explanation": "対象の防護点を半分でダメージ計算、C値+1、クリティカルした場合は無視"
+            "required_lv": [["グラップラー"], 1],
+            "replace_lv": [["グラップラー"], 7],
+            "required_skill": [],
+            "explanation": "対象の防護点を半分でダメージ計算、C値+1、クリティカルした場合は無視",
+            "flag": ""
         },
         {
             "name": "鎧貫きIII",
-            "required_lv": 1,
-            "replace_lv": 13,
-            "explanation": "対象の防護点を半分でダメージ計算、クリティカルした場合は無視"
+            "required_lv": [["グラップラー"], 1],
+            "replace_lv": [["グラップラー"], 3],
+            "required_skill": [],
+            "explanation": "対象の防護点を半分でダメージ計算、クリティカルした場合は無視",
+            "flag": ""
         },
         {
             "name": "乱撃I",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "命中-2、3体まで攻撃"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "命中-2、3体まで攻撃",
+            "flag": ""
         },
         {
             "name": "乱撃II",
-            "required_lv": 1,
-            "replace_lv": 5,
-            "explanation": "3体まで攻撃"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 5],
+            "required_skill": [],
+            "explanation": "3体まで攻撃",
+            "flag": ""
         },
         {
             "name": "魔法拡大/威力確実化",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "魔法の威力表が出目4以下だったら振りなおす"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "魔法の威力表が出目4以下だったら振りなおす",
+            "flag": ""
         },
         {
             "name": "魔法拡大/確実化",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "魔法行使判定を2回振る"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "魔法行使判定を2回振る",
+            "flag": ""
         },
         {
             "name": "魔法拡大/数",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "魔法の対象数を増やす"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "魔法の対象数を増やす",
+            "flag": ""
         },
         {
             "name": "魔法拡大/距離",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "魔法の射程を増やす"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "魔法の射程を増やす",
+            "flag": ""
         },
         {
             "name": "魔法拡大/時間",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "魔法の効果時間を増やす"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "魔法の効果時間を増やす",
+            "flag": ""
         },
         {
             "name": "魔法拡大/範囲",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "魔法の範囲を増やす"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "魔法の範囲を増やす",
+            "flag": ""
+        },
+        {
+            "name": "魔法拡大すべて",
+            "required_lv": [["冒険者"], 3],
+            "replace_lv": [["冒険者"], 3],
+            "required_skill": ["魔法拡大/威力確実化", "魔法拡大/確実化", "魔法拡大/数", "魔法拡大/距離", "魔法拡大/時間", "魔法拡大/範囲"],
+            "explanation": "魔法拡大を全種類宣言する",
+            "flag": "R"
         },
         {
             "name": "双占瞳",
-            "required_lv": 7,
-            "replace_lv": 7,
-            "explanation": "命中-2、3体まで攻撃"
+            "required_lv": [["ミスティック"], 7],
+            "replace_lv": [["ミスティック"], 7],
+            "required_skill": [],
+            "explanation": "占瞳の対象を2体にする",
+            "flag": ""
         },
         {
             "name": "痛撃",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "適用ダメージの10分の1だけ最大HPを減少させる"
+            "required_lv": [["ファイター"], 16],
+            "replace_lv": [["ファイター"], 16],
+            "required_skill": [],
+            "explanation": "適用ダメージの10分の1だけ最大HPを減少させる",
+            "flag": ""
         },
         {
             "name": "跳躍攻撃",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "飛行や攻撃障害を無視する"
+            "required_lv": [["グラップラー"], 16],
+            "replace_lv": [["グラップラー"], 16],
+            "required_skill": [],
+            "explanation": "飛行や攻撃障害を無視する",
+            "flag": ""
         },
         {
             "name": "封印撃",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "対象に宣言特技の使用を禁止させる"
+            "required_lv": [["グラップラー"], 16],
+            "replace_lv": [["グラップラー"], 16],
+            "required_skill": [],
+            "explanation": "対象に宣言特技の使用を禁止させる",
+            "flag": ""
         },
         {
             "name": "ヒットアンドアウェイ",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "攻撃後10m移動する、回避-4"
+            "required_lv": [["フェンサー"], 16],
+            "replace_lv": [["フェンサー"], 16],
+            "required_skill": [],
+            "explanation": "攻撃後10m移動する、回避-4",
+            "flag": ""
         },
         {
             "name": "曲射",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "攻撃障害を無視する"
+            "required_lv": [["シューター"], 16],
+            "replace_lv": [["シューター"], 16],
+            "required_skill": [],
+            "explanation": "攻撃障害を無視する",
+            "flag": ""
         },
         {
             "name": "デュアルアクション",
-            "required_lv": 16,
-            "replace_lv": 16,
-            "explanation": "射撃攻撃と魔法行使を行う"
+            "required_lv": [["シューター"], 16],
+            "replace_lv": [["シューター"], 16],
+            "required_skill": [],
+            "explanation": "射撃攻撃と魔法行使を行う",
+            "flag": ""
         }
     ],
     "main_active": [
         {
             "name": "狙撃",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "次の射撃攻撃の命中が3以上有利で算出ダメージ2倍"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "次の射撃攻撃の命中が3以上有利で算出ダメージ2倍",
+            "flag": ""
         },
         {
             "name": "ワードブレイク",
-            "required_lv": 1,
-            "replace_lv": 1,
-            "explanation": "冒+知で特殊効果を解除"
+            "required_lv": [["冒険者"], 1],
+            "replace_lv": [["冒険者"], 1],
+            "required_skill": [],
+            "explanation": "冒+知で特殊効果を解除",
+            "flag": ""
         }
     ]
 

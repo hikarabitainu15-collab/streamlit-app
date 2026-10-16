@@ -45,6 +45,10 @@
             "exist": [true, false]
         },
         {
+            "name": "汎用蛮族語",
+            "exist": [true, true]
+        },
+        {
             "name": "巨人語",
             "exist": [true, true]
         }
