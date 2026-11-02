@@ -1122,7 +1122,7 @@ with st.expander("技能"):
         skills()
 
 #戦闘特技
-@st.fragment(key="fragment_abilitys")
+#@st.fragment(key="fragment_abilitys")
 def abilitys():
     with st.expander("戦闘特技"):
         with st.container(gap="xxsmall"):
