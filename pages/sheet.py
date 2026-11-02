@@ -10,6 +10,8 @@ from functions import get_connection
 from functions import load_json
 from functions import load_skills_list_json
 
+
+
 # セッション初期設定
 defaults = {
     'edit_mode':False, 
@@ -52,7 +54,7 @@ defaults = {
 }
 for key, value in defaults.items():
     if key not in st.session_state:
-        st.session_state[key] = value                 
+        st.session_state[key] = value
 
 #関数
 #種族更新
@@ -257,7 +259,8 @@ def update_equipment_buf():
                     st.session_state.equipment_buf[14] += buf_num
                 except:
                     pass
-    st.rerun("app")
+    if not st.session_state.file_upload_flag:
+        st.rerun("app") 
 #装飾品専用化バフ更新
 def update_equipment_exclusive_buf():
     equipment_buf_list = []
@@ -344,7 +347,8 @@ def update_history_all():
                 st.session_state.growth_list[5] += int(re.search(r'精\d+', st.session_state[key_growth]).group().lstrip("精")) if "精" in st.session_state[key_growth] else 0
             except:
                 pass
-    st.rerun("app")
+    if not st.session_state.file_upload_flag:
+        st.rerun("app")
 #履歴による諸々更新
 def update_history(key, history_placeholder_list):
     if key == "growth":
