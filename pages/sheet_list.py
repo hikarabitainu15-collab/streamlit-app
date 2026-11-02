@@ -77,7 +77,6 @@ with st.container(gap="xxsmall"):
             continue
         col_list_pc, col_list_pl, col_list_lv, col_list_date, col_list_delete = st.columns([2,1,1,1,1])
         with col_list_pc:
-            #st.write(f"#### {pc}")
             if st.button(f"{pc}", key=f"pc_name_{id}", type="tertiary"):
                 st.session_state.input_password_text = ""
                 pass_input(id, password)
@@ -87,10 +86,6 @@ with st.container(gap="xxsmall"):
             st.write(f"{lv}")
         with col_list_date:
             st.write(f"{date}")
-        # with col_list_edit:
-        #     if st.button("編集", key=f"edit_{id}"):
-        #         st.session_state.input_password_text = ""
-        #         pass_input(id, password)
         with col_list_delete:
             with st.container(horizontal_alignment="center"):
                 if st.button("削除", type="tertiary", key=f"delete_{id}"):
