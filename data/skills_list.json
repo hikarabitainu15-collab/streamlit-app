@@ -1,71 +1,206 @@
 {
     "秘奥": [
         {
-            "name": "ランケア=ルイナス",
-            "required_lv": 1,
-            "mp": 6,
-            "explanation": "威力20、純エネルギー"
-        },
-        {
-            "name": "アクス=マリスティアス",
+            "name": "アクス＝マリスティアス —悪意の針—",
             "required_lv": 1,
             "mp": 3,
             "explanation": "2点、呪い"
         },
         {
-            "name": "アクティオ=エクソキスムス",
+            "name": "ウェルム＝リイェクタス —拒絶の障壁—",
+            "required_lv": 1,
+            "mp": 3,
+            "explanation": "1回だけ魔力点ダメージ軽減"
+        },
+        {
+            "name": "コルプス＝レストラーレ —肉体修復—",
+            "required_lv": 1,
+            "mp": 5,
+            "explanation": "威力20、回復"
+        },
+        {
+            "name": "スパティウム＝オルクス —空間視認—",
+            "required_lv": 1,
+            "mp": 0,
+            "explanation": "一瞬透視する"
+        },
+        {
+            "name": "ネブラ＝ウェネースムス —猛毒の霧—",
+            "required_lv": 1,
+            "mp": 0,
+            "explanation": "威力10、毒、半径3m/5"
+        },
+        {
+            "name": "ランケア＝ルイナス —破滅の槍—",
+            "required_lv": 1,
+            "mp": 6,
+            "explanation": "威力20、純エネルギー"
+        },
+        {
+            "name": "アクティオ＝エクソキスムス —退魔活性—",
             "required_lv": 4,
             "mp": 6,
             "explanation": "魔力+4で自身にかかっている効果を解除"
         },
         {
-            "name": "アディシオ=エレメントゥム",
+            "name": "アディシオ＝エレメントゥム —属性付加—",
             "required_lv": 4,
             "mp": 5,
             "explanation": "秘奥魔法に属性を追加"
         },
         {
-            "name": "ランケア=ダムナトリウス",
+            "name": "マギカ＝アウゲータス —魔力増強—",
+            "required_lv": 4,
+            "mp": 0,
+            "explanation": "魔力+1"
+        },
+        {
+            "name": "パラーレ＝アプスコンディートゥス —隠匿対応—",
+            "required_lv": 4,
+            "mp": 0,
+            "explanation": "不意打ちに対する危険感知+2の空間を作る"
+        },
+        {
+            "name": "プルケリトゥード —容姿端麗—",
+            "required_lv": 4,
+            "mp": 0,
+            "explanation": ""
+        },
+        {
+            "name": "ルクス＝トライキエンス —貫く光条—",
+            "required_lv": 4,
+            "mp": 0,
+            "explanation": "威力30、純エネルギー、貫通"
+        },
+        {
+            "name": "モメント＝レストラーレ —瞬間修復—",
+            "required_lv": 7,
+            "mp": 7,
+            "explanation": "威力50のみ、回復"
+        },
+        {
+            "name": "アトモス＝イラプティオ —大気爆発—",
+            "required_lv": 7,
+            "mp": 12,
+            "explanation": "威力40、衝撃、半径4m/10"
+        },{
+            "name": "マグナ＝サルトゥス —大跳躍—",
+            "required_lv": 7,
+            "mp": 0,
+            "explanation": "10m跳躍できるようになる"
+        },{
+            "name": "マグナ＝ペルセプティオ —大知覚—",
+            "required_lv": 7,
+            "mp": 14,
+            "explanation": "観察パッケージの判定を出目を見た後に+4"
+        },
+        {
+            "name": "ランケア＝ダムナトリウス —断罪の槍—",
             "required_lv": 7,
             "mp": 10,
             "explanation": "威力50、純エネルギー"
         },
         {
-            "name": "レナトゥス=イニシアトゥス",
+            "name": "レナトゥス＝イニシアトゥス —再生起動—",
             "required_lv": 7,
             "mp": 12,
-            "explanation": "気絶を回復し、威力40回復"
+            "explanation": "気絶を回復し、威力40、回復"
         },
         {
-            "name": "デネブラス=カイエンデンス=ルミナス",
+            "name": "コングラーレ＝ラピダス —先手凍結—",
             "required_lv": 10,
-            "mp": 15,
+            "mp": 0,
+            "explanation": "主動作を1回封じる"
+        },
+        {
+            "name": "ケレリタス＝ウォラートゥス —高速飛行—",
+            "required_lv": 10,
+            "mp": 0,
+            "explanation": "移動力100の飛行を与える"
+        },
+        {
+            "name": "デネブラス＝カイエンデンス＝ルミナス —闇を裂く閃光—",
+            "required_lv": 10,
+            "mp": 0,
             "explanation": "威力60、純エネルギー、貫通"
         },
         {
-            "name": "モルス=ウィルトゥアリス",
+            "name": "ディフェンシオス＝ペルフェクタス —完全防護—",
+            "required_lv": 10,
+            "mp": 0,
+            "explanation": "魔力の繭で包み干渉を受けなくする"
+        },
+        {
+            "name": "モルス＝ウィルトゥアリス —仮想の死—",
             "required_lv": 10,
             "mp": 20,
             "explanation": "生死判定に失敗時、最大HPとMPを-10で死亡しない"
         },
         {
-            "name": "スパティウム=テレポータス",
+            "name": "エンシス＝ヴァリアビリス —多形の刃—",
+            "required_lv": 13,
+            "mp": 1,
+            "explanation": "消費MP点(1~10)の魔法ダメージ、呪い"
+        },
+        {
+            "name": "スパティウム＝テレポータス —空間転移—",
             "required_lv": 13,
             "mp": 25,
             "explanation": "空間テレポート"
         },
         {
-            "name": "ランケア=フェリオデウス",
+            "name": "モルス＝テンペスタス —死の嵐—",
+            "required_lv": 13,
+            "mp": 0,
+            "explanation": "威力80、呪い、半径6m/20"
+        },
+        {
+            "name": "ランケア＝フェリオデウス —神殺の槍—",
             "required_lv": 13,
             "mp": 18,
             "explanation": "威力100、純エネルギー"
+        },
+        {
+            "name": "ルクス＝サンクトゥム＝アドヴェントゥス —聖魔の光束—",
+            "required_lv": 13,
+            "mp": 0,
+            "explanation": "威力100、純エネルギー"
+        },
+        {
+            "name": "オムニポテンス —全能の一—",
+            "required_lv": 16,
+            "mp": 0,
+            "explanation": "Lv15までの真語、操霊、深智魔法を1つ使用可能にする"
+        },
+        {
+            "name": " —術式解体—",
+            "required_lv": 16,
+            "mp": 0,
+            "explanation": "術者と魔力で対決し、負けると魔法が出ない"
+        },
+        {
+            "name": " —絶命の禁則—",
+            "required_lv": 16,
+            "mp": 0,
+            "explanation": "威力100、任意の属性、達成値の差分だけダメージ増加"
+        },
+        {
+            "name": "ステラ＝スキスラ＝ベルラトル —星を断つ戦士—",
+            "required_lv": 16,
+            "mp": 0,
+            "explanation": "運命凌駕の権利を消費し、行為判定+10"
         }
     ],
     "練技": [
         {
-            "name": "キャッツアイ",
+            "name": "アンチボディ",
             "required_lv": 1,
-            "explanation": "命中力+1"
+            "explanation": "毒、病気に対する抵抗+4"
+        },
+        {
+            "name": "オウルビジョン",
+            "required_lv": 1,
+            "explanation": "暗視を得る"
         },
         {
             "name": "ガゼルフット",
@@ -73,9 +208,49 @@
             "explanation": "回避力+1"
         },
         {
-            "name": "デーモンフィンガー",
-            "required_lv": 5,
-            "explanation": "器用度+6"
+            "name": "キャッツアイ",
+            "required_lv": 1,
+            "explanation": "命中力+1"
+        },
+        {
+            "name": "スケイルレギンス",
+            "required_lv": 1,
+            "explanation": "水中で活動できるようになる"
+        },
+        {
+            "name": "ストロングブラッド",
+            "required_lv": 1,
+            "explanation": "炎、水・氷ダメージ-5"
+        },
+        {
+            "name": "チックチック",
+            "required_lv": 1,
+            "explanation": "落下ダメージ-10"
+        },
+        {
+            "name": "ドラゴンテイル",
+            "required_lv": 1,
+            "explanation": "尻尾を得る、尻尾の命中+1、ダメージ+2(累積+2/+4)"
+        },
+        {
+            "name": "ビートルスキン",
+            "required_lv": 1,
+            "explanation": "防護点+2"
+        },
+        {
+            "name": "マッスルベアー",
+            "required_lv": 1,
+            "explanation": "筋力ボーナス+2"
+        },
+        {
+            "name": "メディテーション",
+            "required_lv": 1,
+            "explanation": "精神効果に対する抵抗+4"
+        },
+        {
+            "name": "ラビットイヤー",
+            "required_lv": 1,
+            "explanation": "危険感知+2"
         },
         {
             "name": "ケンタウロスレッグ",
@@ -83,9 +258,74 @@
             "explanation": "敏捷度+6"
         },
         {
-            "name": "フェンリルバイト",
+            "name": "シェイプアニマル",
+            "required_lv": 5,
+            "explanation": "動物に変身する"
+        },
+        {
+            "name": "ジャイアントアーム",
+            "required_lv": 5,
+            "explanation": "筋力+12"
+        },
+        {
+            "name": "スフィンクスノレッジ",
+            "required_lv": 5,
+            "explanation": "知力+6"
+        },
+        {
+            "name": "デーモンフィンガー",
+            "required_lv": 5,
+            "explanation": "器用度+6"
+        },
+        {
+            "name": "ファイアブレス",
+            "required_lv": 5,
+            "explanation": "練+知で威力10、炎魔法ダメ、半径3m/5で攻撃できるようになる"
+        },
+        {
+            "name": "リカバリィ",
+            "required_lv": 5,
+            "explanation": "練Lvだけ回復"
+        },
+        {
+            "name": "ワイドウィング",
+            "required_lv": 5,
+            "explanation": "移動力10で飛行する、使用するたび移動力+10(累積30)"
+        },
+        {
+            "name": "カメレオンカムフラージュ",
             "required_lv": 10,
-            "explanation": "牙を生やし補助動作で攻撃可能、牙の命中+1/ダメージ+2(累積+2/+4)"
+            "explanation": "10m以上離れた知覚:五感の対象から透明になる"
+        },
+        {
+            "name": "クラーケンスタビリティ",
+            "required_lv": 10,
+            "explanation": "投げの対象にならず、転倒しない"
+        },
+        {
+            "name": "ジィプロフェシー",
+            "required_lv": 10,
+            "explanation": "危険感知、先制+2"
+        },
+        {
+            "name": "ストライダーウォーク",
+            "required_lv": 10,
+            "explanation": "水上や雲を歩行可能になる"
+        },
+        {
+            "name": "スパイダーウェブ",
+            "required_lv": 10,
+            "explanation": "練+筋で【ワイヤーアンカー】と同様の効果を与える"
+        },
+        {
+            "name": "タイタンフット",
+            "required_lv": 10,
+            "explanation": "壁を破壊する"
+        },
+        {
+            "name": "トロールバイタル",
+            "required_lv": 10,
+            "explanation": "魔法ダメージ-4"
         },
         {
             "name": "バルーンシードショット",
@@ -93,28 +333,73 @@
             "explanation": "口から補助動作で投擲可能"
         },
         {
-            "name": "ヴジャトーアイ",
+            "name": "フェンリルバイト",
+            "required_lv": 10,
+            "explanation": "牙を得て補助動作で攻撃可能、牙の命中+1、ダメージ+2(累積+2/+4)"
+        },
+        {
+            "name": "ヘルシーボディ",
+            "required_lv": 10,
+            "explanation": "毒、病気、精神効果の影響を取り去る"
+        },
+        {
+            "name": "アナライズブレイン",
             "required_lv": 16,
-            "explanation": "ダイスを振った後に行為判定+2"
+            "explanation": "弱点を適用する"
         },
         {
             "name": "ウェンディゴハイド",
             "required_lv": 16,
             "explanation": "広範囲の効果に2分の1で巻き込まれない"
+        },
+        {
+            "name": "ヴジャトーアイ",
+            "required_lv": 16,
+            "explanation": "ダイスを振った後に行為判定+2"
         }
     ],
     "呪歌": [
+        {
+            "name": "アーリーバード",
+            "required_lv": 1,
+            "gakuso": ["-", "♡", "♡"],
+            "explanation": "睡眠から覚醒させる"
+        },
+        {
+            "name": "アンビエント",
+            "required_lv": 1,
+            "gakuso": ["-", "↓", "↓"],
+            "explanation": "命中力-1"
+        },
+        {
+            "name": "サモン・スモールアニマル",
+            "required_lv": 1,
+            "gakuso": ["-", "♡", "♡"],
+            "explanation": "小動物を引き寄せる"
+        },
+        {
+            "name": "サモン・フィッシュ",
+            "required_lv": 1,
+            "gakuso": ["-", "♡", "♡"],
+            "explanation": "魚を引き寄せる"
+        },
+        {
+            "name": "ノイズ",
+            "required_lv": 1,
+            "gakuso": ["-", "↓", "↓"],
+            "explanation": "魔法行使-1"
+        },
+        {
+            "name": "バラード",
+            "required_lv": 1,
+            "gakuso": ["-", "↓", "↓"],
+            "explanation": "回避-1"
+        },
         {
             "name": "モラル",
             "required_lv": 1,
             "gakuso": ["-", "↑", "↑"],
             "explanation": "命中力+1"
-        },
-        {
-            "name": "レジスタンス",
-            "required_lv": 1,
-            "gakuso": ["-", "↓", "↑"],
-            "explanation": "生命・精神抵抗力+1"
         },
         {
             "name": "レクイエム",
@@ -123,10 +408,52 @@
             "explanation": "アンデッドの行為判定-2"
         },
         {
+            "name": "レジスタンス",
+            "required_lv": 1,
+            "gakuso": ["-", "↓", "↑"],
+            "explanation": "生命・精神抵抗力+1"
+        },
+        {
             "name": "アトリビュート",
             "required_lv": 5,
             "gakuso": ["-", "♡2", "♡"],
             "explanation": "属性ダメージ+2"
+        },
+        {
+            "name": "キュアリオスティ",
+            "required_lv": 5,
+            "gakuso": ["♡4", "♡2", "♡"],
+            "explanation": "奏者を見たくなる"
+        },
+        {
+            "name": "チャーミング",
+            "required_lv": 5,
+            "gakuso": ["♡4", "♡2", "♡"],
+            "explanation": "奏者に不利な行動をできなくなる"
+        },
+        {
+            "name": "トランス",
+            "required_lv": 5,
+            "gakuso": ["-", "↑2", "↑"],
+            "explanation": "魔法行使+1"
+        },
+        {
+            "name": "ノスタルジィ",
+            "required_lv": 5,
+            "gakuso": ["↓2♡2", "♡2", "↓"],
+            "explanation": "ねぐらに帰りたくなる"
+        },
+        {
+            "name": "ブレイク",
+            "required_lv": 5,
+            "gakuso": ["-", "↓2", "↓"],
+            "explanation": "生命・精神抵抗力-1"
+        },
+        {
+            "name": "ラブソング",
+            "required_lv": 5,
+            "gakuso": ["♡4", "♡2", "♡"],
+            "explanation": "近くの異性と恋に落ちる"
         },
         {
             "name": "ララバイ",
@@ -135,10 +462,64 @@
             "explanation": "眠らせる"
         },
         {
+            "name": "クラップ",
+            "required_lv": 10,
+            "gakuso": ["↓6", "↓2", "↓2"],
+            "explanation": "手を叩き、手に持っているものを落とす"
+        },
+        {
+            "name": "コーラス",
+            "required_lv": 10,
+            "gakuso": ["↑2♡4", "♡2", "↑2"],
+            "explanation": "歌いだし、発声が必要な動作ができない"
+        },
+        {
             "name": "ダル",
             "required_lv": 10,
             "gakuso": ["-", "↓2", "↓2"],
             "explanation": "宣言特技禁止"
+        },
+        {
+            "name": "ダンス",
+            "required_lv": 10,
+            "gakuso": ["↑4♡2", "↑2", "♡2"],
+            "explanation": "踊りだし、命中、回避-2"
+        },
+        {
+            "name": "フォール",
+            "required_lv": 10,
+            "gakuso": ["↓6", "↓2", "↓2"],
+            "explanation": "飛行、浮遊していられなくなる"
+        },
+        {
+            "name": "リダクション",
+            "required_lv": 10,
+            "gakuso": ["↓4♡4", "↓2", "♡2"],
+            "explanation": "行為判定-1"
+        },
+        {
+            "name": "レイジィ",
+            "required_lv": 10,
+            "gakuso": ["↓4♡4", "↓2", "♡2"],
+            "explanation": "行為判定-1"
+        },
+        {
+            "name": "グラント",
+            "required_lv": 16,
+            "gakuso": ["-", "-", "-"],
+            "explanation": "（不明）"
+        },
+        {
+            "name": "ヒム",
+            "required_lv": 16,
+            "gakuso": ["-", "-", "-"],
+            "explanation": "奏者が指定する神聖魔法を習得する"
+        },
+        {
+            "name": "リラックス",
+            "required_lv": 16,
+            "gakuso": ["↓4♡4", "↓2", "♡2"],
+            "explanation": "不利な効果を取り除く"
         },
         {
             "name": "春の強風",
@@ -147,10 +528,40 @@
             "explanation": "1体、威力10、風魔法ダメ"
         },
         {
+            "name": "夏の生命",
+            "required_lv": 1,
+            "gakuso": ["↑♡", "-", "-"],
+            "explanation": "1体、威力10、回復、3時間に1回"
+        },
+        {
+            "name": "秋の実り",
+            "required_lv": 1,
+            "gakuso": ["↓♡", "-", "-"],
+            "explanation": "1体、威力0、MP回復、1日に1回"
+        },
+        {
             "name": "冬の寒風",
             "required_lv": 1,
             "gakuso": ["↓2", "-", "-"],
             "explanation": "1体、威力10、水氷魔法ダメ"
+        },
+        {
+            "name": "獣の咆哮",
+            "required_lv": 5,
+            "gakuso": ["↑4", "-", "-"],
+            "explanation": "3体、威力20、衝撃魔法ダメ"
+        },
+        {
+            "name": "草原の息吹",
+            "required_lv": 5,
+            "gakuso": ["↑2♡2", "-", "-"],
+            "explanation": "3体、威力20、回復、3時間に1回"
+        },
+        {
+            "name": "華の宴",
+            "required_lv": 5,
+            "gakuso": ["↓2♡2", "-", "-"],
+            "explanation": "3体、威力10、MP回復、1日に1回"
         },
         {
             "name": "蛇穴の苦鳴",
@@ -163,18 +574,96 @@
             "required_lv": 10,
             "gakuso": ["↑6", "-", "-"],
             "explanation": "5体、威力30、炎かつ風魔法ダメ"
+        },
+        {
+            "name": "水竜の轟",
+            "required_lv": 10,
+            "gakuso": ["↓6", "-", "-"],
+            "explanation": "5体、威力30、水・氷かつ雷魔法ダメ"
+        },
+        {
+            "name": "蒼月の光",
+            "required_lv": 10,
+            "gakuso": ["↓3♡3", "-", "-"],
+            "explanation": "5体、威力20、MP回復、1日に1回"
+        },
+        {
+            "name": "白日の暖",
+            "required_lv": 10,
+            "gakuso": ["↑3♡3", "-", "-"],
+            "explanation": "5体、威力30、回復、3時間に1回"
         }
     ],
     "騎芸": [
         {
-            "name": "高所攻撃",
+            "name": "威嚇",
             "required_lv": 1,
-            "explanation": "物理ダメージ+1"
+            "explanation": "騎+知で能動的な判定-1を与える"
+        },
+        {
+            "name": "以心伝心",
+            "required_lv": 1,
+            "explanation": "騎獣と知覚を共有する"
+        },
+        {
+            "name": "遠隔指示",
+            "required_lv": 1,
+            "explanation": "騎乗せずとも10mまで指示できるようになる"
+        },
+        {
+            "name": "探索指令",
+            "required_lv": 1,
+            "explanation": "騎+知で探索、危険感知、異常感知が行える"
+        },
+        {
+            "name": "騎獣強化",
+            "required_lv": 1,
+            "explanation": "騎獣の命中、回避+1"
+        },
+        {
+            "name": "騎獣の献身",
+            "required_lv": 1,
+            "explanation": "騎手がHP0以下になるダメージを受けた時、代わりに確定ダメージとして騎獣が受ける"
         },
         {
             "name": "攻撃阻害",
             "required_lv": 1,
-            "explanation": "回避力+1"
+            "explanation": "騎手の回避力+1"
+        },
+        {
+            "name": "高所攻撃",
+            "required_lv": 1,
+            "explanation": "騎手の物理ダメージ+1"
+        },
+        {
+            "name": "タンデム",
+            "required_lv": 1,
+            "explanation": "同乗者ペナルティを-1に軽減する"
+        },
+        {
+            "name": "チャージ",
+            "required_lv": 1,
+            "explanation": "(移動距離/5)点の追加ダメージを得て近接攻撃する"
+        },
+        {
+            "name": "魔法指示",
+            "required_lv": 1,
+            "explanation": "騎獣に魔法を行使させる、1日2回"
+        },
+        {
+            "name": "HP強化",
+            "required_lv": 1,
+            "explanation": "騎獣のHP+5"
+        },
+        {
+            "name": "限界駆動",
+            "required_lv": 5,
+            "explanation": "命中+2、ダメージ+4で騎獣が攻撃し、騎手と騎獣の回避-2"
+        },
+        {
+            "name": "獅子奮迅",
+            "required_lv": 5,
+            "explanation": "騎獣の2部位に行動させる、騎獣の回避-2"
         },
         {
             "name": "姿勢堅持",
@@ -187,9 +676,74 @@
             "explanation": "両手が使用可能"
         },
         {
+            "name": "超高所攻撃",
+            "required_lv": 5,
+            "explanation": "物理ダメージ+1"
+        },
+        {
+            "name": "特殊能力開放",
+            "required_lv": 5,
+            "explanation": "特殊能力が解放される"
+        },
+        {
+            "name": "トランプル",
+            "required_lv": 5,
+            "explanation": "形状:突破で近接攻撃を行う"
+        },
+        {
+            "name": "魔法指示回数増加",
+            "required_lv": 5,
+            "explanation": "魔法指示の回数を1日4回にする"
+        },
+        {
+            "name": "HP超強化",
+            "required_lv": 5,
+            "explanation": "騎獣のHP+5"
+        },
+        {
+            "name": "騎獣超強化",
+            "required_lv": 10,
+            "explanation": "騎獣の命中、回避+1"
+        },
+        {
+            "name": "騎乗指揮",
+            "required_lv": 10,
+            "explanation": "味方全員の命中+2"
+        },
+        {
             "name": "極高所攻撃",
             "required_lv": 10,
             "explanation": "物理ダメージ+1"
+        },
+        {
+            "name": "瞬時魔法指示",
+            "required_lv": 10,
+            "explanation": "魔法指示を補助動作で行う"
+        },
+        {
+            "name": "スーパーチャージ",
+            "required_lv": 10,
+            "explanation": "チャージの効率を(移動距離/4)点にする"
+        },
+        {
+            "name": "超過駆動",
+            "required_lv": 10,
+            "explanation": "限界駆動をさらに命中+2、ダメージ+4にし、騎手と騎獣のHPが10点減少"
+        },
+        {
+            "name": "超攻撃阻害",
+            "required_lv": 10,
+            "explanation": "騎手の回避+1"
+        },
+        {
+            "name": "特殊能力完全開放",
+            "required_lv": 10,
+            "explanation": "特殊能力を完全に開放する"
+        },
+        {
+            "name": "八面六臂",
+            "required_lv": 10,
+            "explanation": "騎獣の全部位が行動する"
         },
         {
             "name": "バランス",
@@ -197,51 +751,217 @@
             "explanation": "姿勢堅持時にも騎獣が行動可能"
         },
         {
-            "name": "超越騎獣",
+            "name": "潜在覚醒",
             "required_lv": 16,
             "explanation": "最大Lvが15の騎獣の上限を開放する"
+        },
+        {
+            "name": "超越騎獣",
+            "required_lv": 16,
+            "explanation": "騎獣が超成功するようになる"
+        },
+        {
+            "name": "超人馬一体",
+            "required_lv": 16,
+            "explanation": "騎手が習得している宣言特技を騎獣が宣言できるようになる"
         }
     ],
     "賦術": [
+        {
+            "name": "インスタントウェポン",
+            "required_lv": 1,
+            "color": "白",
+            "rank": "0/10/20/50",
+            "explanation": "任意の形状の武器を作り出す"
+        },
+        {
+            "name": "ヴォーパルウェポン",
+            "required_lv": 1,
+            "color": "赤",
+            "rank": "+1/+2/+3/+6",
+            "explanation": "物理ダメージ増加"
+        },
+        {
+            "name": "クラッシュファング",
+            "required_lv": 1,
+            "color": "赤",
+            "rank": "-1/-2/-4/-8",
+            "explanation": "物理ダメージ減少"
+        },
+        {
+            "name": "クリティカルレイ",
+            "required_lv": 1,
+            "color": "金",
+            "rank": "+1/+2/+3/+6",
+            "explanation": "威力表の出目最初の1回増加"
+        },
+        {
+            "name": "バークメイル",
+            "required_lv": 1,
+            "color": "緑",
+            "rank": "+1/+2/+4/+8",
+            "explanation": "防護点増加"
+        },
         {
             "name": "パラライズミスト",
             "required_lv": 1,
             "color": "緑",
             "rank": "-/-1/-2/-4",
-            "explanation": "回避ペナルティ",
-            "length": "10m/射撃"
+            "explanation": "回避ペナルティ"
+        },
+        {
+            "name": "ポイズンニードル",
+            "required_lv": 1,
+            "color": "黒",
+            "rank": "1/2/4/8",
+            "explanation": "手番終了時に毒魔法ダメージを受ける"
+        },
+        {
+            "name": "ミラージュデイズ",
+            "required_lv": 1,
+            "color": "白",
+            "rank": "-/-1/-2/-4",
+            "explanation": "命中ペナルティ"
         },
         {
             "name": "ヒールスプレー",
             "required_lv": 1,
             "color": "緑2",
             "rank": "3/10/20/50",
-            "explanation": "HP回復",
-            "length": "30m/射撃"
+            "explanation": "HP回復"
+        },
+        {
+            "name": "アンロックニードル",
+            "required_lv": 5,
+            "color": "黒",
+            "rank": "+0/+1/+2/+4",
+            "explanation": "鍵を解除する"
         },
         {
             "name": "イニシアチブブースト",
             "required_lv": 5,
             "color": "赤2",
             "rank": "+1/+2/+4/+8",
-            "explanation": "先制判定ボーナス",
-            "length": "-/接触"
+            "explanation": "先制判定ボーナス"
+        },
+        {
+            "name": "エンサイクロペディア",
+            "required_lv": 5,
+            "color": "白2",
+            "rank": "+1/+2/+4/+8",
+            "explanation": "魔物知識判定ボーナス"
+        },
+        {
+            "name": "ディスペルニードル",
+            "required_lv": 5,
+            "color": "白",
+            "rank": "0(-)/+1(-)/+2(2)/+4(錬知)",
+            "explanation": "魔法以外の効果を解除する"
         },
         {
             "name": "バインドアビリティ",
             "required_lv": 5,
             "color": "白",
             "rank": "-1/-2/-3/-4",
-            "explanation": "特殊能力の判定ペナルティ",
-            "length": "10m/射撃"
+            "explanation": "特殊能力の判定ペナルティ"
+        },
+        {
+            "name": "ビビッドリキッド",
+            "required_lv": 5,
+            "color": "緑2",
+            "rank": "1/2/5/10",
+            "explanation": "MP回復"
+        },
+        {
+            "name": "マナスプラウト",
+            "required_lv": 5,
+            "color": "金",
+            "rank": "1/2/5/10",
+            "explanation": "一時的なMPを与える"
+        },
+        {
+            "name": "マナダウン",
+            "required_lv": 5,
+            "color": "白",
+            "rank": "-1/-2/-4/-6",
+            "explanation": "魔法ダメージ減少"
+        },
+        {
+            "name": "リーンフォース",
+            "required_lv": 5,
+            "color": "赤2",
+            "rank": "-/+1/+2/+4",
+            "explanation": "魔法ダメージ増加"
+        },
+        {
+            "name": "クレイフィールド",
+            "required_lv": 10,
+            "color": "緑2黒2",
+            "rank": "10秒/30秒/1分/3分",
+            "explanation": "30m空間を土無効、風+5にする"
+        },
+        {
+            "name": "コンバインマテリアル",
+            "required_lv": 10,
+            "color": "（不明）",
+            "rank": "-/-/-/-",
+            "explanation": "ランクの低いカードをまとめて上位のカードとして扱えるようになる"
+        },
+        {
+            "name": "スラッシュフィールド",
+            "required_lv": 10,
+            "color": "（不明）",
+            "rank": "10秒/30秒/1分/3分",
+            "explanation": "30m空間を断空無効、衝撃+5にする"
+        },
+        {
+            "name": "デラックスマテリアル",
+            "required_lv": 10,
+            "color": "（不明）",
+            "rank": "-/-/-/-",
+            "explanation": "ランクの高いカードを下位のカードとして扱い、達成値にボーナスを得る"
+        },
+        {
+            "name": "バリアフィールド",
+            "required_lv": 10,
+            "color": "（不明）",
+            "rank": "10秒/30秒/1分/3分",
+            "explanation": "30m空間の出入りを禁じる"
         },
         {
             "name": "フレイムフィールド",
             "required_lv": 10,
             "color": "赤2金2",
             "rank": "10秒/30秒/1分/3分",
-            "explanation": "30m空間を炎無効、水氷+5にする",
-            "length": "10m/射撃"
+            "explanation": "30m空間を炎無効、水氷+5にする"
+        },
+        {
+            "name": "レストフィールド",
+            "required_lv": 10,
+            "color": "（不明）",
+            "rank": "10秒/30秒/1分/3分",
+            "explanation": "30m空間の回復量+5"
+        },
+        {
+            "name": "プリズムカーテン",
+            "required_lv": 16,
+            "color": "（不明）",
+            "rank": "-/-/-/-",
+            "explanation": ""
+        },
+        {
+            "name": "ライフステイシス",
+            "required_lv": 16,
+            "color": "（不明）",
+            "rank": "-/-/-/-",
+            "explanation": "受ける回復量を減少させる"
+        },
+        {
+            "name": "マテリアルブレイク",
+            "required_lv": 16,
+            "color": "（不明）",
+            "rank": "-/-/-/-",
+            "explanation": "武器が使用不能になる代わりにダメージ増加"
         }
     ],
     "相域": [
@@ -249,13 +969,79 @@
             "name": "天相:降雷",
             "required_lv": 1,
             "meimyaku": "天1～3",
-            "explanation": "(消費命脈点)*2点の雷属性確定ダメージ"
+            "explanation": "(消費命脈点)*2点の雷確定ダメージ"
+        },
+        {
+            "name": "天相:空を欺く",
+            "required_lv": 1,
+            "meimyaku": "天1",
+            "explanation": "空に面していないとして扱う"
+        },
+        {
+            "name": "天相:見えない傘",
+            "required_lv": 1,
+            "meimyaku": "天1",
+            "explanation": "上空からの飛来物を防ぎ、雷無効"
         },
         {
             "name": "地相:地脈の吸収",
             "required_lv": 1,
             "meimyaku": "地1～3",
-            "explanation": "(消費命脈点)点のHP回復"
+            "explanation": "(消費命脈点)点のHP回復、3時間に1回"
+        },
+        {
+            "name": "地相:地を泳ぐ",
+            "required_lv": 1,
+            "meimyaku": "地1～3",
+            "explanation": "水中にいるとして扱う、2点以上で水中で自在に活動できる能力を持つ場合行動判定+1"
+        },
+        {
+            "name": "地相:泥濘に沈む",
+            "required_lv": 1,
+            "meimyaku": "地1～3",
+            "explanation": "1点:移動不可、2点:回避-1、3点:回避-2、1部位で全部位適用、飛行している対象に無効"
+        },
+        {
+            "name": "人相:活",
+            "required_lv": 1,
+            "meimyaku": "人1～3",
+            "explanation": "(消費命脈点)点のMP回復、最大MPの半分まで"
+        },
+        {
+            "name": "人相:恐慌",
+            "required_lv": 1,
+            "meimyaku": "人1～3",
+            "explanation": "天地使いに対して(消費命脈点)*点ダメージが減少する"
+        },
+        {
+            "name": "人相:反撃の意思",
+            "required_lv": 1,
+            "meimyaku": "人1～3",
+            "explanation": "10/20/30以下の達成値の効果を解除する"
+        },
+        {
+            "name": "天相:因果",
+            "required_lv": 5,
+            "meimyaku": "天1～3",
+            "explanation": "ダメージを受けるたび、ダメージを与えた対象に(消費命脈点)点の確定ダメージを与える"
+        },
+        {
+            "name": "天相:天魔の一撃",
+            "required_lv": 5,
+            "meimyaku": "天1～3",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "天相:導きの矢",
+            "required_lv": 5,
+            "meimyaku": "天1～3",
+            "explanation": "遠隔攻撃の命中+(消費命脈点)"
+        },
+        {
+            "name": "地相:宿命の戦士",
+            "required_lv": 5,
+            "meimyaku": "地3",
+            "explanation": "気絶している対象を覚醒させる"
         },
         {
             "name": "地相:属性の乖離",
@@ -264,22 +1050,76 @@
             "explanation": "属性ダメージを受けず、発生させられない"
         },
         {
-            "name": "地相:巻き上がる砂塵",
+            "name": "地相:巻き上がる砂塵の鎧",
             "required_lv": 5,
             "meimyaku": "地1～3",
             "explanation": "防護点+(消費命脈点)"
         },
         {
+            "name": "人相:魂の別離",
+            "required_lv": 5,
+            "meimyaku": "人1～3",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "人相:漏れ出るマナ",
+            "required_lv": 5,
+            "meimyaku": "人1～3",
+            "explanation": "魔力-(消費命脈点)"
+        },
+        {
             "name": "人相:夢食い",
             "required_lv": 5,
             "meimyaku": "人1～3",
-            "explanation": "(消費命脈点)*2の呪い属性確定ダメージ"
+            "explanation": "(消費命脈点)*2の呪い確定ダメージ"
         },
         {
             "name": "天相:七星流れ",
             "required_lv": 10,
             "meimyaku": "天1～3",
             "explanation": "サイコロで出目7を出すたびにHPとMPを(消費命脈点)点回復"
+        },
+        {
+            "name": "天相:マナの離別",
+            "required_lv": 10,
+            "meimyaku": "天1～3",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "天相:烙印",
+            "required_lv": 10,
+            "meimyaku": "天1～3",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "地相:足掻き",
+            "required_lv": 10,
+            "meimyaku": "地1～3",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "地相:大いなる蛇の目",
+            "required_lv": 10,
+            "meimyaku": "地1～3",
+            "explanation": "2dでゾロ目を出すたびに(消費命脈点)点の確定ダメージ"
+        },
+        {
+            "name": "地相:蜃気楼",
+            "required_lv": 10,
+            "meimyaku": "地1～3",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "人相:残像",
+            "required_lv": 10,
+            "meimyaku": "人3",
+            "explanation": "【ブリンク】と同様の効果"
+        },
+        {
+            "name": "人相:存在の消失",
+            "required_lv": 10,
+            "meimyaku": "人1～3",
+            "explanation": "（不明）"
         },
         {
             "name": "人相:人写し",
@@ -290,10 +1130,28 @@
     ],
     "鼓咆・陣率": [
         {
+            "name": "瑕疵への追撃",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "弱点による追加ダメージ+1"
+        },
+        {
             "name": "神展の構え",
             "required_lv": 1,
             "jinki": "+1",
             "explanation": "制限移動+2m、移動力+5m"
+        },
+        {
+            "name": "勇壮なる軍歌",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "呪歌の対象を敵、味方から選択する"
+        },
+        {
+            "name": "蘇る秘奥",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "敵1体に対して魔物知識判定をやり直す"
         },
         {
             "name": "大いなる挑発",
@@ -302,10 +1160,28 @@
             "explanation": "回避、抵抗+1、軍師の回避、抵抗-3"
         },
         {
+            "name": "傷痍の見立て",
+            "required_lv": 10,
+            "jinki": "-1",
+            "explanation": "回復量+5"
+        },
+        {
             "name": "怒涛の攻陣I",
             "required_lv": 1,
             "jinki": "+1",
             "explanation": "物理ダメージ+1"
+        },
+        {
+            "name": "怒涛の攻陣II:烈火",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "物理ダメージ+2"
+        },
+        {
+            "name": "怒涛の攻陣II:旋風",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "命中力+1"
         },
         {
             "name": "怒涛の攻陣III:轟炎",
@@ -320,10 +1196,148 @@
             "explanation": "命中力+1、物理ダメージ+1"
         },
         {
+            "name": "怒涛の攻陣IV:爆焔",
+            "required_lv": 5,
+            "jinki": "+2",
+            "explanation": "物理ダメージ+3"
+        },
+        {
+            "name": "怒涛の攻陣IV:輝斬",
+            "required_lv": 5,
+            "jinki": "+2",
+            "explanation": "命中力+1、物理ダメージ+1"
+        },
+        {
             "name": "怒涛の攻陣V:獄火",
             "required_lv": 10,
             "jinki": "-5",
             "explanation": "物理ダメージ+8"
+        },
+        {
+            "name": "怒涛の攻陣V:颱風",
+            "required_lv": 10,
+            "jinki": "-5",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "流麗なる俊陣I",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "最初の1回だけ回避力+1"
+        },
+        {
+            "name": "流麗なる俊陣II",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "回避力+1"
+        },
+        {
+            "name": "流麗なる俊陣III",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "回避力+2"
+        },
+        {
+            "name": "流麗なる俊陣IV",
+            "required_lv": 5,
+            "jinki": "+2",
+            "explanation": "回避力+2"
+        },
+        {
+            "name": "流麗なる俊陣V",
+            "required_lv": 10,
+            "jinki": "-5",
+            "explanation": "回避力+5"
+        },
+        {
+            "name": "鉄壁の防陣I",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "最初の1回だけ防護点+1"
+        },
+        {
+            "name": "鉄壁の防陣II:鉄鎧",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "防護点+1"
+        },
+        {
+            "name": "鉄壁の防陣II:堅体",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "魔法ダメージ-1(毒、病気、呪い以外)"
+        },
+        {
+            "name": "鉄壁の防陣III:鋼鎧",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "防護点+2"
+        },
+        {
+            "name": "鉄壁の防陣III:甲盾",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "受けるダメージ-1(毒、病気、呪い以外)"
+        },
+        {
+            "name": "鉄壁の防陣IV:城鎧",
+            "required_lv": 5,
+            "jinki": "+2",
+            "explanation": "防護点+2"
+        },
+        {
+            "name": "鉄壁の防陣IV:鏡盾",
+            "required_lv": 5,
+            "jinki": "+2",
+            "explanation": "受けるダメージ-1(毒、病気、呪い以外)"
+        },
+        {
+            "name": "鉄壁の防陣V:鋼城",
+            "required_lv": 10,
+            "jinki": "-5",
+            "explanation": "防護点+5"
+        },
+        {
+            "name": "鉄壁の防陣V:巨壁",
+            "required_lv": 10,
+            "jinki": "-5",
+            "explanation": "（不明）"
+        },
+                {
+            "name": "強靭なる丈陣I",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "生命と精神どちらかを選び、最初の1回だけ抵抗力+1"
+        },
+        {
+            "name": "強靭なる丈陣II",
+            "required_lv": 1,
+            "jinki": "+1",
+            "explanation": "生命と精神どちらかを選び、抵抗力+1"
+        },
+        {
+            "name": "強靭なる丈陣III",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "生命と精神どちらかを選び、抵抗力+2"
+        },
+        {
+            "name": "強靭なる丈陣IV",
+            "required_lv": 5,
+            "jinki": "+2",
+            "explanation": "生命と精神どちらかを選び、抵抗力+2"
+        },
+        {
+            "name": "強靭なる丈陣V:激生",
+            "required_lv": 10,
+            "jinki": "-5",
+            "explanation": "気絶している対象を覚醒させ、気絶していない対象は生命、精神抵抗力+3"
+        },
+        {
+            "name": "強靭なる丈陣V:魔泉",
+            "required_lv": 10,
+            "jinki": "-5",
+            "explanation": "消費MP-5"
         },
         {
             "name": "陣率:軍師の知略",
@@ -338,18 +1352,132 @@
             "explanation": "軍師が敵を倒したとき陣気+1"
         },
         {
-            "name": "陣率:効力行進I",
+            "name": "陣率:堅固なる布陣",
+            "required_lv": 5,
+            "jinki": "+1",
+            "explanation": "軍師がHP回復を30点以上行ったとき陣気+1"
+        },
+        {
+            "name": "陣率:慮外なる烈撃I",
             "required_lv": 1,
             "jinki": "-3",
-            "explanation": "魔法ダメージ、回復量+4"
+            "explanation": "命中力+2、物理ダメージ+2"
+        },
+        {
+            "name": "陣率:慮外なる烈撃II",
+            "required_lv": 5,
+            "jinki": "-5",
+            "explanation": "命中力+4、物理ダメージ+4"
+        },
+        {
+            "name": "陣率:拳措の予見I",
+            "required_lv": 1,
+            "jinki": "-3",
+            "explanation": "回避力+3"
+        },
+        {
+            "name": "陣率:拳措の予見II",
+            "required_lv": 5,
+            "jinki": "-5",
+            "explanation": "回避力+5"
+        },
+        {
+            "name": "陣率:衝戟の刪削I",
+            "required_lv": 1,
+            "jinki": "-3",
+            "explanation": "被ダメージ-4"
+        },
+        {
+            "name": "陣率:衝戟の刪削II",
+            "required_lv": 5,
+            "jinki": "-5",
+            "explanation": "被ダメージ-6"
+        },
+        {
+            "name": "陣率:抗拒の推断I",
+            "required_lv": 1,
+            "jinki": "-3",
+            "explanation": "生命、精神抵抗力+3"
+        },
+        {
+            "name": "陣率:抗拒の推断II",
+            "required_lv": 5,
+            "jinki": "-5",
+            "explanation": "生命、精神抵抗力+5"
+        },
+        {
+            "name": "陣率:行使専心I",
+            "required_lv": 1,
+            "jinki": "-3",
+            "explanation": "魔法行使+1"
+        },
+        {
+            "name": "陣率:行使専心II",
+            "required_lv": 5,
+            "jinki": "-5",
+            "explanation": "魔法行使+2"
+        },
+        {
+            "name": "陣率:効力亢進I",
+            "required_lv": 1,
+            "jinki": "-3",
+            "explanation": "魔法ダメージと回復量+4"
+        },
+        {
+            "name": "陣率:効力亢進II",
+            "required_lv": 5,
+            "jinki": "-5",
+            "explanation": "魔法ダメージと回復量+6"
         }
     ],
     "操気": [
+        {
+            "name": "気集中",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "投擲攻撃の命中+1"
+        },
+        {
+            "name": "気操法",
+            "required_lv": 1,
+            "hp": "2d(6)",
+            "explanation": "闇+精で投擲攻撃可能"
+        },
         {
             "name": "気防陣",
             "required_lv": 1,
             "hp": "1d",
             "explanation": "受けるダメージ-2、アンデッド/魔神なら-3"
+        },
+        {
+            "name": "剛力弾",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "投擲攻撃のダメージ+2"
+        },
+        {
+            "name": "属性付・轟",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "対象の武器攻撃を土かつ炎かつ衝撃にする"
+        },
+        {
+            "name": "属性付・烈",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "対象の武器攻撃を水・氷かつ風かつ断空にする"
+        },
+        {
+            "name": "大乱獲",
+            "required_lv": 1,
+            "hp": "-",
+            "explanation": "戦利品の自動欄の物品を1d-1個追加で得る"
+        },
+        {
+            "name": "念糸還",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "投擲した武器が手元に戻るようになる"
         },
         {
             "name": "念縛術I",
@@ -358,10 +1486,94 @@
             "explanation": "回避-1"
         },
         {
+            "name": "魔観察",
+            "required_lv": 1,
+            "hp": "-",
+            "explanation": "闇+知で分類:蛮族、アンデッドも魔物知識判定ができるようになる"
+        },
+        {
+            "name": "魔探法",
+            "required_lv": 1,
+            "hp": "1d",
+            "explanation": "運動、観察、知識判定パッケージ+1、魔域環境なら無料"
+        },
+        {
+            "name": "遠操法",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "投擲攻撃の射程を30mにする"
+        },
+        {
+            "name": "皆操法",
+            "required_lv": 5,
+            "hp": "-",
+            "explanation": "投擲以外のカテゴリの武器を投擲できる"
+        },
+        {
+            "name": "気旋法",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "形状:貫通(円弧)で投擲攻撃できる"
+        },
+        {
+            "name": "双操法",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "両手利きで投擲攻撃できる"
+        },
+        {
+            "name": "操浮術",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "ちょっと浮く"
+        },
+        {
+            "name": "念糸手I",
+            "required_lv": 5,
+            "hp": "2d(6)",
+            "explanation": "10mまで伸ばせる糸の腕を作る"
+        },
+        {
             "name": "念縛術II",
             "required_lv": 5,
             "hp": "1d",
-            "explanation": "能動的な判定-1"
+            "explanation": "能動的な行動判定-1"
+        },
+        {
+            "name": "念避印",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "気旋法で巻き込まれなくなる"
+        },
+        {
+            "name": "破邪健身",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "毒、病気、呪いに対する抵抗+2"
+        },
+        {
+            "name": "破邪光弾",
+            "required_lv": 5,
+            "hp": "2d(6)",
+            "explanation": "闇+知で威力20の純エネルギー魔法ダメを与える"
+        },
+        {
+            "name": "魔生法",
+            "required_lv": 5,
+            "hp": "1d",
+            "explanation": "出目を見た後に回避、生命、精神抵抗力+1、魔域環境なら無料"
+        },
+        {
+            "name": "重操法",
+            "required_lv": 10,
+            "hp": "1d",
+            "explanation": "用法:2Hの武器も投擲できる"
+        },
+        {
+            "name": "念糸手II",
+            "required_lv": 10,
+            "hp": "2d(6)",
+            "explanation": "糸の腕を2本作成できる"
         },
         {
             "name": "念縛術III",
@@ -373,77 +1585,1398 @@
             "name": "縛術強化",
             "required_lv": 10,
             "hp": "1d",
-            "explanation": "念縛術のペナルティ修正を‐2にする"
+            "explanation": "念縛術のペナルティ修正を-2にする"
+        },
+        {
+            "name": "破邪光槍",
+            "required_lv": 10,
+            "hp": "2d(6)",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔遊法",
+            "required_lv": 10,
+            "hp": "1d",
+            "explanation": "（不明）"
         }
     ],
     "魔装": [
         {
-            "name": "その他部位強化",
+            "name": "アイテム収納",
             "required_lv": 1,
-            "explanation": "その他部位の命中・回避+1"
+            "type": "A",
+            "explanation": "魔剣や瞳石などにアイテムを収納し、変身時に使用できるようにする"
         },
         {
-            "name": "即応変身",
+            "name": "コア耐久増強",
             "required_lv": 1,
-            "explanation": "変身した際にその他部位は行動できる"
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "生来武器強化A",
+            "required_lv": 1,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部位即応&強化",
+            "required_lv": 1,
+            "type": "A",
+            "explanation": "変身した際にその他部位は行動でき、その他部位の命中、回避力+1"
+        },
+        {
+            "name": "部位属性付与",
+            "required_lv": 1,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部位耐久増強",
+            "required_lv": 1,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔将の慧眼",
+            "required_lv": 1,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "コア耐久超増強",
+            "required_lv": 5,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "渾身攻撃",
+            "required_lv": 5,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "生来武器強化S",
+            "required_lv": 5,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部位耐久超増強",
+            "required_lv": 5,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部位超強化",
+            "required_lv": 5,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔将の経験",
+            "required_lv": 5,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "練技使用",
+            "required_lv": 5,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "コア耐久極増強",
+            "required_lv": 10,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "生来武器強化SS",
+            "required_lv": 10,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部位極強化",
+            "required_lv": 10,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部位耐久極増強",
+            "required_lv": 10,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔将の領域",
+            "required_lv": 10,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "マナ解除",
+            "required_lv": 10,
+            "type": "A",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "機動射撃",
+            "required_lv": 1,
+            "type": "S",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "減衰の毒液",
+            "required_lv": 1,
+            "type": "S",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "交差攻撃",
+            "required_lv": 5,
+            "type": "S",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "毒効果拡大",
+            "required_lv": 5,
+            "type": "S",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "蠍の姿勢制御",
+            "required_lv": 10,
+            "type": "S",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "毒効果超拡大",
+            "required_lv": 10,
+            "type": "S",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "宣言特技使用",
+            "required_lv": 1,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "戦士系技能使用",
+            "required_lv": 1,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "呪傷の連鎖",
+            "required_lv": 1,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔人の眼光",
+            "required_lv": 1,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔神能力拡大/達成値",
+            "required_lv": 1,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "侵食の毒息",
+            "required_lv": 5,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "胴体効果継続I",
+            "required_lv": 5,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔人の咆哮",
+            "required_lv": 5,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "異界の挙動",
+            "required_lv": 10,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魂の吸収",
+            "required_lv": 10,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "胴体効果継続II",
+            "required_lv": 10,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "不平等な契約",
+            "required_lv": 10,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔人能力拡大/達成値",
+            "required_lv": 10,
+            "type": "Di",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "ブレス強化",
+            "required_lv": 1,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔剣形状変更",
+            "required_lv": 1,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔剣ランク上昇A",
+            "required_lv": 1,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔剣+1",
+            "required_lv": 5,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔剣吸収",
+            "required_lv": 5,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔剣ランク上昇S",
+            "required_lv": 5,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "燦光のブレス",
+            "required_lv": 10,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔剣ランク上昇SS",
+            "required_lv": 10,
+            "type": "D",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "暗視",
+            "required_lv": 1,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視MP半減",
+            "required_lv": 1,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視強化A",
+            "required_lv": 1,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視達成値強化",
+            "required_lv": 1,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "巨大な身体",
+            "required_lv": 5,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視MP無償化",
+            "required_lv": 5,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視強化S",
+            "required_lv": 5,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視変異I",
+            "required_lv": 5,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視追加",
+            "required_lv": 10,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視貫通制御",
+            "required_lv": 10,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視強化SS",
+            "required_lv": 10,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "邪視変異II",
+            "required_lv": 10,
+            "type": "B",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔法使用",
+            "required_lv": 10,
+            "type": "B",
+            "explanation": "（不明）"
         }
+        
     ],
     "占瞳": [
         {
-            "name": "光る星の導きを知る",
+            "name": "幸運の星の導きを知る",
             "required_lv": 1,
+            "tool": "任意",
             "explanation": "ラッキーアイテムを知る",
             "effect": "8~:知る,HP3/12~:持っていれば+1,HP3/17~:持っていれば+2,HPMP10"
         },
         {
+            "name": "幸運は手指を助ける",
+            "required_lv": 1,
+            "tool": "カード",
+            "explanation": "器用度を用いる判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "幸運は動きを助ける",
+            "required_lv": 1,
+            "tool": "カード",
+            "explanation": "敏捷度を用いる判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "幸運は力を助ける",
+            "required_lv": 1,
+            "tool": "カード",
+            "explanation": "筋力を用いる判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "幸運は知恵を助ける",
+            "required_lv": 1,
+            "tool": "ロッド",
+            "explanation": "知力を用いる判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "幸運は勝ち戦を授ける",
+            "required_lv": 1,
+            "tool": "カード",
+            "explanation": "魔物知識、先制判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "幸運は富をもたらす",
+            "required_lv": 1,
+            "tool": "オーブ",
+            "explanation": "戦利品決定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "星は剣を導く",
+            "required_lv": 1,
+            "tool": "カード",
+            "explanation": "命中力にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "星は盾を掲げる",
+            "required_lv": 1,
+            "tool": "カード",
+            "explanation": "回避力にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "星は札を翻す",
+            "required_lv": 1,
+            "tool": "カード",
+            "explanation": "賦術判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "星は調べを誘う",
+            "required_lv": 1,
+            "tool": "オーブ",
+            "explanation": "演奏判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "星は安らぎをもたらす",
+            "required_lv": 1,
+            "tool": "オーブ",
+            "explanation": "生命、精神抵抗力にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "凶星の光を避ける道を知る",
+            "required_lv": 5,
+            "tool": "任意",
+            "explanation": "冒険の危険を知る",
+            "effect": "（不明）"
+        },
+        {
+            "name": "賢星に語らるべかりし言葉を問う",
+            "required_lv": 5,
+            "tool": "ロッド",
+            "explanation": "（不明）",
+            "effect": "（不明）"
+        },
+        {
+            "name": "光る星は弱点を暴く",
+            "required_lv": 5,
+            "tool": "ロッド",
+            "explanation": "C値を下げる",
+            "effect": "（不明）"
+        },
+        {
+            "name": "光る星は神秘を誘う",
+            "required_lv": 5,
+            "tool": "ロッド",
+            "explanation": "魔法行使にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "怒れる言葉の幻",
+            "required_lv": 5,
+            "tool": "幻視",
+            "explanation": "交渉の失敗をやり直す",
+            "effect": "（不明）"
+        },
+        {
+            "name": "崩れる壁の幻",
+            "required_lv": 5,
+            "tool": "幻視",
+            "explanation": "罠回避の失敗をやり直す",
+            "effect": "（不明）"
+        },
+        {
+            "name": "背後から迫る闇の幻",
+            "required_lv": 5,
+            "tool": "幻視",
+            "explanation": "危険感知の失敗をやり直す",
+            "effect": "（不明）"
+        },
+        {
+            "name": "襲いかかる敵の幻",
+            "required_lv": 5,
+            "tool": "幻視",
+            "explanation": "先制の失敗をやり直す",
+            "effect": "（不明）"
+        },
+        {
+            "name": "光り輝く星は高みへと導く",
+            "required_lv": 10,
+            "tool": "ロッド",
+            "explanation": "行為判定にボーナス",
+            "effect": "（不明）"
+        },
+        {
+            "name": "黒き死の幻影",
+            "required_lv": 10,
+            "tool": "幻視",
+            "explanation": "生死判定の失敗をやり直す",
+            "effect": "（不明）"
+        },
+        {
+            "name": "灰色なる敗北の幻影",
+            "required_lv": 10,
+            "tool": "幻視",
+            "explanation": "戦闘中の失敗をやり直す",
+            "effect": "（不明）"
+        },
+        {
             "name": "無色なる不備の幻影",
             "required_lv": 10,
+            "tool": "幻視",
             "explanation": "買い物をする",
             "effect": "15~:価格2倍,HP5/18~:買い物,HPMP12/21~:買い物,MP5"
         }
     ],
     "呪印": [
         {
-            "name": "命中強化",
+            "name": "威力増強/+5",
             "required_lv": 1,
             "target": "武器",
-            "explanation": "命中+1"
+            "explanation": "威力+5"
         },
         {
-            "name": "生死判定増強",
+            "name": "命中増強/+1",
+            "required_lv": 1,
+            "target": "武器",
+            "explanation": "命中力+1"
+        },
+        {
+            "name": "C値増強/-1",
+            "required_lv": 1,
+            "target": "武器",
+            "explanation": "C値-1、1H武器のみ"
+        },
+        {
+            "name": "七色の武器",
+            "required_lv": 1,
+            "target": "武器",
+            "explanation": "武器に任意の属性を付与"
+        },
+        {
+            "name": "自動帰還",
+            "required_lv": 1,
+            "target": "武器",
+            "explanation": "投擲した武器が手元に戻るようになる"
+        },
+        {
+            "name": "追撃の魔力",
+            "required_lv": 1,
+            "target": "武器",
+            "explanation": "魔力撃の命中時、威力10のみ、純エネルギー、魔法ダメージを与える"
+        },
+        {
+            "name": "防護点増強/+1",
+            "required_lv": 1,
+            "target": "鎧、盾",
+            "explanation": "防護点+1"
+        },
+        {
+            "name": "回避増強/+1",
+            "required_lv": 1,
+            "target": "鎧、盾",
+            "explanation": "回避力+1"
+        },
+        {
+            "name": "危機回避",
+            "required_lv": 1,
+            "target": "鎧",
+            "explanation": "回避力判定に自動失敗した際、1dだけ振りなおし、AC終了"
+        },
+        {
+            "name": "幸運の誘い",
+            "required_lv": 1,
+            "target": "盾",
+            "explanation": "回避力判定が出目11でも自動成功になる"
+        },
+        {
+            "name": "秘奥射程増強/+5m",
+            "required_lv": 1,
+            "target": "魔導書",
+            "explanation": "秘奥魔法の射程が+5m"
+        },
+        {
+            "name": "秘奥ダメージ増強/+1",
+            "required_lv": 1,
+            "target": "魔導書",
+            "explanation": "秘奥魔法で与えるダメージ+1"
+        },
+        {
+            "name": "魔物知識増強/+2",
+            "required_lv": 1,
+            "target": "帽子",
+            "explanation": "魔物知識判定+2、1度適用するとAC終了"
+        },
+        {
+            "name": "誤射防止",
+            "required_lv": 1,
+            "target": "帽子",
+            "explanation": "《ターゲッティング》を得る"
+        },
+        {
+            "name": "生死判定増強/+3",
             "required_lv": 1,
             "target": "ネックレス",
             "explanation": "生死判定+3"
         },
         {
-            "name": "武器巨大化",
+            "name": "MP自動回復/+1",
+            "required_lv": 1,
+            "target": "ネックレス",
+            "explanation": "手番中にMPを10点以上消費すると手番終了時にMPを1点回復"
+        },
+        {
+            "name": "HP増強/+5",
+            "required_lv": 1,
+            "target": "指輪",
+            "explanation": "最大HP+5"
+        },
+        {
+            "name": "能力値増強/+2",
+            "required_lv": 1,
+            "target": "指輪",
+            "explanation": "器用度、敏捷度、筋力、知力のいずれか+2、異なる能力値でACするたび累積"
+        },
+        {
+            "name": "魔法ダメージ軽減/-1",
+            "required_lv": 1,
+            "target": "マント",
+            "explanation": "受ける魔法ダメージ-1"
+        },
+        {
+            "name": "浮遊落下",
+            "required_lv": 1,
+            "target": "マント",
+            "explanation": "落下ダメージ無効"
+        },
+        {
+            "name": "移動力増強",
+            "required_lv": 1,
+            "target": "靴",
+            "explanation": "制限移動+1m、移動力+3m"
+        },
+        {
+            "name": "姿勢補助",
+            "required_lv": 1,
+            "target": "靴",
+            "explanation": "転倒ペナルティを-1に軽減"
+        },
+        {
+            "name": "威力超増強/+10",
+            "required_lv": 5,
+            "target": "武器",
+            "explanation": "威力+10"
+        },
+        {
+            "name": "命中超増強/+1",
+            "required_lv": 5,
+            "target": "武器",
+            "explanation": "命中力+1"
+        },
+        {
+            "name": "C値超増強/-1",
+            "required_lv": 5,
+            "target": "武器",
+            "explanation": "C値-1"
+        },
+        {
+            "name": "追撃の魔力増強/+2",
+            "required_lv": 5,
+            "target": "武器",
+            "explanation": "追撃の魔力で与えるダメージ+2"
+        },
+        {
+            "name": "武器巨大化/+10",
             "required_lv": 5,
             "target": "武器",
             "explanation": "必筋+10、威力+10"
+        },
+        {
+            "name": "防護点超増強/+1",
+            "required_lv": 5,
+            "target": "鎧、盾",
+            "explanation": "防護点+1"
+        },
+        {
+            "name": "魔法防御特化/-2&-2",
+            "required_lv": 5,
+            "target": "鎧",
+            "explanation": "防護点-2、受ける魔法ダメージ-2"
+        },
+        {
+            "name": "防護点特化/-2&+3",
+            "required_lv": 5,
+            "target": "鎧",
+            "explanation": "回避力-2、防護点+3"
+        },
+        {
+            "name": "属性ダメージ軽減/-2",
+            "required_lv": 5,
+            "target": "鎧",
+            "explanation": "属性を選んでダメージ-2、異なる属性でACするたび累積"
+        },
+        {
+            "name": "回避超増強/+1",
+            "required_lv": 5,
+            "target": "盾",
+            "explanation": "回避力+1"
+        },
+        {
+            "name": "浮遊盾",
+            "required_lv": 5,
+            "target": "盾",
+            "explanation": "手を使わずに盾を装備する"
+        },
+        {
+            "name": "魔力増強/+1",
+            "required_lv": 5,
+            "target": "魔導書",
+            "explanation": "真語、操霊、秘奥のいずれかの魔力+1、異なる魔法でACするたび累積"
+        },
+        {
+            "name": "魔法クリティカル増強/-1",
+            "required_lv": 5,
+            "target": "魔導書",
+            "explanation": "魔導書を使用した魔法のC値-1"
+        },
+        {
+            "name": "浮遊魔導書",
+            "required_lv": 5,
+            "target": "魔導書",
+            "explanation": "手を使わずに魔導書を装備する"
+        },
+        {
+            "name": "魔物解析",
+            "required_lv": 5,
+            "target": "帽子",
+            "explanation": "弱点値を超えなかった場合、魔物知識増強のボーナスが継続する"
+        },
+        {
+            "name": "戦場把握",
+            "required_lv": 5,
+            "target": "帽子",
+            "explanation": "《鷹の目》を得る"
+        },
+        {
+            "name": "回復増強/+1",
+            "required_lv": 5,
+            "target": "ネックレス",
+            "explanation": "受ける回復量+1"
         },
         {
             "name": "回復効果クリティカル",
             "required_lv": 5,
             "target": "ネックレス",
-            "explanation": "操霊・秘奥魔法の回復魔法のC値を10にする"
+            "explanation": "操霊、秘奥魔法の回復魔法のC値を10にする"
         },
         {
-            "name": "武器超巨大化",
+            "name": "ブレスダメージ軽減/-2",
+            "required_lv": 5,
+            "target": "マント",
+            "explanation": "ブレスによるダメージ-2"
+        },
+        {
+            "name": "マナ吸収",
+            "required_lv": 5,
+            "target": "マント",
+            "explanation": "魔法ダメージを受けるたびMPを1点回復"
+        },
+        {
+            "name": "抵抗力増強/+1",
+            "required_lv": 5,
+            "target": "指輪",
+            "explanation": "生命、精神抵抗力+1"
+        },
+        {
+            "name": "守護の障壁/-5",
+            "required_lv": 5,
+            "target": "指輪",
+            "explanation": "ダメージを5点軽減し、魔器が破壊される"
+        },
+        {
+            "name": "気先の運び/+2",
+            "required_lv": 5,
+            "target": "靴",
+            "explanation": "先制判定+2"
+        },
+        {
+            "name": "移動力超増強",
+            "required_lv": 5,
+            "target": "靴",
+            "explanation": "制限移動+1m、移動力+3m"
+        },
+        {
+            "name": "完全姿勢補助",
+            "required_lv": 5,
+            "target": "靴",
+            "explanation": "転倒しなくなる"
+        },
+        {
+            "name": "不動の礎",
+            "required_lv": 5,
+            "target": "靴",
+            "explanation": "強制移動効果を受けなくなる"
+        },
+        {
+            "name": "威力極増強/+15",
+            "required_lv": 10,
+            "target": "武器",
+            "explanation": "威力+15"
+        },
+        {
+            "name": "命中極増強/+1",
+            "required_lv": 10,
+            "target": "武器",
+            "explanation": "命中力+1"
+        },
+        {
+            "name": "C値極増強/-1",
+            "required_lv": 10,
+            "target": "武器",
+            "explanation": "C値-1"
+        },
+        {
+            "name": "吸精の武器",
+            "required_lv": 10,
+            "target": "武器",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "武器超巨大化/+10",
             "required_lv": 10,
             "target": "武器",
             "explanation": "必筋+10、威力+10"
+        },
+        {
+            "name": "防護点極増強/+1",
+            "required_lv": 10,
+            "target": "鎧、盾",
+            "explanation": "防護点+1"
+        },
+        {
+            "name": "属性ダメージ超軽減/-2",
+            "required_lv": 10,
+            "target": "鎧",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "属性ダメージ軽減範囲拡大",
+            "required_lv": 10,
+            "target": "鎧",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "回避力極増強/+1",
+            "required_lv": 10,
+            "target": "盾",
+            "explanation": "回避力+1"
+        },
+        {
+            "name": "双魔増強",
+            "required_lv": 10,
+            "target": "魔導書",
+            "explanation": "《ダブルキャスト》時の魔力減少を―6にする"
+        },
+        {
+            "name": "魔力超増強/+1",
+            "required_lv": 10,
+            "target": "魔導書",
+            "explanation": "真語、操霊、秘奥のいずれかの魔力+1、異なる魔法でACするたび累積"
+        },
+        {
+            "name": "マナ効率化",
+            "required_lv": 10,
+            "target": "魔導書",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔物知識超増強",
+            "required_lv": 10,
+            "target": "帽子",
+            "explanation": "魔物知識判定+2、1度適用するとAC終了"
+        },
+        {
+            "name": "魔導即応",
+            "required_lv": 10,
+            "target": "帽子",
+            "explanation": "任意の魔法拡大/○○を習得する"
+        },
+        {
+            "name": "回復超増強/+2",
+            "required_lv": 10,
+            "target": "ネックレス",
+            "explanation": "受ける回復量+2"
+        },
+        {
+            "name": "生死判定超増強/+3",
+            "required_lv": 10,
+            "target": "ネックレス",
+            "explanation": "生死判定+3"
+        },
+        {
+            "name": "魔法ダメージ超軽減/-2",
+            "required_lv": 10,
+            "target": "マント",
+            "explanation": "受ける魔法ダメージ-2"
+        },
+        {
+            "name": "ブレスダメージ超軽減/-3",
+            "required_lv": 10,
+            "target": "マント",
+            "explanation": "ブレスによるダメージ-3"
+        },
+        {
+            "name": "HP超増強/+5",
+            "required_lv": 10,
+            "target": "指輪",
+            "explanation": "最大HP+5"
+        },
+        {
+            "name": "抵抗力超増強/+1",
+            "required_lv": 10,
+            "target": "指輪",
+            "explanation": "生命、精神抵抗力+1"
+        },
+        {
+            "name": "能力値超増強/+1",
+            "required_lv": 10,
+            "target": "指輪",
+            "explanation": "器用度、敏捷度、筋力、知力のいずれか+1、異なる能力値でACするたび累積"
+        },
+        {
+            "name": "移動力極増強",
+            "required_lv": 10,
+            "target": "靴",
+            "explanation": "制限移動+1m、移動力+3m"
+        },
+        {
+            "name": "風乗りの靴",
+            "required_lv": 10,
+            "target": "靴",
+            "explanation": "浮遊する"
+        },
+        {
+            "name": "命中力判定超越増強",
+            "required_lv": 16,
+            "target": "武器",
+            "explanation": "命中力判定が超成功するようになる"
+        },
+        {
+            "name": "会心撃/+20",
+            "required_lv": 16,
+            "target": "武器",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "威力出目増強/+3",
+            "required_lv": 16,
+            "target": "武器",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "瞬間防護点増強/+10",
+            "required_lv": 16,
+            "target": "鎧",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "属性ダメージ極軽減/-2",
+            "required_lv": 16,
+            "target": "鎧",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "防護点超特化/-2&+3",
+            "required_lv": 16,
+            "target": "鎧",
+            "explanation": "回避力-2、防護点+3"
+        },
+        {
+            "name": "防護点超特化/-2&+3",
+            "required_lv": 16,
+            "target": "鎧",
+            "explanation": "回避力-2、防護点+3"
+        },
+        {
+            "name": "回避力判定超越増強",
+            "required_lv": 16,
+            "target": "盾",
+            "explanation": "回避力判定が超成功するようになる"
+        },
+        {
+            "name": "魔法回避",
+            "required_lv": 16,
+            "target": "盾",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "行使判定超越増強",
+            "required_lv": 16,
+            "target": "魔導書",
+            "explanation": "行使判定が超成功するようになる"
+        },
+        {
+            "name": "マナ充填/+10点",
+            "required_lv": 16,
+            "target": "魔導書",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔物知識判定超越増強",
+            "required_lv": 16,
+            "target": "帽子",
+            "explanation": "魔物知識判定が超成功するようになる"
+        },
+        {
+            "name": "達人の閃き",
+            "required_lv": 16,
+            "target": "帽子",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "超成功復活",
+            "required_lv": 16,
+            "target": "ネックレス",
+            "explanation": "生死判定で超成功すると、HP1で起き上がる"
+        },
+        {
+            "name": "MP自動回復増強/+2",
+            "required_lv": 16,
+            "target": "ネックレス",
+            "explanation": "手番中にMPを10点以上消費すると手番終了時にMPを2点回復"
+        },
+        {
+            "name": "魔法ダメージ極軽減/-2",
+            "required_lv": 16,
+            "target": "マント",
+            "explanation": "受ける魔法ダメージ-2"
+        },
+        {
+            "name": "マナ超吸収/+1",
+            "required_lv": 16,
+            "target": "マント",
+            "explanation": "マナ吸収による回復量+1"
+        },
+        {
+            "name": "抵抗力極増強/+1",
+            "required_lv": 16,
+            "target": "指輪",
+            "explanation": "生命、精神抵抗力+1"
+        },
+        {
+            "name": "能力値極限特化/-1&+6",
+            "required_lv": 16,
+            "target": "指輪",
+            "explanation": "任意の能力値+6、それ以外の能力値-1"
+        },
+        {
+            "name": "瞬間転移",
+            "required_lv": 16,
+            "target": "靴",
+            "explanation": "（不明）"
+        },
+        {
+            "name": "先制判定超越増強",
+            "required_lv": 16,
+            "target": "靴",
+            "explanation": "先制判定が超成功するようになる"
         }
     ],
     "貴格": [
         {
-            "name": "貴格1",
+            "name": "威厳ある風格I",
             "required_lv": 1,
-            "explanation": "なんも覚えてない1"
+            "explanation": "（不明）"
         },
         {
-            "name": "貴格2",
+            "name": "威厳ある風格II",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "威厳ある風格III",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "麗しき歌声I",
             "required_lv": 1,
-            "explanation": "なんも覚えてない2"
+            "explanation": "（不明）"
+        },
+        {
+            "name": "麗しき歌声II",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "麗しき歌声III",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "華麗なる言の葉I",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "華麗なる言の葉II",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "華麗なる言の葉III",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "気高き振る舞いI",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "気高き振る舞いII",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "気高き振る舞いIII",
+            "required_lv": 16,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "心震わせる美声I",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "心震わせる美声II",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "心震わせる美声III",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "超然たるまなざしI",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "超然たるまなざしII",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "超然たるまなざしIII",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "優雅なる足運びI",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "優雅な足運びII",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "優雅な足運びIII",
+            "required_lv": 16,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "秘めたる博識I",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "秘めたる博識II",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "囁く気配I",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "囁く気配II",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部下の情報収集",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "優秀なる部下の進言",
+            "required_lv": 16,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "攻撃陣形",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "遠距離攻撃陣形",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "対レギオン攻撃",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "防御陣形",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "一気呵成の刃",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "高速移動陣形",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "他者追随",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "意志持たぬ兵隊",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "獣との共感",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "高額支給",
+            "required_lv": 1,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "横一列攻撃陣形",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "波状攻撃陣形",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "一騎駆けの陣",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔力増大の陣",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "鶴翼の陣",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "射程延長",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魚鱗の陣",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "野生のカン",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "硬い身体",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "対属性結界印",
+            "required_lv": 5,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "熟練たる魚鱗の陣",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔撃の陣",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "一騎当千の陣",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "魔力暴走の陣",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "緊急覚醒",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "獣の生命力",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "鉄壁のファランクス",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "部隊分割",
+            "required_lv": 10,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "怒涛の奔走",
+            "required_lv": 16,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "対レギオン防御",
+            "required_lv": 16,
+            "explanation": "（不明）"
+        },
+        {
+            "name": "超高額支給",
+            "required_lv": 16,
+            "explanation": "（不明）"
         }
     ]
 }

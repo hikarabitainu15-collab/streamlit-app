@@ -5,16 +5,16 @@
             "exist": [true, true]
         },
         {
-            "name": "魔動機文明語",
-            "exist": [true, true]
+            "name": "神紀文明語",
+            "exist": [false, true]
         },
         {
             "name": "魔法文明語",
             "exist": [true, true]
         },
         {
-            "name": "神紀文明語",
-            "exist": [false, true]
+            "name": "魔動機文明語",
+            "exist": [true, true]
         },
         {
             "name": "エルフ語",
@@ -33,6 +33,22 @@
             "exist": [true, true]
         },
         {
+            "name": "シャドウ語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ソレイユ語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ミアキス語",
+            "exist": [true, true]
+        },
+        {
+            "name": "パイカ語",
+            "exist": [true, false]
+        },
+        {
             "name": "ドラゴン語",
             "exist": [true, false]
         },
@@ -45,11 +61,63 @@
             "exist": [true, false]
         },
         {
+            "name": "海獣語",
+            "exist": [true, false]
+        },
+        {
+            "name": "ヴァルグ語",
+            "exist": [true, true]
+        },
+        {
             "name": "汎用蛮族語",
             "exist": [true, true]
         },
         {
+            "name": "妖魔語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ドレイク語",
+            "exist": [true, true]
+        },
+        {
+            "name": "バジリスク語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ノスフェラトゥ語",
+            "exist": [true, true]
+        },
+        {
             "name": "巨人語",
+            "exist": [true, true]
+        },
+        {
+            "name": "マーマン語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ケンタウロス語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ライカンスロープ語",
+            "exist": [true, true]
+        },
+        {
+            "name": "リザードマン語",
+            "exist": [true, true]
+        },
+        {
+            "name": "ハルピュイア語",
+            "exist": [true, true]
+        },
+        {
+            "name": "バルカン語",
+            "exist": [true, true]
+        },
+        {
+            "name": "翼人語",
             "exist": [true, true]
         }
     ]

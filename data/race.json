@@ -4,131 +4,17 @@
       "name": "人間",
       "feature": "[剣の加護/運命変転]",
       "language": [["交易共通語", true, true], ["地方語", true, true]],
+      "brand": 0,
       "born": [
         {
-          "job": "魔動機師",
-          "stats": [8, 4, 9],
-          "skills": ["マギテック"]
-        },
-        {
-          "job": "魔術師",
-          "stats": [6, 5, 10],
-          "skills": ["ソーサラー"]
-        },
-        {
-          "job": "軽戦士",
-          "stats": [11, 7, 5],
-          "skills": ["フェンサー", "スカウト"]
-        },
-        {
-          "job": "一般人",
+          "job": "テスト1",
           "stats": [7, 7, 7],
-          "skills": ["なし"]
-        },
-        {
-          "job": "傭兵",
-          "stats": [7, 10, 4],
-          "skills": ["ファイター", "or", "グラップラー"]
-        },
-        {
-          "job": "神官",
-          "stats": [4, 8, 9],
-          "skills": ["プリースト"]
-        },
-        {
-          "job": "操霊術師",
-          "stats": [7, 4, 9],
-          "skills": ["コンジャラー"]
-        },
-        {
-          "job": "射手",
-          "stats": [9, 5, 7],
-          "skills": ["シューター"]
-        },
-        {
-          "job": "剣士",
-          "stats": [9, 6, 6],
-          "skills": ["フェンサー"]
-        },
-        {
-          "job": "拳闘士",
-          "stats": [8, 8, 5],
-          "skills": ["グラップラー"]
-        },
-        {
-          "job": "戦士",
-          "stats": [7, 9, 5],
           "skills": ["ファイター"]
         },
         {
-          "job": "練体士",
-          "stats": [6, 8, 7],
-          "skills": ["エンハンサー"]
-        },
-        {
-          "job": "歌人",
-          "stats": [5, 7, 9],
-          "skills": ["バード"]
-        },
-        {
-          "job": "妖精使い",
-          "stats": [5, 6, 10],
-          "skills": ["フェアリーテイマー"]
-        },
-        {
-          "job": "魔神使い",
-          "stats": [6, 6, 9],
-          "skills": ["デーモンルーラー"]
-        },
-        {
-          "job": "森羅導師",
-          "stats": [5, 6, 10],
-          "skills": ["ドルイド"]
-        },
-        {
-          "job": "騎手",
-          "stats": [8, 8, 5],
-          "skills": ["ライダー"]
-        },
-        {
-          "job": "錬金術師",
-          "stats": [7, 6, 8],
-          "skills": ["アルケミスト"]
-        },
-        {
-          "job": "魔神使い",
-          "stats": [3, 8, 10],
-          "skills": ["デーモンルーラー"]
-        },
-        {
-          "job": "天地使い",
-          "stats": [5, 9, 7],
-          "skills": ["ジオマンサー"]
-        },
-        {
-          "job": "錬金術師",
-          "stats": [8, 5, 8],
-          "skills": ["アルケミスト"]
-        },
-        {
-          "job": "踊り子",
-          "stats": [10, 6, 5],
-          "skills": ["バトルダンサー"]
-        },
-        {
-          "job": "騎手",
-          "stats": [6, 8, 7],
-          "skills": ["ライダー"]
-        },
-        {
-          "job": "軍師",
-          "stats": [8, 6, 7],
-          "skills": ["ウォーリーダー"]
-        },
-        {
-          "job": "森羅導師",
-          "stats": [4, 7, 10],
-          "skills": ["ドルイド"]
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
         }
       ],
       "born_dice": {
@@ -140,341 +26,924 @@
       "name": "エルフ",
       "feature": "[剣の加護/優しき水], [暗視]",
       "language": [["交易共通語", true, true], ["エルフ語", true, true]],
+      "brand": 0,
       "born": [
         {
-          "job": "剣士",
-          "stats": [12, 5, 9],
-          "skills": ["フェンサー"]
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
         },
         {
-          "job": "薬師",
-          "stats": [10, 5, 11],
-          "skills": ["セージ", "レンジャー"]
-        },
-        {
-          "job": "神官",
-          "stats": [9, 5, 12],
-          "skills": ["プリースト"]
-        },
-        {
-          "job": "操霊術師",
-          "stats": [9, 4, 13],
-          "skills": ["コンジャラー"]
-        },
-        {
-          "job": "魔術師",
-          "stats": [10, 3, 13],
+          "job": "テスト2",
+          "stats": [8, 8, 8],
           "skills": ["ソーサラー"]
-        },
-        {
-          "job": "射手",
-          "stats": [13, 5, 8],
-          "skills": ["シューター"]
-        },
-        {
-          "job": "練体士",
-          "stats": [11, 5, 10],
-          "skills": ["エンハンサー"]
-        },
-        {
-          "job": "密偵",
-          "stats": [12, 4, 10],
-          "skills": ["スカウト"]
-        },
-        {
-          "job": "妖精使い",
-          "stats": [10, 2, 14],
-          "skills": ["フェアリーテイマー"]
-        },
-        {
-          "job": "拳闘士",
-          "stats": [11, 4, 11],
-          "skills": ["フェアリーテイマー"]
-        },
-        {
-          "job": "吟遊詩人",
-          "stats": [9, 3, 14],
-          "skills": ["バード"]
-        },
-        {
-          "job": "魔神使い",
-          "stats": [10, 4, 12],
-          "skills": ["デーモンルーラー"]
-        },
-        {
-          "job": "森羅導師",
-          "stats": [8, 5, 13],
-          "skills": ["ドルイド"]
-        },
-        {
-          "job": "騎手",
-          "stats": [12, 6, 8],
-          "skills": ["ライダー"]
-        },
-        {
-          "job": "魔神使い",
-          "stats": [9, 4, 13],
-          "skills": ["デーモンルーラー"]
-        },
-        {
-          "job": "天地使い",
-          "stats": [10, 4, 12],
-          "skills": ["ジオマンサー"]
-        },
-        {
-          "job": "踊り子",
-          "stats": [13, 5, 8],
-          "skills": ["バトルダンサー"]
-        },
-        {
-          "job": "軍師",
-          "stats": [11, 4, 11],
-          "skills": ["ウォーリーダー"]
-        },
-        {
-          "job": "森羅導師",
-          "stats": [10, 3, 13],
-          "skills": ["ドルイド"]
-        },
-        {
-          "job": "軍師",
-          "stats": [10, 6, 10],
-          "skills": ["ウォーリーダー"]
-        },
-        {
-          "job": "天地使い",
-          "stats": [10, 5, 11],
-          "skills": ["ジオマンサー"]
-        },
-        {
-          "job": "魔導師",
-          "stats": [9, 3, 14],
-          "skills": ["ソーサラー", "コンジャラー"]
-        },
-        {
-          "job": "森羅導師",
-          "stats": [9, 4, 13],
-          "skills": ["ドルイド"]
-        },
-        {
-          "job": "魔神使い",
-          "stats": [9, 5, 12],
-          "skills": ["デーモンルーラー"]
         }
       ],
       "born_dice": {
         "born_dice_min": [2,2,1,2,2,2],
-          "born_dice_max": [12,12,6,12,12,12]
+        "born_dice_max": [12,12,6,12,12,12]
       }
     },
     {
       "name": "ドワーフ",
-      "feature": "[剣の加護/炎身], [暗視]",
+      "feature": "[剣の加護/炎身],[暗視]",
       "language": [["交易共通語", true, true], ["ドワーフ語", true, true]],
+      "brand": 0,
       "born": [
         {
-          "job": "射手",
-          "stats": [6, 8, 6],
-          "skills": ["シューター"]
-        },
-        {
-          "job": "戦士",
-          "stats": [4, 11, 5],
+          "job": "テスト1",
+          "stats": [7, 7, 7],
           "skills": ["ファイター"]
         },
         {
-          "job": "拳闘士",
-          "stats": [5, 10, 5],
-          "skills": ["グラップラー"]
-        },
-        {
-          "job": "神官",
-          "stats": [4, 7, 9],
-          "skills": ["プリースト"]
-        },
-        {
-          "job": "魔動機師",
-          "stats": [6, 7, 7],
-          "skills": ["マギテック"]
-        },
-        {
-          "job": "学者",
-          "stats": [3, 8, 9],
-          "skills": ["セージ"]
-        },
-        {
-          "job": "野伏",
-          "stats": [6, 9, 5],
-          "skills": ["レンジャー"]
-        },
-        {
-          "job": "練体士",
-          "stats": [5, 9, 6],
-          "skills": ["エンハンサー"]
-        },
-        {
-          "job": "吟遊詩人",
-          "stats": [4, 8, 8],
-          "skills": ["バード"]
-        },
-        {
-          "job": "妖精使い",
-          "stats": [5, 6, 9],
-          "skills": ["フェアリーテイマー"]
-        },
-        {
-          "job": "森羅導師",
-          "stats": [4, 7, 9],
-          "skills": ["ドルイド"]
-        },
-        {
-          "job": "騎手",
-          "stats": [4, 10, 6],
-          "skills": ["ライダー"]
-        },
-        {
-          "job": "錬金術師",
-          "stats": [5, 9, 6],
-          "skills": ["アルケミスト"]
-        },
-        {
-          "job": "天地使い",
-          "stats": [6, 7, 7],
-          "skills": ["ジオマンサー"]
-        },
-        {
-          "job": "錬金術師",
-          "stats": [6, 7, 7],
-          "skills": ["アルケミスト"]
-        },
-        {
-          "job": "踊り子",
-          "stats": [6, 10, 4],
-          "skills": ["バトルダンサー"]
-        },
-        {
-          "job": "騎手",
-          "stats": [5, 9, 6],
-          "skills": ["ライダー"]
-        },
-        {
-          "job": "軍師",
-          "stats": [5, 8, 7],
-          "skills": ["ウォーリーダー"]
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
         }
       ],
       "born_dice": {
-        "born_dice_min": [8,1,1,2,1,8],
-          "born_dice_max": [18,6,6,12,6,18]
+        "born_dice_min": [8,1,2,2,1,8],
+        "born_dice_max": [18,6,12,12,6,18]
       }
     },
     {
       "name": "タビット",
       "feature": "[第六感]",
       "language": [["交易共通語", true, true], ["神紀文明語", false, true]],
+      "brand": 0,
       "born": [
         {
-          "job": "操霊術師",
-          "stats": [6, 6, 10],
-          "skills": ["コンジャラー"]
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
         },
         {
-          "job": "魔術師",
-          "stats": [5, 7, 10],
+          "job": "テスト2",
+          "stats": [8, 8, 8],
           "skills": ["ソーサラー"]
-        },
-        {
-          "job": "学者",
-          "stats": [5, 8, 9],
-          "skills": ["セージ"]
-        },
-        {
-          "job": "魔動機師",
-          "stats": [8, 5, 9],
-          "skills": ["マギテック"]
         }
       ],
       "born_dice": {
         "born_dice_min": [1,1,1,2,8,2],
-          "born_dice_max": [6,6,6,12,18,12]
+        "born_dice_max": [6,6,6,12,18,12]
       }
     },
     {
       "name": "ルーンフォーク",
-      "feature": "[HP変換], [暗視]",
+      "feature": "[HP変換],[暗視]",
       "language": [["交易共通語", true, true], ["魔動機文明語", true, true]],
+      "brand": 0,
       "born": [
         {
-          "job": "学者",
-          "stats": [8, 10, 8],
-          "skills": ["セージ"]
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
         },
         {
-          "job": "射手",
-          "stats": [12, 8, 6],
-          "skills": ["シューター"]
-        },
-        {
-          "job": "戦士",
-          "stats": [9, 12, 5],
-          "skills": ["ファイター", "or", "グラップラー"]
-        },
-        {
-          "job": "魔動機師",
-          "stats": [12, 8, 6],
-          "skills": ["マギテック"]
-        },
-        {
-          "job": "魔術師",
-          "stats": [9, 8, 9],
+          "job": "テスト2",
+          "stats": [8, 8, 8],
           "skills": ["ソーサラー"]
         }
       ],
       "born_dice": {
         "born_dice_min": [2,1,2,2,2,1],
-          "born_dice_max": [12,6,12,12,12,6]
-      }
-    },
-    {
-      "name": "コピー用",
-      "feature": "[剣の加護/炎身], [暗視]",
-      "language": [["交易共通語", true, true], ["語", true, true]],
-      "born": [
-        {
-          "job": "射手",
-          "stats": [6, 8, 6],
-          "skills": ["シューター"]
-        },
-        {
-          "job": "",
-          "stats": [4, 11, 5],
-          "skills": [""]
-        }
-      ],
-      "born_dice": {
-        "born_dice_min": [8,1,1,2,1,8],
-          "born_dice_max": [18,6,6,12,6,18]
+        "born_dice_max": [12,6,12,12,12,6]
       }
     },
     {
       "name": "ナイトメア",
-      "feature": "[異貌], [弱点]",
+      "feature": "[異貌]",
       "language": [["交易共通語", true, true], ["地方語", true, true]],
+      "brand": 1,
       "born": [
         {
-          "job": "射手",
-          "stats": [6, 8, 6],
-          "skills": ["シューター"]
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
         },
         {
-          "job": "",
-          "stats": [4, 11, 5],
-          "skills": [""]
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
         }
       ],
       "born_dice": {
-        "born_dice_min": [8,1,1,2,1,8],
-          "born_dice_max": [18,6,6,12,6,18]
+        "born_dice_min": [2,2,1,1,2,2],
+        "born_dice_max": [12,12,6,6,12,12]
+      }
+    },
+    {
+      "name": "リカント",
+      "feature": "[獣変貌],[暗視(獣変貌)]",
+      "language": [["交易共通語", true, true], ["リカント語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [1,4,2,2,7,1],
+          "born_dice_max": [6,19,12,12,12,6]
+      }
+    },
+    {
+      "name": "リルドラケン",
+      "feature": "[剣の加護/風の翼],[鱗の皮膚],[尻尾が武器]",
+      "language": [["交易共通語", true, true], ["ドラゴン語", true, false]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [1,2,2,8,1,2],
+          "born_dice_max": [6,12,12,18,6,12]
+      }
+    },
+    {
+      "name": "グラスランナー",
+      "feature": "[マナ不干渉],[虫や植物との意思疎通]",
+      "language": [["交易共通語", true, true], ["グラスランナー語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [2,2,1,8,1,8],
+          "born_dice_max": [12,12,6,18,6,18]
+      }
+    },
+    {
+      "name": "メリア",
+      "feature": "[繁茂する生命]",
+      "language": [["交易共通語", true, true], ["妖精語", true, false]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [1,1,1,8,1,1],
+          "born_dice_max": [6,6,6,18,6,6]
+      }
+    },
+    {
+      "name": "ティエンス",
+      "feature": "[通じ合う意識]",
+      "language": [["交易共通語", true, true], ["魔神語", true, false]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [2,2,1,4,2,5],
+          "born_dice_max": [12,12,6,9,12,15]
+      }
+    },
+    {
+      "name": "レプラカーン",
+      "feature": "[見えざる手],[姿なき職人],[暗視]",
+      "language": [["交易共通語", true, true], ["魔動機文明語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [2,1,2,2,2,2],
+          "born_dice_max": [12,6,12,12,12,12]
+      }
+    },
+    {
+      "name": "アルヴ",
+      "feature": "[吸精],[暗視]",
+      "language": [["交易共通語", true, true], ["ノスフェラトゥ語", true, true]],
+      "brand": 1,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [1,4,5,2,7,1],
+          "born_dice_max": [6,9,15,12,12,6]
+      }
+    },
+    {
+      "name": "シャドウ",
+      "feature": "[月光の守り],[暗視]",
+      "language": [["交易共通語", true, true], ["シャドウ語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [1,1,2,2,2,2],
+          "born_dice_max": [6,6,12,12,12,12]
+      }
+    },
+    {
+      "name": "ソレイユ",
+      "feature": "[輝く肉体],[太陽の再生],[太陽の子]",
+      "language": [["交易共通語", true, true], ["ソレイユ語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [1,2,7,2,1,2],
+          "born_dice_max": [6,12,12,12,6,12]
+      }
+    },
+    {
+      "name": "スプリガン",
+      "feature": "[巨人化],[暗視]",
+      "language": [["交易共通語", true, true], ["巨人語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [1,2,1,1,2,1],
+          "born_dice_max": [6,12,6,6,12,6]
+      }
+    },
+    {
+      "name": "アビスボーン",
+      "feature": "[奈落の落とし子]",
+      "language": [["交易共通語", true, true], ["地方語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [2,1,7,2,2,1],
+          "born_dice_max": [12,6,12,12,12,6]
+      }
+    },
+    {
+      "name": "ハイマン",
+      "feature": "[魔法の申し子],[デジャヴ]",
+      "language": [["交易共通語", true, true], ["魔法文明語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [2,1,2,1,1,1],
+          "born_dice_max": [12,6,12,6,6,6]
+      }
+    },
+    {
+      "name": "フロウライト",
+      "feature": "[魂の輝き],[鉱石の生命],[晶石の身体]",
+      "language": [["交易共通語", true, true], ["自由記入", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [2,2,8,2,1,8],
+          "born_dice_max": [12,12,18,12,6,18]
+      }
+    },
+    {
+      "name": "フィー",
+      "feature": "[妖精の加護],[浮遊]",
+      "language": [["交易共通語", true, true], ["妖精語", true, false]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+          "born_dice_min": [2,8,1,1,1,2],
+          "born_dice_max": [12,18,6,6,6,12]
+      }
+    },
+    {
+      "name": "ミアキス",
+      "feature": "[猫変化],[獣性の発露],[暗視]",
+      "language": [["交易共通語", true, true], ["ミアキス語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [1,2,1,2,8,2],
+        "born_dice_max": [6,12,6,18,18,12]
+      }
+    },
+    {
+      "name": "ヴァルキリー",
+      "feature": "[戦乙女の光羽],[戦乙女の祝福]",
+      "language": [["交易共通語", true, true], ["地方語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,1,2,2,1,7],
+        "born_dice_max": [12,6,12,12,6,12]
+      }
+    },
+    {
+      "name": "センティアン",
+      "feature": "[刻まれし聖印]",
+      "language": [["交易共通語", true, true], ["神紀文明語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [1,2,1,2,2,2],
+        "born_dice_max": [6,12,6,12,12,12]
+      }
+    },
+    {
+      "name": "ノーブルエルフ",
+      "feature": "[剣の加護/水の申し子],[カリスマ],[痛みに弱い],[暗視]",
+      "language": [["魔法文明語", true, true], ["エルフ語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,1,2,2,2],
+        "born_dice_max": [12,12,6,12,12,12]
+      }
+    },
+    {
+      "name": "マナフレア",
+      "feature": "[溢れるマナ],[マナの手]",
+      "language": [["魔法文明語", true, true], ["地方語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,7,8,2,2,7],
+        "born_dice_max": [12,12,18,12,12,12]
+      }
+    },
+    {
+      "name": "魔動天使",
+      "feature": "[造られし強さ],[鋼鉄の翼],[暗視]",
+      "language": [["交易共通語", true, true], ["魔動機文明語", true, true]],
+      "brand": 0,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,2,2,2,2],
+        "born_dice_max": [12,12,12,12,12,12]
+      }
+    },
+    {
+      "name": "ウィークリング",
+      "feature": "[蛮族の身体]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true]],
+      "brand": 2,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,2,2,2,2],
+        "born_dice_max": [12,12,12,12,12,12]
+      }
+    },
+    {
+      "name": "ドレイク",
+      "feature": "[魔剣の所持],[飛行(飛翔)],[竜化],[暗視]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["ドレイク語", true, true]],
+      "brand": 4,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [1,1,2,2,8,2],
+        "born_dice_max": [6,6,12,12,18,12]
+      }
+    },
+    {
+      "name": "ドレイクブロークン",
+      "feature": "[限定竜化],[暗視]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["ドレイク語", true, true]],
+      "brand": 3,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [1,1,2,2,8,2],
+        "born_dice_max": [6,6,12,12,18,12]
+      }
+    },
+    {
+      "name": "バジリスク",
+      "feature": "[邪視と瞳石],[猛毒の血液],[魔物化]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["ドレイク語", true, true], ["バジリスク語", true, true]],
+      "brand": 4,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [7,2,2,2,1,1],
+        "born_dice_max": [12,12,12,12,6,6]
+      }
+    },
+    {
+      "name": "ディアボロ",
+      "feature": "[飛行(飛翔)],[魔神の皮膚],[魔人化],[暗視]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["ドレイク語", true, true], ["魔神語", true, true]],
+      "brand": 4,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,8,2,1,7],
+        "born_dice_max": [12,12,18,12,6,12]
+      }
+    },
+    {
+      "name": "ダークトロール",
+      "feature": "[弱体化],[トロールの体躯],[限定再生],[暗視]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["ドレイク語", true, true]],
+      "brand": 4,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,1,2,8,1,2],
+        "born_dice_max": [12,6,12,18,6,12]
+      }
+    },
+    {
+      "name": "アルボル",
+      "feature": "[憤怒の炎]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["妖精語", true, false]],
+      "brand": 2,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,1,4,2,2],
+        "born_dice_max": [12,12,6,9,12,12]
+      }
+    },
+    {
+      "name": "バーバヤガー",
+      "feature": "[魔女化],[魔女の火]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true]],
+      "brand": 2,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,1,1,1,2,7],
+        "born_dice_max": [12,6,6,6,12,12]
+      }
+    },
+    {
+      "name": "ケンタウロス",
+      "feature": "[半人半馬],[馬人の武術]",
+      "language": [["汎用蛮族語", true, true], ["ケンタウロス語", true, true]],
+      "brand": 3,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [8,1,2,2,1,2],
+        "born_dice_max": [18,6,12,12,6,12]
+      }
+    },
+    {
+      "name": "シザースコーピオン",
+      "feature": "[蠍人の身体],[蠍人の体術],[暗視]",
+      "language": [["魔動機文明語", true, true], ["汎用蛮族語", true, true]],
+      "brand": 4,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [7,1,2,2,2,2],
+        "born_dice_max": [12,6,12,12,12,12]
+      }
+    },
+    {
+      "name": "ドーン",
+      "feature": "[暗殺の心得],[親しき闇],[暗視]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["妖魔語", true, true]],
+      "brand": 2,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,2,2,2,2],
+        "born_dice_max": [12,12,12,12,12,12]
+      }
+    },
+    {
+      "name": "コボルド",
+      "feature": "[種の限界],[軽視],[小さな匠]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["妖魔語", true, true]],
+      "brand": 1,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,1,1,2,2],
+        "born_dice_max": [12,12,6,6,12,12]
+      }
+    },
+    {
+      "name": "ラミア",
+      "feature": "[ラミアの身体],[ラミアの吸血],[変化],[暗視]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true]],
+      "brand": 2,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [1,2,1,2,2,2],
+        "born_dice_max": [6,12,6,12,12,12]
+      }
+    },
+    {
+      "name": "ラルヴァ",
+      "feature": "[吸血の祝福],[忌むべき血],[弱体化],[暗視]",
+      "language": [["交易共通語", true, true], ["ノスフェラトゥ語", true, true]],
+      "brand": 2,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,2,2,2,2],
+        "born_dice_max": [12,12,12,12,12,12]
+      }
+    },
+    {
+      "name": "リザードマン",
+      "feature": "[尻尾が武器],[水中活動],[無呼吸活動]",
+      "language": [["汎用蛮族語", true, true], ["リザードマン語", true, true]],
+      "brand": 3,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [1,2,2,2,2,1],
+        "born_dice_max": [6,12,12,12,12,6]
+      }
+    },
+    {
+      "name": "ライカンスロープ",
+      "feature": "[獣人の力],[獣化],[暗視]",
+      "language": [["交易共通語", true, true], ["汎用蛮族語", true, true], ["ライカンスロープ語", true, true]],
+      "brand": 2,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,2,2,8,2,2],
+        "born_dice_max": [18,18,18,18,12,12]
+      }
+    },
+    {
+      "name": "バルカン",
+      "feature": "[炎無効],[バルカンの宝石],[強制召喚],[暗視]",
+      "language": [["汎用蛮族語", true, true], ["バルカン語", true, true]],
+      "brand": 4,
+      "born": [
+        {
+          "job": "テスト1",
+          "stats": [7, 7, 7],
+          "skills": ["ファイター"]
+        },
+        {
+          "job": "テスト2",
+          "stats": [8, 8, 8],
+          "skills": ["ソーサラー"]
+        }
+      ],
+      "born_dice": {
+        "born_dice_min": [2,1,2,8,2,1],
+        "born_dice_max": [12,6,12,18,12,6]
       }
     }
   ]

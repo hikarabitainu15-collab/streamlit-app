@@ -36,18 +36,18 @@ st.set_page_config(
 )
 
 sheet_list_page = st.Page(
-    "pages/sheet_list.py",
+    "views/sheet_list.py",
     title="シート一覧",
     default=True
 )
 
 sheet_page = st.Page(
-    "pages/sheet.py",
+    "views/sheet.py",
     title="シート編集",
 )
 
 about_page = st.Page(
-    "pages/about.py",
+    "views/about.py",
     title="このアプリについて"
 )
 
