@@ -2582,7 +2582,7 @@ def sendou_func():
                 sendou = st.selectbox(f"占瞳_{i}", options=sendou_list_now, label_visibility="collapsed", key=f"mystic_{(i-1)}")
                 sendou_list_buffer.append(sendou)
             with col_sendou_tool:
-                st.text_input(f"占瞳占具_{i}", value=(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["tool"] if sendou != " " else ""), label_visibility="collapsed")
+                st.text_input(f"占瞳能力値_{i}", value=(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["stats"] if sendou != " " else ""), label_visibility="collapsed")
             with col_sendou_other:
                 st.text_input(f"占瞳説明_{i}", value=(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["explanation"] if sendou != " " else ""), label_visibility="collapsed")
             col_sendou_lv, col_sendou_effect = st.columns([1,10], gap="xxsmall")
