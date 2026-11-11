@@ -997,7 +997,7 @@ def stats():
                 with col_stats_1:
                     st.write('<p style="font-size:20px"><br>+</p>', unsafe_allow_html=True)
                 with col_stats_2:
-                    stats_list[i][1] = st.number_input(stats_name_list[0][i], step=1, min_value=born_dice[0][0], max_value=born_dice[1][0], key=f"stats_{i}_1")
+                    stats_list[i][1] = st.number_input(stats_name_list[0][i], step=1, min_value=born_dice[0][i], max_value=born_dice[1][i], key=f"stats_{i}_1")
                 with col_stats_3:
                     st.write('<p style="font-size:20px"><br>+</p>', unsafe_allow_html=True)
                 with col_stats_4:
