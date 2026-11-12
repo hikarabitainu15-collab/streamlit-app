@@ -55,7 +55,7 @@ defaults = {
     'born_dice_history': []
 }
 
-if st.session_state.new_mode:
+if st.session_state.get(new_mode, False):
     for key, value in defaults.items():
         st.session_state[key] = value
     st.session_state.new_mode = False
