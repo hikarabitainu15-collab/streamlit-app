@@ -2998,7 +2998,7 @@ def new_data_save_dialog():
                 if sheet_password != "":
                     save_data = create_save_data()
                     json_save = json.dumps(save_data, ensure_ascii=False, indent=0).encode('utf-8')
-                    now = datetime.now()
+                    now = datetime.datetime.now()
                     hash_password = hashlib.sha256(sheet_password.encode('utf-8')).hexdigest()
                     conn = get_connection()
                     c = conn.cursor()
