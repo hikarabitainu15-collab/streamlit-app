@@ -6,6 +6,7 @@ import hashlib
 import time
 import datetime
 import random
+from st_supabase_connection import SupabaseConnection
 from streamlit_sortables import sort_items
 
 from functions import get_connection
@@ -55,7 +56,7 @@ defaults = {
     'born_dice_history': []
 }
 
-if st.session_state.get("new_mode", False):
+if st.session_state.new_mode:
     for key, value in defaults.items():
         st.session_state[key] = value
     st.session_state.new_mode = False
@@ -697,13 +698,17 @@ def edit_sheet_all(load_json):
 #DBからjsonデータを読み込む
 @st.cache_data
 def load_db_data(id):
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("SELECT id, json FROM sheet_data WHERE id == ?", (id, ))
-    raw_data = c.fetchall()
-    conn.close()
-    for id_data, binary_data in raw_data:
-        result = json.loads(binary_data.decode("utf-8"))
+    # conn = get_connection()
+    # c = conn.cursor()
+    # c.execute("SELECT id, json FROM sheet_data WHERE id == ?", (id, ))
+    # raw_data = c.fetchall()
+    # conn.close()
+    conn = st.connection("supabase",type=SupabaseConnection)
+    raw_data = conn.table("save_data").select("*").eq("id", id).execute()
+    #conn.close()
+    for raws in raw_data.data:
+        
+        result = raws["json"]
         break
     return result
 #アップロードデータを読み込んでページに反映する
@@ -3000,14 +3005,20 @@ def new_data_save_dialog():
                     json_save = json.dumps(save_data, ensure_ascii=False, indent=0).encode('utf-8')
                     now = datetime.datetime.now()
                     hash_password = hashlib.sha256(sheet_password.encode('utf-8')).hexdigest()
-                    conn = get_connection()
-                    c = conn.cursor()
-                    c.execute("INSERT INTO sheet_data (pc_name, pl_name, main_lv, update_date, password, json) VALUES (?, ?, ?, ?, ?, ?)", (name_pc, name_pl, main_lv, now.date(), hash_password, json_save,))
-                    c.execute("SELECT id FROM sheet_data")
-                    id_list = c.fetchall()
-                    conn.commit()
-                    conn.close()
-                    st.session_state.edit_id = id_list[len(id_list)-1][0]
+                    # conn = get_connection()
+                    # c = conn.cursor()
+                    # c.execute("INSERT INTO sheet_data (pc_name, pl_name, main_lv, update_date, password, json) VALUES (?, ?, ?, ?, ?, ?)", (name_pc, name_pl, main_lv, now.date(), hash_password, json_save,))
+                    # c.execute("SELECT id FROM sheet_data")
+                    # id_list = c.fetchall()
+                    # conn.commit()
+                    # conn.close()
+                    conn = st.connection("supabase",type=SupabaseConnection)
+                    conn.table("save_data").insert({"pc_name": name_pc, "pl_name": name_pl, "main_lv": main_lv, "update_date": now.date(), "password": hash_password, "json": json_save}).execute()
+                    id_data = conn.table("save_data").select("id").execute()
+                    for id_list in reversed(id_data.data):
+                        st.session_state.edit_id = id_list["id"]
+                        break
+                    #st.session_state.edit_id = 2#id_list[len(id_list)-1][0]
                     st.session_state.edit_mode = True
                     textbox.success("新規保存に成功しました。")
                     time.sleep(3)
@@ -3036,12 +3047,14 @@ def update_data_save_dialog():
                 if hash_input_password == password:
                     save_data = create_save_data()
                     json_save = json.dumps(save_data, ensure_ascii=False, indent=0).encode('utf-8')
-                    now = datetime.now()
-                    conn = get_connection()
-                    c = conn.cursor()
-                    c.execute("UPDATE sheet_data SET pc_name = ?, pl_name = ?, main_lv = ?, update_date = ?, json = ? WHERE id = ?", (name_pc, name_pl, main_lv, now.date(), json_save, st.session_state.edit_id,))
-                    conn.commit()
-                    conn.close()
+                    now = datetime.datetime.now()
+                    # conn = get_connection()
+                    # c = conn.cursor()
+                    # c.execute("UPDATE sheet_data SET pc_name = ?, pl_name = ?, main_lv = ?, update_date = ?, json = ? WHERE id = ?", (name_pc, name_pl, main_lv, now.date(), json_save, st.session_state.edit_id,))
+                    # conn.commit()
+                    # conn.close()
+                    conn = st.connection("supabase",type=SupabaseConnection)
+                    conn.table("save_data").update({"pc_name": name_pc, "pl_name": name_pl, "main_lv": main_lv, "update_date": now.date(), "json": json_save}).eq("id", st.session_state.edit_id).execute()
                     textbox.success("上書き保存に成功しました。")
                     time.sleep(3)
                     st.rerun()

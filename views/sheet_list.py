@@ -2,8 +2,10 @@ import streamlit as st
 import json
 import time
 import hashlib
+from st_supabase_connection import SupabaseConnection
 
 from functions import get_connection
+
 
 @st.dialog("パスワード入力")
 def pass_input(id, password):
@@ -32,11 +34,14 @@ def data_delete(id, password):
             if st.form_submit_button("削除", type="primary", key="func_delete_button"):
                 hash_input_password = hashlib.sha256(input_password.encode('utf-8')).hexdigest()
                 if hash_input_password == password:
-                    conn = get_connection()
-                    c = conn.cursor()
-                    c.execute("DELETE FROM sheet_data WHERE id = ?", (id,))
-                    conn.commit()
-                    conn.close()
+                    # conn = get_connection()
+                    # c = conn.cursor()
+                    # c.execute("DELETE FROM sheet_data WHERE id = ?", (id,))
+                    # conn.commit()
+                    # conn.close()
+                    conn = st.connection("supabase",type=SupabaseConnection)
+                    conn.table("save_data").delete().eq("id", id).execute()
+                    #conn.close()
                     textbox.success("削除しました。")
                     time.sleep(3)
                     st.rerun()
@@ -72,16 +77,26 @@ with st.container(gap=0):
                 st.session_state.file_upload_flag = False
                 st.switch_page(st.session_state.pages["sheet"])
     st.divider()
-    conn = get_connection()
-    c = conn.cursor()
-    if search_text != "":
-        c.execute("SELECT id, pc_name, pl_name, main_lv, update_date, password, json FROM sheet_data WHERE pl_name == ?", (search_text, ))
-    else:
-        c.execute("SELECT * FROM sheet_data")
+    # conn = get_connection()
+    # c = conn.cursor()
+    # if search_text != "":
+    #     c.execute("SELECT id, pc_name, pl_name, main_lv, update_date, password, json FROM sheet_data WHERE pl_name == ?", (search_text, ))
+    # else:
+    #     c.execute("SELECT * FROM sheet_data")
+    # raw_data = c.fetchall()
+    # conn.close()
+    
+    conn = st.connection("supabase",type=SupabaseConnection)
+    raw_data = conn.table("save_data").select("*").execute()
+    #conn.close()
 
-    raw_data = c.fetchall()
-    conn.close()
-    for id, pc, pl, lv, date, password, binary_data in reversed(raw_data):
+    for raws in reversed(raw_data.data):
+        id = raws["id"]
+        pc = raws["pc_name"]
+        pl = raws["pl_name"]
+        lv = raws["main_lv"]
+        date = raws["update_date"]
+        password = raws["password"]
         if id == 0:
             continue
         col_list_pc, col_list_pl, col_list_lv, col_list_date, col_list_delete = st.columns([2,1,1,1,1], vertical_alignment="center")
@@ -121,19 +136,23 @@ with col_upload:
 
 
 with st.expander("デバッグ用DB生データ", expanded=False):
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("SELECT * FROM sheet_data")
-    raw_data = c.fetchall()
-    conn.close()
+    # conn = get_connection()
+    # c = conn.cursor()
+    # c.execute("SELECT * FROM sheet_data")
+    # raw_data = c.fetchall()
+    # conn.close()
 
+    # df = []
+    # for id, pc, pl, lv, date, password, binary_data in raw_data:
+    #     json_obj = json.loads(binary_data.decode("utf-8"))
+    #     df.append({"id": id, "PC名": pc, "PL名": pl, "Lv":lv, "更新日時": date, "pass": password, "data": json_obj})
+
+    # st.write(df)
+
+    conn = st.connection("supabase",type=SupabaseConnection)
+    rows = conn.table("save_data").select("*").execute()
+    #conn.close()
     df = []
-    for id, pc, pl, lv, date, password, binary_data in raw_data:
-        json_obj = json.loads(binary_data.decode("utf-8"))
-        df.append({"id": id, "PC名": pc, "PL名": pl, "Lv":lv, "更新日時": date, "pass": password, "data": json_obj})
-
+    for row in rows.data:
+        df.append({"id": row["id"], "PC名": row["pc_name"], "PL名": row["pl_name"], "Lv":row["main_lv"], "更新日時": row["update_date"], "pass": row["password"], "data": row["json"]})
     st.write(df)
-
-
-
-
