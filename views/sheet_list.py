@@ -120,17 +120,25 @@ with col_upload:
                 st.switch_page(st.session_state.pages["sheet"])
 
 
-with st.expander("デバッグ用DB生データ", expanded=False):
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("SELECT * FROM sheet_data")
-    raw_data = c.fetchall()
-    conn.close()
+# with st.expander("デバッグ用DB生データ", expanded=False):
+#     conn = get_connection()
+#     c = conn.cursor()
+#     c.execute("SELECT * FROM sheet_data")
+#     raw_data = c.fetchall()
+#     conn.close()
 
-    df = []
-    for id, pc, pl, lv, date, password, binary_data in raw_data:
-        json_obj = json.loads(binary_data.decode("utf-8"))
-        df.append({"id": id, "PC名": pc, "PL名": pl, "Lv":lv, "更新日時": date, "pass": password, "data": json_obj})
+#     df = []
+#     for id, pc, pl, lv, date, password, binary_data in raw_data:
+#         json_obj = json.loads(binary_data.decode("utf-8"))
+#         df.append({"id": id, "PC名": pc, "PL名": pl, "Lv":lv, "更新日時": date, "pass": password, "data": json_obj})
 
-    st.write(df)
+#     st.write(df)
+
+# Supabase接続の初期化
+conn = st.connection("supabase", type="SupabaseConnection")
+
+# データのクエリ
+response = conn.query("save_data", select="*")
+st.dataframe(response.data)
+
 
