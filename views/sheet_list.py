@@ -120,25 +120,18 @@ with col_upload:
                 st.switch_page(st.session_state.pages["sheet"])
 
 
-# with st.expander("デバッグ用DB生データ", expanded=False):
-#     conn = get_connection()
-#     c = conn.cursor()
-#     c.execute("SELECT * FROM sheet_data")
-#     raw_data = c.fetchall()
-#     conn.close()
+with st.expander("デバッグ用DB生データ", expanded=False):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT * FROM sheet_data")
+    raw_data = c.fetchall()
+    conn.close()
 
-#     df = []
-#     for id, pc, pl, lv, date, password, binary_data in raw_data:
-#         json_obj = json.loads(binary_data.decode("utf-8"))
-#         df.append({"id": id, "PC名": pc, "PL名": pl, "Lv":lv, "更新日時": date, "pass": password, "data": json_obj})
+    df = []
+    for id, pc, pl, lv, date, password, binary_data in raw_data:
+        json_obj = json.loads(binary_data.decode("utf-8"))
+        df.append({"id": id, "PC名": pc, "PL名": pl, "Lv":lv, "更新日時": date, "pass": password, "data": json_obj})
 
-#     st.write(df)
-
-import os
-from supabase import create_client
-
-url = os.environ.get("https://ygnjihprlwlzfhbykpax.supabase.co/rest/v1/")
-key = os.environ.get("sb_publishable_qFRkNuBHuqURY7bnFLF_iw_a09TVWxV")
-supabase = create_client(url, key)
+    st.write(df)
 
 
