@@ -465,7 +465,7 @@ def data_clear():
     st.session_state.edit_mode = False
     for name in skills_name_list:
         st.session_state[f"skill_lv_{name}"] = 0
-    sheet_edit(True)
+    sheet_edit()
 #武器入れ替えモードスタート
 def weapon_exchange_start(weapon_list):
     st.session_state.weapon_list_buffer = weapon_list
