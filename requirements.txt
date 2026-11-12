@@ -1,2 +1,3 @@
 streamlit
 streamlit-sortables
+pip install supabase st-supabase-connection
