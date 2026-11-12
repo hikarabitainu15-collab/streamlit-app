@@ -134,11 +134,11 @@ with col_upload:
 
 #     st.write(df)
 
-# Supabase接続の初期化
-conn = st.connection("supabase", type="SupabaseConnection")
+import os
+from supabase import create_client
 
-# データのクエリ
-response = conn.query("save_data", select="*")
-st.dataframe(response.data)
+url = os.environ.get("https://ygnjihprlwlzfhbykpax.supabase.co/rest/v1/")
+key = os.environ.get("sb_publishable_qFRkNuBHuqURY7bnFLF_iw_a09TVWxV")
+supabase = create_client(url, key)
 
 
