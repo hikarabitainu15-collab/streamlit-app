@@ -3,7 +3,9 @@ import re
 import streamlit as st
 import json
 import hashlib
-from datetime import datetime
+import time
+import datetime
+import random
 from streamlit_sortables import sort_items
 
 from functions import get_connection
@@ -48,17 +50,26 @@ defaults = {
     'weapon_exchange_mode': False,
     'item_exchange_mode': False,
     'honor_exchange_mode': False,
-    'history_exchange_mode': False
+    'history_exchange_mode': False,
+    'dice_history': [],
+    'born_dice_history': []
 }
-for key, value in defaults.items():
-    if key not in st.session_state:
-        st.session_state[key] = value                 
+
+if st.session_state.new_mode:
+    for key, value in defaults.items():
+        st.session_state[key] = value
+    st.session_state.new_mode = False
+else:
+    for key, value in defaults.items():
+        if key not in st.session_state:
+            st.session_state[key] = value
 
 #関数
 #種族更新
 def update_race():
     race_name = st.session_state.race_selectbox
     st.session_state.born_selectbox = " "
+    st.session_state.born_dice_history = []
     update_born(" ")
     if ((race_name != " ") and (race_name != "自由記入")):
         st.session_state.brand = race_data["race"][race_list.index(race_name)-1]["brand"]
@@ -68,17 +79,17 @@ def update_race():
             st.session_state[f"first_language_free_{i}"] = ""
             st.session_state[f"first_language_exist_talk_{i}"] = data[i][1]
             st.session_state[f"first_language_exist_read_{i}"] = data[i][2]
+        if race_name == "フロウライト":
+            st.session_state["first_language_selectbox_1"] = "自由記入"
+            st.session_state["first_language_free_1"] = ""
+            st.session_state["first_language_exist_talk_1"] = True
+            st.session_state["first_language_exist_read_1"] = True
     else:
         st.session_state.brand = 0
-        pass
 #生まれ更新
 def update_born(race__):
     born_name = st.session_state.born_selectbox
-    if st.session_state.edit_mode:
-        st.session_state[f"stats_技"] = load_data["stats_list"][0][0]
-        st.session_state[f"stats_体"] = load_data["stats_list"][2][0]
-        st.session_state[f"stats_心"] = load_data["stats_list"][4][0]
-    elif ((born_name != " ") and (born_name != "自由記入")):
+    if ((born_name != " ") and (born_name != "自由記入")):
         borns = race_data["race"][(race_list.index(race__)-1)]["born"]
         born_list = [born["job"] for born in borns]
         st.session_state[f"stats_技"] = borns[born_list.index(born_name)]["stats"][0]
@@ -419,14 +430,6 @@ def update_history(key):
             st.rerun("fragment_item")
         elif key == "honor":
             st.rerun("fragment_honor")
-        
-# @st.dialog("エラー")
-# def history_growth_error_dialog():
-#     with st.form("成長入力エラー"):
-#         st.error("成長欄の入力規則が間違っています")
-#         with st.container(horizontal_alignment="right"):
-#             if st.form_submit_button("OK", key="error_ok"):
-#                 st.rerun("fragment")
 #セーブデータ作成
 def create_save_data():
     save_data = {
@@ -578,6 +581,119 @@ kikaku_list = load_skills_list_json("貴格")
 #神情報ファイルを読み込む
 gods_data = load_json("gods.json")
 
+#jsonを読み込み編集画面に適用する関数
+def edit_sheet_all(load_json):
+    #基本データ
+    st.session_state.pc_name = load_json["pc_name"]
+    st.session_state.pl_name = load_json["pl_name"]
+    st.session_state.age = load_json["age"]
+    st.session_state.gender = load_json["gender"]
+    st.session_state.brand = load_json["brand"]
+    st.session_state.race_selectbox = load_json["race"][0]
+    st.session_state.race_free = load_json["race"][1]
+    st.session_state.feature = load_json["race"][2]
+    st.session_state.born_selectbox = load_json["born"][0]
+    st.session_state.born_free = load_json["born"][1]
+    #first_stats_list = copy.deepcopy(load_json["born"][2])
+    #能力値
+    st.session_state[f"stats_技"] = load_json["stats_list"][0][0]
+    st.session_state[f"stats_体"] = load_json["stats_list"][2][0]
+    st.session_state[f"stats_心"] = load_json["stats_list"][4][0]
+    for i in range(6):
+        for j in range(6):
+            st.session_state[f"stats_{i}_{j}"] = load_json["stats_list"][i][j]
+    for i in range(4):
+        st.session_state[f"stats_buf_{i}"] = load_json["stats_buf"][i]
+    #技能レベル
+    for name in [names for names in load_json["lv_list"]]:
+        st.session_state[f"skill_lv_{name}"] = load_json["lv_list"][name]
+    update_lv()
+    #信仰
+    st.session_state.faith = load_json["faith"][0]
+    st.session_state.faith_free = load_json["faith"][1]
+    #戦闘特技
+    st.session_state.ability_mode = load_json["ability"]
+    update_ability_buf()
+    #武器
+    st.session_state.weapon_list_num = len(load_json["weapon_list"])
+    for i in range(len(load_json["weapon_list"])):
+        for j in range(12):
+            st.session_state[f"weapon_{i}_{j}"] = load_json["weapon_list"][i][j]
+    #防具
+    for i in range(3):
+        for j in range(7):
+            st.session_state[f"armor_{i}_{j}"] = load_json["armor_list"][i][j]
+    st.session_state.armor_0_3 = load_json["armor_list"][0][3]
+    st.session_state.armor_1_3 = load_json["armor_list"][1][3]
+    #装飾品
+    for part in st.session_state.equipment_part_list:
+        for i in range(len(load_json["equipment_list"][part])):
+            for j in range(6):
+                st.session_state[f"equipment_{part}_{i}_{j}"] = load_json["equipment_list"][part][i][j]
+    update_equipment_buf()
+    update_equipment_exclusive_buf()
+    #アイテム
+    st.session_state.item_list_num = len(load_json["item_list"])
+    for i in range(len(load_json["item_list"])):
+        for j in range(5):
+            st.session_state[f"item_{i}_{j}"] = load_json["item_list"][i][j]
+    #その他ステータス
+    st.session_state.move_power_buf = load_json["other_stats_list"][0]
+    st.session_state.gunti_check = load_json["other_stats_list"][1]
+    st.session_state.mamotiki_skill = load_json["other_stats_list"][2]
+    st.session_state.mamotiki_buf = load_json["other_stats_list"][3]
+    st.session_state.sensei_skill = load_json["other_stats_list"][4]
+    st.session_state.sensei_buf = load_json["other_stats_list"][5]
+    #言語
+    language_num = 0
+    if len(load_json["language_list"]) == 2:
+        for i in range(len(load_json["language_list"][language_num])):
+            st.session_state[f"first_language_selectbox_{i}"] = load_json["language_list"][language_num][i][0]
+            st.session_state[f"first_language_free_{i}"] = load_json["language_list"][language_num][i][1]
+            st.session_state[f"first_language_exist_talk_{i}"] = load_json["language_list"][language_num][i][2]
+            st.session_state[f"first_language_exist_read_{i}"] = load_json["language_list"][language_num][i][3]
+        language_num = 1
+    st.session_state.language_list_num = len(load_json["language_list"][language_num])
+    for i in range(len(load_json["language_list"][language_num])):
+        st.session_state[f"language_selectbox_{i}"] = load_json["language_list"][language_num][i][0]
+        st.session_state[f"language_free_{i}"] = load_json["language_list"][language_num][i][1]
+        st.session_state[f"language_exist_talk_{i}"] = load_json["language_list"][language_num][i][2]
+        st.session_state[f"language_exist_read_{i}"] = load_json["language_list"][language_num][i][3]
+    #魔力
+    if '全魔法' in load_json["maryoku_list"]:
+        for name in load_json["maryoku_list"]:
+            if name == '全魔法':
+                for i in range(3):
+                    st.session_state[f"all_maryoku_{i}"] = load_json["maryoku_list"]["全魔法"][i]
+            elif name == 'フェアリーテイマー契約':
+                for i in range(6):
+                    st.session_state[f"fairy_contract_{i}"] = load_json["maryoku_list"]["フェアリーテイマー契約"][i]
+            elif name == 'ビブリオマンサー魔法':
+                for i in range(2):
+                    for j in range(len(load_json["maryoku_list"]["ビブリオマンサー魔法"][i])):
+                        st.session_state[f"hiou_magic_{i}_{j}"] = load_json["maryoku_list"]["ビブリオマンサー魔法"][i][j]
+            else:
+                for i in range(5):
+                    st.session_state[f"maryoku_{name}_{i}"] = load_json["maryoku_list"][name][i]
+    #その他系技能
+    for skill in load_json["other_skill_list"]:
+        for i in range(len(load_json["other_skill_list"][skill])):
+            st.session_state[f"{skill}_{i}"] = load_json["other_skill_list"][skill][i]
+    #名誉
+    for i in range(3):
+        st.session_state[f"honor_rank_{i}"] = load_json["honor_list"][0][i]
+    for i in range(len(load_json["honor_list"][1])):
+        for j in range(3):
+            st.session_state[f"honor_{i}_{j}"] = load_json["honor_list"][1][i][j]
+    st.session_state.history_list_num = len(load_json["history"])
+    #セッション履歴
+    for i in range(len(load_json["history"])):
+        for j in range(8):
+            st.session_state[f"history_{i}_{j}"] = load_json["history"][i][j]
+    update_history_all()
+    #その他メモ
+    st.session_state.memo_area = load_json["memo"]
+
 #DBからjsonデータを読み込む
 @st.cache_data
 def load_db_data(id):
@@ -591,127 +707,21 @@ def load_db_data(id):
         break
     return result
 #アップロードデータを読み込んでページに反映する
-def sheet_edit(flag):
-    if flag:
-        if st.session_state.file_upload_flag:
-            load_db_data.clear()
-        load_json = load_db_data(st.session_state.edit_id)
-        if st.session_state.file_upload_flag:
-            #基本データ
-            st.session_state.pc_name = load_json["pc_name"]
-            st.session_state.pl_name = load_json["pl_name"]
-            st.session_state.age = load_json["age"]
-            st.session_state.gender = load_json["gender"]
-            st.session_state.brand = load_json["brand"]
-            st.session_state.race_selectbox = load_json["race"][0]
-            st.session_state.race_free = load_json["race"][1]
-            st.session_state.feature = load_json["race"][2]
-            st.session_state.born_selectbox = load_json["born"][0]
-            st.session_state.born_free = load_json["born"][1]
-            first_stats_list = copy.deepcopy(load_json["born"][2])
-            #能力値
-            st.session_state[f"stats_技"] = load_json["stats_list"][0][0]
-            st.session_state[f"stats_体"] = load_json["stats_list"][2][0]
-            st.session_state[f"stats_心"] = load_json["stats_list"][4][0]
-            for i in range(6):
-                for j in range(6):
-                    st.session_state[f"stats_{i}_{j}"] = load_json["stats_list"][i][j]
-            for i in range(4):
-                st.session_state[f"stats_buf_{i}"] = load_json["stats_buf"][i]
-            #技能レベル
-            for name in [names for names in load_json["lv_list"]]:
-                st.session_state[f"skill_lv_{name}"] = load_json["lv_list"][name]
-            update_lv()
-            #信仰
-            st.session_state.faith = load_json["faith"][0]
-            st.session_state.faith_free = load_json["faith"][1]
-            #戦闘特技
-            st.session_state.ability_mode = load_json["ability"]
-            update_ability_buf()
-            #武器
-            st.session_state.weapon_list_num = len(load_json["weapon_list"])
-            for i in range(len(load_json["weapon_list"])):
-                for j in range(12):
-                    st.session_state[f"weapon_{i}_{j}"] = load_json["weapon_list"][i][j]
-            #防具
-            for i in range(3):
-                for j in range(7):
-                    st.session_state[f"armor_{i}_{j}"] = load_json["armor_list"][i][j]
-            st.session_state.armor_0_3 = load_json["armor_list"][0][3]
-            st.session_state.armor_1_3 = load_json["armor_list"][1][3]
-            #装飾品
-            for part in st.session_state.equipment_part_list:
-                for i in range(len(load_json["equipment_list"][part])):
-                    for j in range(6):
-                        st.session_state[f"equipment_{part}_{i}_{j}"] = load_json["equipment_list"][part][i][j]
-            update_equipment_buf()
-            update_equipment_exclusive_buf()
-            #アイテム
-            st.session_state.item_list_num = len(load_json["item_list"])
-            for i in range(len(load_json["item_list"])):
-                for j in range(5):
-                    st.session_state[f"item_{i}_{j}"] = load_json["item_list"][i][j]
-            #その他ステータス
-            st.session_state.move_power_buf = load_json["other_stats_list"][0]
-            st.session_state.gunti_check = load_json["other_stats_list"][1]
-            st.session_state.mamotiki_skill = load_json["other_stats_list"][2]
-            st.session_state.mamotiki_buf = load_json["other_stats_list"][3]
-            st.session_state.sensei_skill = load_json["other_stats_list"][4]
-            st.session_state.sensei_buf = load_json["other_stats_list"][5]
-            #言語
-            language_num = 0
-            if len(load_json["language_list"]) == 2:
-                for i in range(len(load_json["language_list"][language_num])):
-                    st.session_state[f"first_language_selectbox_{i}"] = load_json["language_list"][language_num][i][0]
-                    st.session_state[f"first_language_free_{i}"] = load_json["language_list"][language_num][i][1]
-                    st.session_state[f"first_language_exist_talk_{i}"] = load_json["language_list"][language_num][i][2]
-                    st.session_state[f"first_language_exist_read_{i}"] = load_json["language_list"][language_num][i][3]
-                language_num = 1
-            st.session_state.language_list_num = len(load_json["language_list"][language_num])
-            for i in range(len(load_json["language_list"][language_num])):
-                st.session_state[f"language_selectbox_{i}"] = load_json["language_list"][language_num][i][0]
-                st.session_state[f"language_free_{i}"] = load_json["language_list"][language_num][i][1]
-                st.session_state[f"language_exist_talk_{i}"] = load_json["language_list"][language_num][i][2]
-                st.session_state[f"language_exist_read_{i}"] = load_json["language_list"][language_num][i][3]
-            #魔力
-            if '全魔法' in load_json["maryoku_list"]:
-                for name in load_json["maryoku_list"]:
-                    if name == '全魔法':
-                        for i in range(3):
-                            st.session_state[f"all_maryoku_{i}"] = load_json["maryoku_list"]["全魔法"][i]
-                    elif name == 'フェアリーテイマー契約':
-                        for i in range(6):
-                            st.session_state[f"fairy_contract_{i}"] = load_json["maryoku_list"]["フェアリーテイマー契約"][i]
-                    elif name == 'ビブリオマンサー魔法':
-                        for i in range(2):
-                            for j in range(len(load_json["maryoku_list"]["ビブリオマンサー魔法"][i])):
-                                st.session_state[f"hiou_magic_{i}_{j}"] = load_json["maryoku_list"]["ビブリオマンサー魔法"][i][j]
-                    else:
-                        for i in range(5):
-                            st.session_state[f"maryoku_{name}_{i}"] = load_json["maryoku_list"][name][i]
-            #その他系技能
-            for skill in load_json["other_skill_list"]:
-                for i in range(len(load_json["other_skill_list"][skill])):
-                    st.session_state[f"{skill}_{i}"] = load_json["other_skill_list"][skill][i]
-            #名誉
-            for i in range(3):
-                st.session_state[f"honor_rank_{i}"] = load_json["honor_list"][0][i]
-            for i in range(len(load_json["honor_list"][1])):
-                for j in range(3):
-                    st.session_state[f"honor_{i}_{j}"] = load_json["honor_list"][1][i][j]
-            st.session_state.history_list_num = len(load_json["history"])
-            #セッション履歴
-            for i in range(len(load_json["history"])):
-                for j in range(8):
-                    st.session_state[f"history_{i}_{j}"] = load_json["history"][i][j]
-            update_history_all()
-            #その他メモ
-            st.session_state.memo_area = load_json["memo"]
-
-            #読み込み終了
-            st.session_state.file_upload_flag = False
-    return load_json
-load_data = sheet_edit(st.session_state.edit_mode) if st.session_state.edit_mode else None
+def sheet_edit():
+    if st.session_state.file_upload_flag:
+        load_db_data.clear()
+    load_json = load_db_data(st.session_state.edit_id)
+    if st.session_state.file_upload_flag:
+        edit_sheet_all(load_json)
+        #読み込み終了
+        st.session_state.file_upload_flag = False
+    #return load_json
+if st.session_state.edit_mode:
+    #load_data = sheet_edit()
+    sheet_edit()
+elif "uploaded_file" in st.session_state:
+    edit_sheet_all(json.load(st.session_state.uploaded_file))
+    del st.session_state.uploaded_file
 
 #能力値リスト初期化
 stats_list = [
@@ -757,7 +767,7 @@ def charactor():
 
             #種族、年齢、性別
             add_feature = ""
-            except_race_list = ["ナイトメア", "アビスボーン", "センティアン", "ウィークリング"]
+            except_race_list = ["エルフ", "タビット", "ルーンフォーク" ,"ナイトメア", "リカント", "リルドラケン", "グラスランナー", "メリア", "ティエンス", "レプラカーン", "アビスボーン", "センティアン", "ウィークリング"]
             col1_race, col2_age, col3_gender, col4_brand = st.columns([3,1,1,0.5], gap="xsmall")
             with col1_race:
                 match st.session_state.race_mode:
@@ -784,68 +794,47 @@ def charactor():
                                 st.rerun()
                         with col2_race_free:
                             match race__:
+                                case "エルフ":
+                                    tabitt_list = ["通常種", "スノウエルフ", "ミストエルフ"]
+                                    race = st.selectbox("希少種", options=tabitt_list, key="race_free")
+                                case "タビット":
+                                    tabitt_list = ["通常種", "パイカ種", "リパス種"]
+                                    race = st.selectbox("希少種", options=tabitt_list, key="race_free")
+                                case "ルーンフォーク":
+                                    runefork_list = ["通常型", "護衛型", "戦闘型"]
+                                    race = st.selectbox("希少種", options=runefork_list, key="race_free")
                                 case "ナイトメア":
                                     nightmare_list = [" ", "人間", "エルフ", "ドワーフ", "リルドラケン", "ソレイユ", "シャドウ"]
                                     race = st.selectbox("親種族", options=nightmare_list, key="race_free")
-                                    match race:
-                                        case "人間":
-                                            add_feature = ",[弱点(土+2)]"
-                                        case "エルフ":
-                                            add_feature = ",[弱点(水・氷+2)]"
-                                        case "ドワーフ":
-                                            add_feature = ",[弱点(炎+2)]"
-                                        case "リルドラケン":
-                                            add_feature = ",[弱点(風+2)]"
-                                        case "ソレイユ":
-                                            add_feature = ",[弱点(純エネルギー+2)]"
-                                        case "シャドウ":
-                                            add_feature = ",[弱点(精神効果-2)]"
-                                        case _:
-                                            add_feature = ",[弱点]"
+                                case "リカント":
+                                    lycant_list = ["通常種", "大型草食獣", "小型草食獣"]
+                                    race = st.selectbox("希少種", options=lycant_list, key="race_free")
+                                case "リルドラケン":
+                                    rirdracen_list = ["通常種", "小翼種", "有毛種"]
+                                    race = st.selectbox("希少種", options=rirdracen_list, key="race_free")
+                                case "グラスランナー":
+                                    grassrunner_list = ["通常種", "アリーシャ", "クリメノス"]
+                                    race = st.selectbox("希少種", options=grassrunner_list, key="race_free")
+                                case "メリア":
+                                    meria_list = ["通常種", "カーニバラスメリア", "ファンギーメリア"]
+                                    race = st.selectbox("希少種", options=meria_list, key="race_free")
+                                case "ティエンス":
+                                    thience_list = ["通常種", "機解種", "魔解種"]
+                                    race = st.selectbox("希少種", options=thience_list, key="race_free")
+                                case "レプラカーン":
+                                    lepracaun_list = ["通常種", "放浪種", "探索種"]
+                                    race = st.selectbox("希少種", options=lepracaun_list, key="race_free")
                                 case "アビスボーン":
                                     abyssborn_list = [" ", "アビストランク", "アビスアーム", "アビスアイ"]
                                     race = st.selectbox("奈落の身体", options=abyssborn_list, key="race_free")
-                                    match race:
-                                        case "アビストランク":
-                                            add_feature = ",[奈落の身体(アビストランク)]"
-                                        case "アビスアーム":
-                                            add_feature = ",[奈落の身体(アビスアーム)]"
-                                        case "アビスアイ":
-                                            add_feature = ",[奈落の身体(アビスアイ)]"
-                                        case _:
-                                            add_feature = ",[奈落の身体]"
                                 case "センティアン":
                                     saintian_list = [" ", "第一の剣", "第二の剣", "第三の剣"]
                                     race = st.selectbox("剣の分類", options=saintian_list, key="race_free")
-                                    match race:
-                                        case "第一の剣":
-                                            add_feature = ",[神の恩寵],[神の御名と共に]"
-                                            st.session_state.brand = 0
-                                        case "第二の剣":
-                                            add_feature = ",[神の兵士],[神への礼賛],[暗視]"
-                                            st.session_state.brand = 3
-                                        case "第三の剣":
-                                            add_feature = ",[神の庇護],[神への祈り]"
-                                            st.session_state.brand = 0
-                                        case _:
-                                            add_feature = ""
-                                            st.session_state.brand = 0
                                 case "ウィークリング":
                                     weakling_list = [" ", "ガルーダ", "タンノズ", "バジリスク", "ミノタウロス", "マーマン"]
                                     race = st.selectbox("親種族", options=weakling_list, key="race_free")
-                                    match race:
-                                        case "ガルーダ":
-                                            add_feature = ",[未熟な翼],[切り裂く風]"
-                                        case "タンノズ":
-                                            add_feature = ",[水中適正],[甲殻の手]"
-                                        case "バジリスク":
-                                            add_feature = ",[石化の視線],[毒の血液]"
-                                        case "ミノタウロス":
-                                            add_feature = ",[剛力],[暗視]"
-                                        case "マーマン":
-                                            add_feature = ",[水中適正],[水・氷耐性],[バブルフォーム]"
-                                        case _:
-                                            add_feature = ""
+                                case _:
+                                    race = ""
                     case _:
                         #通常モード
                         race__ = st.selectbox("種族", options=race_list, on_change=update_race, key="race_selectbox")
@@ -855,55 +844,18 @@ def charactor():
                                 update_born("race__")
                             st.rerun()
                         race = race__
-                #種族ごとの特殊処理
-                race_mp_buf = race_mental_buf = race_accuracy_buf = race_physical_damage_buf = race_protection_buf = race_magic_buf = race_kousi_buf = race_magic_damage_buf = race_prist_buf = 0
-                match st.session_state.race_selectbox:
-                    case "ナイトメア":
-                        if main_lv >= 6:
-                            race_physical_damage_buf = 1
-                            race_magic_damage_buf = 1
-                            if main_lv >= 11:
-                                race_accuracy_buf = 1
-                                race_kousi_buf = 1
-                    case "リルドラケン":
-                        if st.session_state.race_free != "有毛種":
-                            race_protection_buf = 1
-                    case "シャドウ":
-                        race_mental_buf = 4
-                    case "ハイマン":
-                        race_magic_buf = 1
-                        if main_lv >= 11:
-                            race_magic_buf += 1
-                    case "フロウライト":
-                        race_mp_buf = 15
-                        race_protection_buf = 2
-                        if main_lv >= 6:
-                            race_mp_buf += 15
-                            if main_lv >= 11:
-                                race_mp_buf += 15
-                                if main_lv >= 16:
-                                    race_mp_buf += 30
-                                    race_protection_buf += 2
-                    case "アビスボーン":
-                        if st.session_state.race_free == "アビストランク":
-                            race_protection_buf = 1
-                            if main_lv >= 6:
-                                race_protection_buf += 1
-                                if main_lv >= 11:
-                                    race_protection_buf +=1
-                    case "センティアン":
-                        race_prist_buf = 1
-                        if main_lv >= 6:
-                            race_prist_buf += 1
             with col2_age:
                 age = st.text_input("年齢", key="age")
             with col3_gender:
                 gender = st.text_input("性別", key="gender")
             with col4_brand:
-                brand = st.number_input("穢れ", step=1, min_value=0, max_value=5, key="brand")
+                brand_placeholder = st.empty()
 
             #種族特徴、生まれ
             col1_feature, col2_born = st.columns([2,1], gap="xsmall")
+            race_stats_buf = [0]*6
+            race_mp_buf = race_mental_buf = race_accuracy_buf = race_physical_damage_buf = race_protection_buf = race_magic_buf = race_kousi_buf = race_magic_damage_buf = race_prist_buf = 0
+
             if race__ == " ":
                 born_dice = [[1,1,1,1,1,1],[18,18,18,18,18,18]]
                 with col1_feature:
@@ -922,6 +874,178 @@ def charactor():
                 feature = race_data["race"][(race_list.index(race__)-1)]["feature"]
                 borns = race_data["race"][(race_list.index(race__)-1)]["born"]
                 born_list = [" "] + [born["job"] for born in borns] + ["自由記入"]
+                #種族ごとの特殊処理
+                match race__:
+                    case "エルフ":
+                        match race:
+                            case "スノウエルフ":
+                                feature = "[剣の加護/厳つき氷],[暗視]"
+                            case "ミストエルフ":
+                                feature = "[剣の加護/惑いの霧],[暗視]"
+                    case "タビット":
+                        match race:
+                            case "通常種":
+                                pass
+                            case "パイカ種":
+                                add_feature = ",[ホイッスル]"
+                                race_stats_buf[0] = 3
+                                race_stats_buf[1] = 3
+                                race_stats_buf[2] = -3
+                                race_stats_buf[3] = -3
+                            case "リパス種":
+                                add_feature = ",[暗視]"
+                                race_stats_buf[1] = 3
+                                race_stats_buf[2] = 3
+                                race_stats_buf[4] = -3
+                                race_stats_buf[5] = -3
+                    case "ルーンフォーク":
+                        match race:
+                            case "護衛型":
+                                feature = "[仲間との絆],[暗視]"
+                            case "戦闘型":
+                                feature = "[任務遂行の意志],[暗視]"                             
+                    case "ナイトメア":
+                        if main_lv >= 6:
+                            race_physical_damage_buf = 1
+                            race_magic_damage_buf = 1
+                            if main_lv >= 11:
+                                race_accuracy_buf = 1
+                                race_kousi_buf = 1
+                        match race:
+                            case "人間":
+                                add_feature = ",[弱点(土+2)]"
+                                st.session_state["first_language_selectbox_1"] = race_data["race"][(race_list.index("人間")-1)]["language"][1][0]
+                                st.session_state["first_language_free_1"] = ""
+                                st.session_state["first_language_exist_talk_1"] = race_data["race"][(race_list.index("人間")-1)]["language"][1][1]
+                                st.session_state["first_language_exist_read_1"] = race_data["race"][(race_list.index("人間")-1)]["language"][1][2]
+                            case "エルフ":
+                                add_feature = ",[弱点(水・氷+2)]"
+                                st.session_state["first_language_selectbox_1"] = race_data["race"][(race_list.index("エルフ")-1)]["language"][1][0]
+                                st.session_state["first_language_free_1"] = ""
+                                st.session_state["first_language_exist_talk_1"] = race_data["race"][(race_list.index("エルフ")-1)]["language"][1][1]
+                                st.session_state["first_language_exist_read_1"] = race_data["race"][(race_list.index("エルフ")-1)]["language"][1][2]
+                            case "ドワーフ":
+                                add_feature = ",[弱点(炎+2)]"
+                                st.session_state["first_language_selectbox_1"] = race_data["race"][(race_list.index("ドワーフ")-1)]["language"][1][0]
+                                st.session_state["first_language_free_1"] = ""
+                                st.session_state["first_language_exist_talk_1"] = race_data["race"][(race_list.index("ドワーフ")-1)]["language"][1][1]
+                                st.session_state["first_language_exist_read_1"] = race_data["race"][(race_list.index("ドワーフ")-1)]["language"][1][2]
+                            case "リルドラケン":
+                                add_feature = ",[弱点(風+2)]"
+                                st.session_state["first_language_selectbox_1"] = race_data["race"][(race_list.index("リルドラケン")-1)]["language"][1][0]
+                                st.session_state["first_language_free_1"] = ""
+                                st.session_state["first_language_exist_talk_1"] = race_data["race"][(race_list.index("リルドラケン")-1)]["language"][1][1]
+                                st.session_state["first_language_exist_read_1"] = race_data["race"][(race_list.index("リルドラケン")-1)]["language"][1][2]
+                            case "ソレイユ":
+                                add_feature = ",[弱点(純エネルギー+2)]"
+                                st.session_state["first_language_selectbox_1"] = race_data["race"][(race_list.index("ソレイユ")-1)]["language"][1][0]
+                                st.session_state["first_language_free_1"] = ""
+                                st.session_state["first_language_exist_talk_1"] = race_data["race"][(race_list.index("ソレイユ")-1)]["language"][1][1]
+                                st.session_state["first_language_exist_read_1"] = race_data["race"][(race_list.index("ソレイユ")-1)]["language"][1][2]
+                            case "シャドウ":
+                                add_feature = ",[弱点(精神効果に対する抵抗-2)]"
+                                st.session_state["first_language_selectbox_1"] = race_data["race"][(race_list.index("シャドウ")-1)]["language"][1][0]
+                                st.session_state["first_language_free_1"] = ""
+                                st.session_state["first_language_exist_talk_1"] = race_data["race"][(race_list.index("シャドウ")-1)]["language"][1][1]
+                                st.session_state["first_language_exist_read_1"] = race_data["race"][(race_list.index("シャドウ")-1)]["language"][1][2]
+                            case _:
+                                add_feature = ",[弱点]"
+                    case "リルドラケン":
+                        race_protection_buf = 1
+                        match race:
+                            case "小翼種":
+                                feature = "[剣の加護/竜の咆哮],[鱗の皮膚],[尻尾が武器]"
+                            case "有毛種":
+                                feature = "[剣の加護/風の翼],[暖かき風]" 
+                                race_protection_buf = 0
+                    case "グラスランナー":
+                        if main_lv >= 6:
+                            add_feature = ",[魔法破り]"
+                    case "メリア":
+                        match race:
+                            case "カーニバラスメリア":
+                                feature = "[捕食する生命]"
+                            case "ファンギーメリア":
+                                feature = "[胞子散布]" 
+                    case "ティエンス":
+                        match race:
+                            case "機解種":
+                                feature = "[無生物と通じ合う意識]"
+                            case "魔解種":
+                                feature = "[魔神と通じ合う意識]" 
+                    case "レプラカーン":
+                        match race:
+                            case "放浪種":
+                                feature = "[見えざる手],[姿消す職人],[暗視]"
+                            case "探索種":
+                                feature = "[見えざる手],[群なす職人],[暗視]" 
+                    case "シャドウ":
+                        race_mental_buf = 4
+                    case "ハイマン":
+                        race_magic_buf = 1
+                        if main_lv >= 11:
+                            race_magic_buf += 1
+                    case "フロウライト":
+                        race_mp_buf = 15
+                        race_protection_buf = 2
+                        if main_lv >= 6:
+                            race_mp_buf += 15
+                            if main_lv >= 11:
+                                race_mp_buf += 15
+                                if main_lv >= 16:
+                                    race_mp_buf += 30
+                                    race_protection_buf += 2
+                    case "アビスボーン":
+                        match race:
+                            case "アビストランク":
+                                add_feature = ",[奈落の身体(アビストランク)]"
+                                race_protection_buf = 1
+                                if main_lv >= 6:
+                                    race_protection_buf += 1
+                                    if main_lv >= 11:
+                                        race_protection_buf +=1
+                            case "アビスアーム":
+                                add_feature = ",[奈落の身体(アビスアーム)]"
+                            case "アビスアイ":
+                                add_feature = ",[奈落の身体(アビスアイ)]"
+                            case _:
+                                add_feature = ",[奈落の身体]"
+                    case "センティアン":
+                        match race:
+                            case "第一の剣":
+                                add_feature = ",[神の恩寵],[神の御名と共に]"
+                                st.session_state.brand = 0
+                            case "第二の剣":
+                                add_feature = ",[神の兵士],[神への礼賛],[暗視]"
+                                st.session_state.brand = 3
+                            case "第三の剣":
+                                add_feature = ",[神の庇護],[神への祈り]"
+                                st.session_state.brand = 0
+                            case _:
+                                add_feature = ""
+                                st.session_state.brand = 0
+                        race_prist_buf = 1
+                        if main_lv >= 6:
+                            race_prist_buf += 1
+                    case "ウィークリング":
+                        match race:
+                            case "ガルーダ":
+                                add_feature = ",[未熟な翼],[切り裂く風]"
+                                race_stats_buf[1] = 3
+                            case "タンノズ":
+                                add_feature = ",[水中適正],[甲殻の手]"
+                                race_stats_buf[4] = 3
+                            case "バジリスク":
+                                add_feature = ",[石化の視線],[毒の血液]"
+                                race_stats_buf[5] = 3
+                            case "ミノタウロス":
+                                add_feature = ",[剛力],[暗視]"
+                                race_stats_buf[2] = 3
+                            case "マーマン":
+                                add_feature = ",[水中適正],[水・氷耐性],[バブルフォーム]"
+                                race_stats_buf[4] = 3
+                            case _:
+                                add_feature = ""               
                 if race__ == "センティアン":
                     born_dice = [
                         race_data["race"][(race_list.index(race__)-1)]["born_dice"]["born_dice_min"],
@@ -962,7 +1086,7 @@ def charactor():
                                 st.rerun()
                         with col2_born_free:
                             born = st.text_input("", placeholder="ここに入力", key="born_free")
-
+            brand = brand_placeholder.number_input("穢れ", step=1, min_value=0, max_value=5, key="brand")
             #生まれによる初期能力値、初期技能
             if 'first_stats_list' in locals():
                 pass
@@ -975,7 +1099,7 @@ def charactor():
             else:
                 first_stats_list = borns[born_list.index(born__)-1]["stats"]
                 st.session_state.first_skill = borns[born_list.index(born__)-1]["skills"]
-    return name_pc, name_pl, race__, race, feature, age, gender, brand, born__, born, born_dice, first_stats_list, race_mp_buf, race_mental_buf, race_accuracy_buf, race_physical_damage_buf, race_protection_buf, race_magic_buf, race_kousi_buf, race_magic_damage_buf, race_prist_buf
+    return name_pc, name_pl, race__, race, feature, age, gender, brand, born__, born, born_dice, first_stats_list, race_stats_buf, race_mp_buf, race_mental_buf, race_accuracy_buf, race_physical_damage_buf, race_protection_buf, race_magic_buf, race_kousi_buf, race_magic_damage_buf, race_prist_buf
 
 #能力値
 def stats():
@@ -1005,7 +1129,7 @@ def stats():
                 with col_stats_5:
                     st.write('<p style="font-size:20px"><br>=</p>', unsafe_allow_html=True)
                 with col_stats_6:
-                    stats_list[i][3] = st.number_input(stats_name_list[1][i], value=(stats_list[i][0]+stats_list[i][1]+stats_list[i][2]), disabled=True)
+                    stats_list[i][3] = st.number_input(stats_name_list[1][i], value=(stats_list[i][0]+stats_list[i][1]+stats_list[i][2]+race_stats_buf[i]), disabled=True)
                 with col_stats_7:
                     st.write('<p style="font-size:20px"><br>+</p>', unsafe_allow_html=True)
                 with col_stats_8:
@@ -1029,7 +1153,7 @@ def vital_mental_hp_mp():
             st.write("生命抵抗力")
             col1_vital_1, col1_vital_2, col1_vital_3, col1_vital_4, col1_vital_5, col1_vital_6, col1_vital_7 = st.columns([5,1,5,1,5,1,5], gap="xsmall")
             with col1_vital_1:
-                st.session_state.life_stats_list[0][0] = st.number_input("冒険者レベル+生命力B", value=(main_lv+stats_list[3][5]), disabled=True, label_visibility="collapsed")
+                st.session_state.life_stats_list[0][0] = st.number_input("冒険者レベル+生命力B", value=(main_lv+stats_list[3][6]), disabled=True, label_visibility="collapsed")
             with col1_vital_2:
                 st.write('<p style="font-size:20px">+</p>', unsafe_allow_html=True)
             with col1_vital_3:
@@ -1045,7 +1169,7 @@ def vital_mental_hp_mp():
             st.write("精神抵抗力")
             col1_mental_1, col1_mental_2, col1_mental_3, col1_mental_4, col1_mental_5, col1_mental_6, col1_mental_7 = st.columns([5,1,5,1,5,1,5], gap="xsmall")
             with col1_mental_1:
-                st.session_state.life_stats_list[1][0] = st.number_input("冒険者レベル+精神力B", value=(main_lv+stats_list[5][5]), disabled=True, label_visibility="collapsed")
+                st.session_state.life_stats_list[1][0] = st.number_input("冒険者レベル+精神力B", value=(main_lv+stats_list[5][6]), disabled=True, label_visibility="collapsed")
             with col1_mental_2:
                 st.write('<p style="font-size:20px">+</p>', unsafe_allow_html=True)
             with col1_mental_3:
@@ -1188,11 +1312,11 @@ def skills():
 def abilitys():
     with st.expander("戦闘特技"):
         with st.container(gap="xxsmall"):
-            col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+            col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
             #自動習得戦闘特技
             if (skill_data["skill"][skills_name_list.index("ファイター")]["lv"] >= 15) or (skill_data["skill"][skills_name_list.index("グラップラー")]["lv"] >= 15) or (skill_data["skill"][skills_name_list.index("バトルダンサー")]["lv"] >= 15):
                 auto_ability_name = "バトルマスター"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1213,7 +1337,7 @@ def abilitys():
                         break
             if skill_data["skill"][skills_name_list.index("ファイター")]["lv"] >= 7:
                 auto_ability_name = "タフネス"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 if st.session_state.hp_buf[3] != 15:
                     st.session_state.hp_buf[3] = 15
                     update_life_stats_list()
@@ -1230,7 +1354,7 @@ def abilitys():
                 st.rerun()
             if skill_data["skill"][skills_name_list.index("グラップラー")]["lv"] >= 1:
                 auto_ability_name = "追加攻撃"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1239,7 +1363,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="1H格闘武器で追加攻撃を行う", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("グラップラー")]["lv"] >= 7:
                 auto_ability_name = "カウンター"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1248,7 +1372,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="近接攻撃に対して命中でカウンターを試みられる", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("バトルダンサー")]["lv"] >= 7:
                 auto_ability_name = "舞い流し"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1257,7 +1381,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="対象:1体の形状:射撃や貫通、突破の抵抗を回避で代用できる", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("スカウト")]["lv"] >= 5:
                 auto_ability_name_list = [["トレジャーハンター", "掠め取り", "クルードテイク"], ["戦利品決定+1", "1H武器でクリティカルした時、クリティカルしない代わりに戦利品決定を行う" ,"戦利品決定の2dを1d×2にする"]]
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name_list[0][0]}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1266,7 +1390,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name_list[0][0]}", value=auto_ability_name_list[1][auto_ability_name_list[0].index(st.session_state.get(f"ability_{auto_ability_name_list[0][0]}", "トレジャーハンター"))], label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("スカウト")]["lv"] >= 7:
                 auto_ability_name = "ファストアクション"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1275,7 +1399,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="先制判定成功時、1ラウンド目の主動作+1回", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("スカウト")]["lv"] >= 9:
                 auto_ability_name = "影走り"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1284,7 +1408,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="移動妨害を受けずに移動できる", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("スカウト")]["lv"] >= 12:
                 auto_ability_name = "トレジャーマスター"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1293,7 +1417,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="戦利品決定+1", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("スカウト")]["lv"] >= 15:
                 auto_ability_name = "匠の技"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1302,7 +1426,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="スカウト技能による判定をいつでも1回振りなおせる", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("レンジャー")]["lv"] >= 5:
                 auto_ability_name_list = [["サバイバビリティ", "掠め取り", "クルードテイク"], ["1日1回自然環境で抵抗力判定を自動成功にできる", "1H武器でクリティカルした時、クリティカルしない代わりに戦利品決定を行う" ,"戦利品決定の2dを1d×2にする"]]
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name_list[0][0]}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1311,7 +1435,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name_list[0][0]}", value=auto_ability_name_list[1][auto_ability_name_list[0].index(st.session_state.get(f"ability_{auto_ability_name_list[0][0]}", "トレジャーハンター"))], label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("レンジャー")]["lv"] >= 7:
                 auto_ability_name = "不屈"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1320,7 +1444,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="生死判定に成功で気絶しない", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("レンジャー")]["lv"] >= 9:
                 auto_ability_name = "ポーションマスター"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1329,7 +1453,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="1ラウンドに1回補助動作でポーションを使用できる", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("レンジャー")]["lv"] >= 12:
                 auto_ability_name = "縮地"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1338,7 +1462,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="全力移動をしても通常移動と同様の行動ができる", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("レンジャー")]["lv"] >= 15:
                 auto_ability_name = "ランアンドガン"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1347,7 +1471,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="通常移動をしても制限移動と同様の行動ができる", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("セージ")]["lv"] >= 5:
                 auto_ability_name_list = [["鋭い目", "掠め取り", "クルードテイク"], ["戦利品決定+1", "1H武器でクリティカルした時、クリティカルしない代わりに戦利品決定を行う" ,"戦利品決定の2dを1d×2にする"]]
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name_list[0][0]}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1356,7 +1480,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name_list[0][0]}", value=auto_ability_name_list[1][auto_ability_name_list[0].index(st.session_state.get(f"ability_{auto_ability_name_list[0][0]}", "トレジャーハンター"))], label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("セージ")]["lv"] >= 7:
                 auto_ability_name = "弱点看破"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1365,7 +1489,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="自身で見抜いた弱点を2倍で適用する", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("セージ")]["lv"] >= 9:
                 auto_ability_name = "マナセーブ"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1374,7 +1498,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="あらゆるMP消費-1", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("セージ")]["lv"] >= 12:
                 auto_ability_name = "マナ耐性"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1383,7 +1507,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="受ける魔法ダメージ-5", label_visibility="collapsed")
             if skill_data["skill"][skills_name_list.index("セージ")]["lv"] >= 15:
                 auto_ability_name = "賢人の知恵"
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("自", value="自", key=f"abi_lv_{auto_ability_name}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1392,7 +1516,7 @@ def abilitys():
                     st.text_input(f"説明_{auto_ability_name}", value="セージ技能による判定をいつでも1回振りなおせる", label_visibility="collapsed")
             #バトルダンサー用追加戦闘特技
             if skill_data["skill"][skills_name_list.index("バトルダンサー")]["lv"] >= 1:
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.text_input("舞", value="舞", key=f"abi_lv舞", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1431,7 +1555,7 @@ def abilitys():
             #1～15用戦闘特技
             for abi_lv in range(1, 16, 2):
                 if abi_lv <= main_lv:
-                    col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                    col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                     with col_ability_1:
                         st.number_input(abi_lv, value=abi_lv, key=f"abi_lv{abi_lv}", disabled=True, label_visibility="collapsed")
                     with col_ability_2:
@@ -1488,7 +1612,7 @@ def abilitys():
             #16,17用戦闘特技
             if main_lv >= 16:
                 abi_lv = 16
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.number_input(abi_lv, value=abi_lv, key=f"abi_lv{abi_lv}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:          
@@ -1534,7 +1658,7 @@ def abilitys():
                 st.session_state.ability_mode[16] = " "
             if main_lv >= 17:
                 abi_lv = 17
-                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xsmall")
+                col_ability_1, col_ability_2, col_ability_3 = st.columns([1,4,6], gap="xxsmall")
                 with col_ability_1:
                     st.number_input(abi_lv, value=abi_lv, key=f"abi_lv{abi_lv}", disabled=True, label_visibility="collapsed")
                 with col_ability_2:
@@ -1688,23 +1812,23 @@ def weapon():
                         with col_weapon_add_damage_2:
                             match weapon_list_buffer[5]:
                                 case "戦":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("ファイター")]["lv"] + stats_list[2][5]       
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("ファイター")]["lv"] + stats_list[2][6]       
                                 case "拳":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("グラップラー")]["lv"] + stats_list[2][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("グラップラー")]["lv"] + stats_list[2][6]
                                 case "舞":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("バトルダンサー")]["lv"] + stats_list[2][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("バトルダンサー")]["lv"] + stats_list[2][6]
                                 case "軽":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("フェンサー")]["lv"] + stats_list[2][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("フェンサー")]["lv"] + stats_list[2][6]
                                 case "射":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("シューター")]["lv"] + stats_list[2][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("シューター")]["lv"] + stats_list[2][6]
                                 case "魔":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("デーモンルーラー")]["lv"] + stats_list[2][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("デーモンルーラー")]["lv"] + stats_list[2][6]
                                 case "練":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("エンハンサー")]["lv"] + stats_list[2][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("エンハンサー")]["lv"] + stats_list[2][6]
                                 case "狩":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("ダークハンター")]["lv"] + stats_list[5][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("ダークハンター")]["lv"] + stats_list[5][6]
                                 case "操":
-                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("フィジカルマスター")]["lv"] + stats_list[2][5]
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("フィジカルマスター")]["lv"] + stats_list[2][6]
                                 case _:
                                     skill_lv_damage = 0
                             weapon_mastery_damage = 0
@@ -1762,7 +1886,7 @@ def weapon():
 @st.fragment
 def armor():
     with st.expander("防具"):
-        col_armor_name, col_armor_exclusive, col_armor_strength, col_armor_avoidance, col_armor_protection, col_armor_other = st.columns([2.9,0.75,1,1,1,6.6], gap="xsmall")
+        col_armor_name, col_armor_exclusive, col_armor_strength, col_armor_avoidance, col_armor_protection, col_armor_other = st.columns([2.9,0.75,1,1,1,6.6], gap="xxsmall")
         with col_armor_name:
             st.write("防具")
         with col_armor_exclusive:
@@ -1782,7 +1906,7 @@ def armor():
         armor_list = [[],[],[],[]]
         with st.container(gap="xxsmall"):
             for i, name in enumerate(["鎧", "盾", "その他"]):
-                col_armor_name, col_armor_exclusive, col_armor_strength, col_armor_avoidance, col_armor_protection, col_armor_cost, col_armor_other = st.columns([3,0.6,1,1,1,1.6,5], gap="xsmall")
+                col_armor_name, col_armor_exclusive, col_armor_strength, col_armor_avoidance, col_armor_protection, col_armor_cost, col_armor_other = st.columns([3,0.6,1,1,1,1.6,5], gap="xxsmall")
                 with col_armor_name:
                     armor_list[i].append(st.text_input(f"{name}名称", placeholder=name, label_visibility="collapsed", key=f"armor_{i}_0"))
                 with col_armor_exclusive:
@@ -1854,7 +1978,7 @@ def armor():
 @st.fragment
 def equipment():
     with st.expander("装飾品"):
-        col_equipment_part, col_equipment_name, col_equipment_exclusive, col_equipment_cost, col_equipment_other, col_equipment_buf, col_equipment_add = st.columns([0.7,2,1,1,3,1,0.3], gap="xsmall")
+        col_equipment_part, col_equipment_name, col_equipment_exclusive, col_equipment_cost, col_equipment_other, col_equipment_buf, col_equipment_add = st.columns([0.7,2,1,1,3,1,0.3], gap="xxsmall")
         with col_equipment_part:
             st.write()
         with col_equipment_name:
@@ -1877,7 +2001,7 @@ def equipment():
                 i = 0
                 while(equipment_add_check):
                     equipment_list_buffer_2 = []
-                    col_equipment_part2, col_equipment_name2, col_equipment_exclusive2, col_equipment_cost2, col_equipment_other2, col_equipment_buf2, col_equipment_add2 = st.columns([0.7,2,1,1,3,1,0.3], gap="xsmall")
+                    col_equipment_part2, col_equipment_name2, col_equipment_exclusive2, col_equipment_cost2, col_equipment_other2, col_equipment_buf2, col_equipment_add2 = st.columns([0.7,2,1,1,3,1,0.3], gap="xxsmall")
                     with col_equipment_part2:
                         if(i == 0):
                             st.write(f"{part}")
@@ -1912,7 +2036,7 @@ def equipment():
 @st.fragment(key="fragment_item")
 def item_func():
     with st.expander("所持品・所持金"):
-        col_item_name, col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([3,1,1,1,5], gap="xsmall")
+        col_item_name, col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([3,1,1,1,5], gap="xxsmall")
         with col_item_name:
             st.write("名称")
         with col_item_cost:
@@ -1935,7 +2059,7 @@ def item_func():
             with col_item_another:
                 with st.container(gap="xxsmall"):
                     for i ,i_list in enumerate(new_list):
-                        col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([1,1,1,5], gap="xsmall")
+                        col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([1,1,1,5], gap="xxsmall")
                         with col_item_cost:
                             st.text_input(f"所持品{i}単価ex", value=i_list[1], label_visibility="collapsed", disabled=True)
                         with col_item_get:
@@ -1952,7 +2076,7 @@ def item_func():
             with st.container(gap="xxsmall"):
                 for i in range(st.session_state.item_list_num):
                     item_list_buffer = []
-                    col_item_name, col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([3,1,1,1,5], gap="xsmall")
+                    col_item_name, col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([3,1,1,1,5], gap="xxsmall")
                     with col_item_name:
                         item_list_buffer.append(st.text_input(f"所持品{i}名称", label_visibility="collapsed", key=f"item_{i}_0"))
                     with col_item_cost:
@@ -1994,7 +2118,7 @@ def other_stats_func():
             mamotiki_placeholder_4 = st.empty()
             mamotiki_placeholder_5 = st.empty()
             mamotiki_0 = skill_data["skill"][skills_name_list.index(mamotiki_skill_list[st.selectbox("魔物知識", options=mamotiki_skill_list, label_visibility="hidden", key="mamotiki_skill")])]["lv"]
-            mamotiki_0 = ((mamotiki_0 + stats_list[4][5]) if mamotiki_0 != 0 else 0) + st.session_state.equipment_buf[13]
+            mamotiki_0 = ((mamotiki_0 + stats_list[4][6]) if mamotiki_0 != 0 else 0) + st.session_state.equipment_buf[13]
             mamotiki_1 = mamotiki_placeholder_1.number_input("魔物知識", value=(mamotiki_0), step=1, disabled=True, label_visibility="visible")
             mamotiki_placeholder_2.write('<p style="font-size:20px"><br>+</p>', unsafe_allow_html=True)
             mamotiki_2 = mamotiki_placeholder_3.number_input("魔知_補", value=0, step=1, label_visibility="hidden", key="mamotiki_buf")
@@ -2013,9 +2137,9 @@ def other_stats_func():
             sensei_0 = skill_data["skill"][skills_name_list.index(sensei_skill_list[st.selectbox("先制力", options=sensei_skill_list, label_visibility="hidden", key="sensei_skill")])]["lv"]
             if sensei_0 != 0:
                 if (gunti and (st.session_state["sensei_skill"] == "軍")):
-                    sensei_0 = sensei_0 + stats_list[4][5] +1
+                    sensei_0 = sensei_0 + stats_list[4][6] +1
                 else:
-                    sensei_0 = sensei_0 + stats_list[1][5]
+                    sensei_0 = sensei_0 + stats_list[1][6]
             sensei_1 = sensei_placeholder_1.number_input("先制力", value=(sensei_0), step=1, disabled=True, label_visibility="visible")
             sensei_placeholder_2.write('<p style="font-size:20px"><br>+</p>', unsafe_allow_html=True)
             sensei_2 = sensei_placeholder_3.number_input("先制_補", value=0, step=1, label_visibility="hidden", key="sensei_buf")
@@ -2048,16 +2172,11 @@ def language_func():
                         col2_language_name_1, col2_language_name_2 = st.columns([1,2], gap="xxsmall")
                         with col2_language_name_1:
                             first_language_list_buffer.append(st.selectbox(f"言語{i}", options=language_name_list, label_visibility="collapsed", disabled=True, key=f"first_language_selectbox_{i}"))
-                            # if (first_language_list_buffer[0] != "地方語") and (first_language_list_buffer[0] != "自由記入"):
-                            #     st.rerun("fragment")
                         with col2_language_name_2:
                             first_language_list_buffer.append(st.text_input("", placeholder="ここに入力", label_visibility="collapsed", key=f"first_language_free_{i}"))
                     else:
                         first_language_list_buffer.append(st.selectbox(f"言語{i}", options=language_name_list, label_visibility="collapsed", disabled=True, key=f"first_language_selectbox_{i}"))
-                        # if (first_language_list_buffer[0] == "地方語") or (first_language_list_buffer[0] == "自由記入"):
-                        #     st.rerun("fragment")
                         first_language_list_buffer.append("")
-
                 with col_language_talk_2:
                     if (first_language_list_buffer[0] != " ") and (first_language_list_buffer[0] != "地方語") and (first_language_list_buffer[0] != "自由記入"):
                         language_exist = not language_data["language"][language_name_list.index(first_language_list_buffer[0])-1]["exist"][0]
@@ -2071,6 +2190,65 @@ def language_func():
                         language_exist = False
                     first_language_list_buffer.append(st.checkbox(f"初期読文{i}", value=first_language[i][2], label_visibility="collapsed", disabled=language_exist, key=f"first_language_exist_read_{i}"))
                 first_language_list.append(first_language_list_buffer)
+                #ナイトメア専用処理
+                if ((race__ == "ナイトメア") and (race != " ")):
+                    first_language_list_buffer = []
+                    col_language_name_2, col_language_talk_2, col_language_read_2 = st.columns([6,1.5,1.5])
+                    with col_language_name_2:
+                        if ((race == "人間")):
+                            col2_language_name_1, col2_language_name_2 = st.columns([1,2], gap="xxsmall")
+                            with col2_language_name_1:
+                                first_language_list_buffer.append(st.selectbox(f"言語{1}", options=language_name_list, label_visibility="collapsed", disabled=True, key=f"first_language_selectbox_1"))
+                            with col2_language_name_2:
+                                first_language_list_buffer.append(st.text_input("", placeholder="ここに入力", label_visibility="collapsed", key=f"first_language_free_1"))
+                        else:
+                            first_language_list_buffer.append(st.selectbox(f"言語{1}", options=language_name_list, label_visibility="collapsed", disabled=True, key=f"first_language_selectbox_1"))
+                            first_language_list_buffer.append("")
+                    with col_language_talk_2:
+                        if (first_language_list_buffer[0] != " ") and (first_language_list_buffer[0] != "地方語") and (first_language_list_buffer[0] != "自由記入"):
+                            language_exist = not language_data["language"][language_name_list.index(first_language_list_buffer[0])-1]["exist"][0]
+                        else:
+                            language_exist = False
+                        first_language_list_buffer.append(st.checkbox(f"初期会話{1}", label_visibility="collapsed", disabled=language_exist, key=f"first_language_exist_talk_{1}"))
+                    with col_language_read_2:
+                        if (first_language_list_buffer[0] != " ") and (first_language_list_buffer[0] != "地方語") and (first_language_list_buffer[0] != "自由記入"):
+                            language_exist = not language_data["language"][language_name_list.index(first_language_list_buffer[0])-1]["exist"][1]
+                        else:
+                            language_exist = False
+                        first_language_list_buffer.append(st.checkbox(f"初期読文{1}", label_visibility="collapsed", disabled=language_exist, key=f"first_language_exist_read_{1}"))
+                    first_language_list.append(first_language_list_buffer)
+                #フロウライト専用処理
+                if race__ == "フロウライト":
+                    first_language_list_buffer = []
+                    col_language_name_2, col_language_talk_2, col_language_read_2 = st.columns([6,1.5,1.5])
+                    with col_language_name_2:
+                        if ((st.session_state.first_language_selectbox_1 == "地方語") or (st.session_state.first_language_selectbox_1 == "自由記入")):
+                            col2_language_name_1, col2_language_name_2 = st.columns([1,2], gap="xxsmall")
+                            with col2_language_name_1:
+                                first_language_list_buffer.append(st.selectbox(f"言語{1}", options=language_name_list, label_visibility="collapsed", disabled=False, key=f"first_language_selectbox_1"))
+                            with col2_language_name_2:
+                                first_language_list_buffer.append(st.text_input("", placeholder="ここに入力", label_visibility="collapsed", key=f"first_language_free_1"))
+                        else:
+                            first_language_list_buffer.append(st.selectbox(f"言語{1}", options=language_name_list, label_visibility="collapsed", disabled=False, key=f"first_language_selectbox_1"))
+                            first_language_list_buffer.append("")
+                    with col_language_talk_2:
+                        if (first_language_list_buffer[0] != " ") and (first_language_list_buffer[0] != "地方語") and (first_language_list_buffer[0] != "自由記入"):
+                            language_exist = not language_data["language"][language_name_list.index(first_language_list_buffer[0])-1]["exist"][0]
+                        else:
+                            language_exist = False
+                        if language_exist:
+                            st.session_state.first_language_exist_talk_1 = False
+                        first_language_list_buffer.append(st.checkbox(f"初期会話{1}", label_visibility="collapsed", disabled=language_exist, key=f"first_language_exist_talk_{1}"))
+                    with col_language_read_2:
+                        if (first_language_list_buffer[0] != " ") and (first_language_list_buffer[0] != "地方語") and (first_language_list_buffer[0] != "自由記入"):
+                            language_exist = not language_data["language"][language_name_list.index(first_language_list_buffer[0])-1]["exist"][1]
+                        else:
+                            language_exist = False
+                        if language_exist:
+                            st.session_state.first_language_exist_talk_1 = False
+                        first_language_list_buffer.append(st.checkbox(f"初期読文{1}", label_visibility="collapsed", disabled=language_exist, key=f"first_language_exist_read_{1}"))
+                    first_language_list.append(first_language_list_buffer)
+     
             all_language_list.append(first_language_list)
         #自動習得言語
         #魔法文明語
@@ -2141,12 +2319,16 @@ def language_func():
                     language_exist = not language_data["language"][language_name_list.index(language_list_buffer[0])-1]["exist"][0]
                 else:
                     language_exist = False
+                    if language_exist:
+                        st.session_state.first_language_exist_talk_1 = False
                 language_list_buffer.append(st.checkbox(f"会話{i}", label_visibility="collapsed", disabled=language_exist, key=f"language_exist_talk_{i}"))
             with col_language_read_2:
                 if (language_list_buffer[0] != " ") and (language_list_buffer[0] != "地方語") and (language_list_buffer[0] != "自由記入"):
                     language_exist = not language_data["language"][language_name_list.index(language_list_buffer[0])-1]["exist"][1]
                 else:
                     language_exist = False
+                    if language_exist:
+                        st.session_state.first_language_exist_talk_1 = False
                 language_list_buffer.append(st.checkbox(f"読文{i}", label_visibility="collapsed", disabled=language_exist, key=f"language_exist_read_{i}"))
             language_list.append(language_list_buffer)
         all_language_list.append(language_list)
@@ -2207,14 +2389,14 @@ def maryoku_func():
                     with col_maryoku_buf_2:
                         maryoku_list[1] = st.number_input(f"{name}_魔力補正", step=1, label_visibility="collapsed", key=f"maryoku_{name}_1")
                     with col_maryoku_buf_3:
-                        maryoku_list[2] = skill_data["skill"][skills_name_list.index(name)]["lv"] + stats_list[4][5] + maryoku_list[1] + maryoku_list_all[0] + (race_prist_buf if name == "プリースト" else 0)
+                        maryoku_list[2] = skill_data["skill"][skills_name_list.index(name)]["lv"] + stats_list[4][6] + maryoku_list[1] + maryoku_list_all[0] + (race_prist_buf if name == "プリースト" else 0)
                         st.write(f"= {maryoku_list[2]}")
                 with col_maryoku_kousi_1:
                     col_maryoku_kousi_2, col_maryoku_kousi_3 = st.columns([2,1], gap="xsmall")
                     with col_maryoku_kousi_2:
                         maryoku_list[3] = st.number_input(f"{name}_行使補正", step=1, label_visibility="collapsed", key=f"maryoku_{name}_3")
                     with col_maryoku_kousi_3:
-                        st.write(f"= {(skill_data["skill"][skills_name_list.index(name)]["lv"] + int((stats_list[4][3]+stats_list[4][4]+(2 if maryoku_list[0] else 0))/6) + maryoku_list[1] + maryoku_list[3] + maryoku_list_all[1] + (race_prist_buf if name == "プリースト" else 0))}")
+                        st.write(f"= {(skill_data["skill"][skills_name_list.index(name)]["lv"] + int((stats_list[4][3]+stats_list[4][4]+stats_list[4][5]+(2 if maryoku_list[0] else 0))/6) + maryoku_list[1] + maryoku_list[3] + maryoku_list_all[1] + (race_prist_buf if name == "プリースト" else 0))}")
                 with col_maryoku_damage_1:
                     col_maryoku_damage_2, col_maryoku_damage_3 = st.columns([2,1], gap="xsmall")
                     with col_maryoku_damage_2:
@@ -2236,14 +2418,14 @@ def maryoku_func():
                         with col_maryoku_buf_2:
                             maryoku_list[1] = st.number_input(f"ウィザード_魔力補正", step=1, label_visibility="collapsed", key="maryoku_ウィザード_1")
                         with col_maryoku_buf_3:
-                            maryoku_list[2] = max_maryoku + stats_list[4][5] + maryoku_list[1] + maryoku_list_all[0]
+                            maryoku_list[2] = max_maryoku + stats_list[4][6] + maryoku_list[1] + maryoku_list_all[0]
                             st.write(f"= {maryoku_list[2]}")
                     with col_maryoku_kousi_1:
                         col_maryoku_kousi_2, col_maryoku_kousi_3 = st.columns([2,1], gap="xsmall")
                         with col_maryoku_kousi_2:
                             maryoku_list[3] = st.number_input(f"ウィザード_行使補正", step=1, label_visibility="collapsed", key="maryoku_ウィザード_3")
                         with col_maryoku_kousi_3:
-                            st.write(f"= {(max_maryoku + int((stats_list[4][3]+stats_list[4][4]+(2 if maryoku_list[0] else 0))/6) + maryoku_list[1] + maryoku_list[3] + maryoku_list_all[1])}")
+                            st.write(f"= {(max_maryoku + int((stats_list[4][3]+stats_list[4][4]+stats_list[4][5]+(2 if maryoku_list[0] else 0))/6) + maryoku_list[1] + maryoku_list[3] + maryoku_list_all[1])}")
                     with col_maryoku_damage_1:
                         col_maryoku_damage_2, col_maryoku_damage_3 = st.columns([2,1], gap="xsmall")
                         with col_maryoku_damage_2:
@@ -2254,7 +2436,7 @@ def maryoku_func():
                 #フェアテ契約
                 if name == "フェアリーテイマー":
                     fairy_contract_list = [0] * 6
-                    col_fairy_rank, col_fairy_stone, col_fairy_water, col_fairy_fire, col_fairy_wind, col_fairy_light, col_fairy_dark = st.columns([2,1,1.2,1,1,1,1], width=500, gap="xsmall")
+                    col_fairy_rank, col_fairy_stone, col_fairy_water, col_fairy_fire, col_fairy_wind, col_fairy_light, col_fairy_dark = st.columns([2,1,1.2,1,1,1,1], width=500, gap="xsmall", vertical_alignment="center")
                     with col_fairy_stone:
                         fairy_contract_list[0] = st.checkbox("土", key="fairy_contract_0")
                     with col_fairy_water:
@@ -2326,7 +2508,7 @@ def rengi_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("エンハンサー")]["lv"]):
             i = i + 1
-            col_rengi_lv, col_rengi_name, col_rengi_other = st.columns([1,4,6], gap="xsmall")
+            col_rengi_lv, col_rengi_name, col_rengi_other = st.columns([1,4,6], gap="xxsmall")
             with col_rengi_lv:
                 st.number_input(f"練技lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_rengi_name:
@@ -2341,7 +2523,7 @@ def rengi_func():
 @st.fragment
 def add_juka_func(add_juka):
     juka_list_buffer = []
-    col_juka_lv_0, col_juka_name_0, col_juka_need_0, col_juka_create_0, col_juka_advanced_0, col_juka_other_0 = st.columns([1,3,1.2,1.2,1.2,3.4], gap="xsmall")
+    col_juka_lv_0, col_juka_name_0, col_juka_need_0, col_juka_create_0, col_juka_advanced_0, col_juka_other_0 = st.columns([1,3,1.2,1.2,1.2,3.4], gap="xxsmall")
     with col_juka_lv_0:
         st.empty()
     with col_juka_name_0:
@@ -2358,7 +2540,7 @@ def add_juka_func(add_juka):
         with st.container(gap="xxsmall"):
             for i in range(add_juka):
                 i = i + 1
-                col_juka_lv_1, col_juka_name_1, col_juka_need_1, col_juka_create_1, col_juka_advanced_1, col_juka_other_1 = st.columns([1,3,1.2,1.2,1.2,3.4], gap="xsmall")
+                col_juka_lv_1, col_juka_name_1, col_juka_need_1, col_juka_create_1, col_juka_advanced_1, col_juka_other_1 = st.columns([1,3,1.2,1.2,1.2,3.4], gap="xxsmall")
                 with col_juka_lv_1:
                     st.text_input(f"追加呪歌_lv_{i}", value="追", label_visibility="collapsed", disabled=True)
                 with col_juka_name_1:
@@ -2382,7 +2564,7 @@ def juka_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("バード")]["lv"]):
             i = i + 1
-            col_juka_lv_1, col_juka_name_1, col_juka_need_1, col_juka_create_1, col_juka_advanced_1, col_juka_other_1 = st.columns([1,3,1.2,1.2,1.2,3.4], gap="xsmall")
+            col_juka_lv_1, col_juka_name_1, col_juka_need_1, col_juka_create_1, col_juka_advanced_1, col_juka_other_1 = st.columns([1,3,1.2,1.2,1.2,3.4], gap="xxsmall")
             with col_juka_lv_1:
                 st.number_input(f"呪歌_lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_juka_name_1:
@@ -2406,7 +2588,7 @@ def kigei_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("ライダー")]["lv"]):
             i = i + 1
-            col_kigei_lv_0, col_kigei_name_0, col_kigei_other_0 = st.columns([1,4,6], gap="xsmall")
+            col_kigei_lv_0, col_kigei_name_0, col_kigei_other_0 = st.columns([1,4,6], gap="xxsmall")
             with col_kigei_lv_0:
                 st.number_input(f"騎芸lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_kigei_name_0:
@@ -2421,7 +2603,7 @@ def kigei_func():
 @st.fragment
 def hujutu_func():
     hujutu_list_buffer = []
-    col_hujutu_lv_0, col_hujutu_name_0, col_hujutu_need_0, col_hujutu_other_0, col_hujutu_BASSS_0 = st.columns([1,3,1,4,2], gap="xsmall")
+    col_hujutu_lv_0, col_hujutu_name_0, col_hujutu_need_0, col_hujutu_other_0, col_hujutu_BASSS_0 = st.columns([1,3,1,4,2], gap="xxsmall")
     with col_hujutu_lv_0:
         st.empty()
     with col_hujutu_name_0:
@@ -2435,7 +2617,7 @@ def hujutu_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("アルケミスト")]["lv"]):
             i = i + 1
-            col_hujutu_lv_1, col_hujutu_name_1, col_hujutu_need_1, col_hujutu_other_1, col_hujutu_BASSS_1 = st.columns([1,3,1,4,2], gap="xsmall")
+            col_hujutu_lv_1, col_hujutu_name_1, col_hujutu_need_1, col_hujutu_other_1, col_hujutu_BASSS_1 = st.columns([1,3,1,4,2], gap="xxsmall")
             with col_hujutu_lv_1:
                 st.number_input(f"賦術_lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_hujutu_name_1:
@@ -2457,7 +2639,7 @@ def souiki_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("ジオマンサー")]["lv"]):
             i = i + 1
-            col_souiki_lv, col_souiki_name, col_souiki_need, col_souiki_other = st.columns([1,3.5,1.5,5], gap="xsmall")
+            col_souiki_lv, col_souiki_name, col_souiki_need, col_souiki_other = st.columns([1,3.5,1.5,5], gap="xxsmall")
             with col_souiki_lv:
                 st.number_input(f"相域lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_souiki_name:
@@ -2477,7 +2659,7 @@ def add_kohou_func(add_kohou):
     with st.container(gap="xxsmall"):
         for i in range(add_kohou):
             i = i + 1
-            col_kohou_lv, col_kohou_name, col_kohou_jinki, col_kohou_other = st.columns([1,4,1,5], gap="xsmall")
+            col_kohou_lv, col_kohou_name, col_kohou_jinki, col_kohou_other = st.columns([1,4,1,5], gap="xxsmall")
             with col_kohou_lv:
                 st.text_input(f"追加鼓咆lv_{i}", value="追", label_visibility="collapsed", disabled=True)
             with col_kohou_name:
@@ -2497,7 +2679,7 @@ def kohou_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("ウォーリーダー")]["lv"]):
             i = i + 1
-            col_kohou_lv, col_kohou_name, col_kohou_jinki, col_kohou_other = st.columns([1,4,1,5], gap="xsmall")
+            col_kohou_lv, col_kohou_name, col_kohou_jinki, col_kohou_other = st.columns([1,4,1,5], gap="xxsmall")
             with col_kohou_lv:
                 st.number_input(f"鼓咆lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_kohou_name:
@@ -2517,7 +2699,7 @@ def souki_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("ダークハンター")]["lv"]):
             i = i + 1
-            col_souki_lv, col_souki_name, col_souki_hp, col_souki_other = st.columns([1,4,1,5], gap="xsmall")
+            col_souki_lv, col_souki_name, col_souki_hp, col_souki_other = st.columns([1,4,1,5], gap="xxsmall")
             with col_souki_lv:
                 st.number_input(f"操気lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_souki_name:
@@ -2537,7 +2719,7 @@ def masou_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("フィジカルマスター")]["lv"]):
             i = i + 1
-            col_masou_lv, col_masou_name, col_masou_other = st.columns([1,4,6], gap="xsmall")
+            col_masou_lv, col_masou_name, col_masou_other = st.columns([1,4,6], gap="xxsmall")
             with col_masou_lv:
                 st.number_input(f"魔装lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_masou_name:
@@ -2574,20 +2756,25 @@ def sendou_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("ミスティック")]["lv"]):
             i = i + 1
-            col_sendou_lv, col_sendou_name, col_sendou_tool, col_sendou_other = st.columns([1,4,1.3,4.7], gap="xxsmall")
+            col_sendou_lv, col_sendou_name, col_sendou_stats, col_sendou_other, col_sendou_effect = st.columns([0.8,4,1.2,3.9,1.2], gap="xxsmall")
             with col_sendou_lv:
                 st.number_input(f"占瞳lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_sendou_name:
                 sendou_list_now = [" "] + [data["name"] for data in sendou_list if data["required_lv"]<=i]
                 sendou = st.selectbox(f"占瞳_{i}", options=sendou_list_now, label_visibility="collapsed", key=f"mystic_{(i-1)}")
                 sendou_list_buffer.append(sendou)
-            with col_sendou_tool:
+            with col_sendou_stats:
                 st.text_input(f"占瞳能力値_{i}", value=(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["stats"] if sendou != " " else ""), label_visibility="collapsed")
             with col_sendou_other:
                 st.text_input(f"占瞳説明_{i}", value=(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["explanation"] if sendou != " " else ""), label_visibility="collapsed")
-            col_sendou_lv, col_sendou_effect = st.columns([1,10], gap="xxsmall")
             with col_sendou_effect:
-                st.text_input(f"占瞳効果_{i}", value=(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["effect"] if sendou != " " else ""), label_visibility="collapsed")
+                with st.popover("効果"):
+                    if sendou != " ":
+                        st.table(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["effect"], hide_header=True)
+
+            # col_sendou_lv, col_sendou_effect = st.columns([1,10], gap="xxsmall")
+            # with col_sendou_effect:
+            #     st.text_input(f"占瞳効果_{i}", value=(sendou_list[[data["name"] for data in sendou_list].index(sendou)]["effect"] if sendou != " " else ""), label_visibility="collapsed")
     return sendou_list_buffer
 
 #呪印
@@ -2597,7 +2784,7 @@ def juin_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("アーティザン")]["lv"]):
             i = i + 1
-            col_juin_lv, col_juin_name, col_juin_hp, col_juin_other = st.columns([1,3,2,5], gap="xsmall")
+            col_juin_lv, col_juin_name, col_juin_hp, col_juin_other = st.columns([1,3,2,5], gap="xxsmall")
             with col_juin_lv:
                 st.number_input(f"呪印lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_juin_name:
@@ -2617,7 +2804,7 @@ def kikaku_func():
     with st.container(gap="xxsmall"):
         for i in range(skill_data["skill"][skills_name_list.index("アリストクラシー")]["lv"]):
             i = i + 1
-            col_kikaku_lv, col_kikaku_name, col_kikaku_other = st.columns([1,4,6], gap="xsmall")
+            col_kikaku_lv, col_kikaku_name, col_kikaku_other = st.columns([1,4,6], gap="xxsmall")
             with col_kikaku_lv:
                 st.number_input(f"貴格lv_{i}", value=i, label_visibility="collapsed", disabled=True)
             with col_kikaku_name:
@@ -2633,7 +2820,7 @@ def kikaku_func():
 def honor_func():
     with st.expander("名誉点"):
         honor_list = [["", 0, ""],[]]
-        col_honor_name, col_honor_point, col_honor_other = st.columns([2.5,1,5], gap="xsmall")
+        col_honor_name, col_honor_point, col_honor_other = st.columns([2.5,1,5], gap="xxsmall")
         with col_honor_name:
             st.write("名誉アイテム")
         with col_honor_point:
@@ -2641,7 +2828,7 @@ def honor_func():
         with col_honor_other:
             st.write("メモ")
         with st.container(gap="xxsmall"):
-            col_honor_name, col_honor_point, col_honor_other = st.columns([2.5,1,5], gap="xsmall")
+            col_honor_name, col_honor_point, col_honor_other = st.columns([2.5,1,5], gap="xxsmall")
             with col_honor_name:
                 honor_list[0][0] = st.text_input("冒険者ランク", placeholder="冒険者ランク", label_visibility="collapsed", key="honor_rank_0")
             with col_honor_point:
@@ -2660,7 +2847,7 @@ def honor_func():
                 with col_honor_another:
                     with st.container(gap="xxsmall"):
                         for i, i_list in enumerate(new_list):
-                            col_honor_point, col_honor_other = st.columns([1,5], gap="xsmall")
+                            col_honor_point, col_honor_other = st.columns([1,5], gap="xxsmall")
                             with col_honor_point:
                                 st.text_input(f"名誉点数{i}ex", value=i_list[1], label_visibility="collapsed", disabled=True)
                             with col_honor_other:
@@ -2671,7 +2858,7 @@ def honor_func():
             else:
                 for i in range(st.session_state.honor_list_num):
                     honor_list_buffer = []
-                    col_honor_name, col_honor_point, col_honor_other = st.columns([2.5,1,5], gap="xsmall")
+                    col_honor_name, col_honor_point, col_honor_other = st.columns([2.5,1,5], gap="xxsmall")
                     with col_honor_name:
                         honor_list_buffer.append(st.text_input(f"名誉アイテム{i}", label_visibility="collapsed", key=f"honor_{i}_0"))
                     with col_honor_point:
@@ -2691,7 +2878,7 @@ def honor_func():
 @st.fragment()
 def history():
     with st.expander("セッション履歴"):
-        col_history_date0, col_history_exp0, col_history_pinzoro0, col_history_money0, col_history_honor0, col_history_growth0, col_history_other0, col_history_fool0 = st.columns([1,1.2,0.8,1.2,0.9,1.5,2.5,0.3], gap="xsmall")
+        col_history_date0, col_history_exp0, col_history_pinzoro0, col_history_money0, col_history_honor0, col_history_growth0, col_history_other0, col_history_fool0 = st.columns([1,1.2,0.8,1.2,0.9,1.5,2.5,0.3], gap="xxsmall")
         with col_history_date0:
             st.write("日付")
         with col_history_exp0:
@@ -2718,7 +2905,7 @@ def history():
             with col_history_another:
                 with st.container(gap="xxsmall"):
                     for i, i_list in enumerate(new_list):
-                        col_history_exp1, col_history_pinzoro1, col_history_money1, col_history_honor1, col_history_growth1, col_history_other1, col_history_fool1 = st.columns([1.2,0.8,1.2,0.9,1.5,2.5,0.3], gap="xsmall")
+                        col_history_exp1, col_history_pinzoro1, col_history_money1, col_history_honor1, col_history_growth1, col_history_other1, col_history_fool1 = st.columns([1.2,0.8,1.2,0.9,1.5,2.5,0.3], gap="xxsmall")
                         with col_history_exp1:
                             st.text_input(f"履歴{i}経験点ex", value=i_list[1], label_visibility="collapsed", disabled=True)
                         with col_history_pinzoro1:
@@ -2741,7 +2928,7 @@ def history():
             with st.container(gap="xxsmall"):
                 for i in range(st.session_state.history_list_num):
                     history_list_buffer = []
-                    col_history_date1, col_history_exp1, col_history_pinzoro1, col_history_money1, col_history_honor1, col_history_growth1, col_history_other1, col_history_fool1 = st.columns([1,1.2,0.8,1.2,0.9,1.5,2.5,0.3], gap="xsmall")
+                    col_history_date1, col_history_exp1, col_history_pinzoro1, col_history_money1, col_history_honor1, col_history_growth1, col_history_other1, col_history_fool1 = st.columns([1,1.2,0.8,1.2,0.9,1.5,2.5,0.3], gap="xxsmall")
                     with col_history_date1:
                         history_list_buffer.append(st.text_input(f"セッション履歴{i}日付", label_visibility="collapsed", key=f"history_{i}_0"))
                     with col_history_exp1:
@@ -2771,7 +2958,7 @@ def history():
             with st.container(gap=0):
                 st.button("項目入れ替えモード", on_click=history_exchange_start, args=(history_list,), key="history_exchange")
                 st.divider()
-                col_history_date2, col_history_exp2, col_history_pinzoro2, col_history_money2, col_history_honor2, col_history_growth2, col_history_other2  = st.columns([1,1.2,0.8,1.2,0.9,1.2,3.1], gap="xsmall",)
+                col_history_date2, col_history_exp2, col_history_pinzoro2, col_history_money2, col_history_honor2, col_history_growth2, col_history_other2  = st.columns([1,1.2,0.8,1.2,0.9,1.2,3.1], gap="xxsmall",)
                 with col_history_date2:
                     st.write(f"##### 合計")
                 with col_history_exp2:
@@ -2822,9 +3009,44 @@ def new_data_save_dialog():
                     conn.close()
                     st.session_state.edit_id = id_list[len(id_list)-1][0]
                     st.session_state.edit_mode = True
+                    textbox.success("新規保存に成功しました。")
+                    time.sleep(3)
                     st.rerun()
                 else:
                     textbox.error("パスワードが入力されていません。")
+                    
+#上書き保存ダイアログ
+@st.dialog("上書き保存確認")
+def update_data_save_dialog():
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT id, password FROM sheet_data WHERE id == ?", (st.session_state.edit_id, ))
+    raw_data = c.fetchall()
+    conn.close()
+    for id_data, password_data in raw_data:
+        password = password_data
+        break
+    with st.form("update_data_save_dialog", enter_to_submit=False):
+        textbox = st.empty()
+        textbox.info("パスワードを入力してください。")
+        input_password = st.text_input("パスワードを入力してください", type="password", label_visibility="collapsed")
+        with st.container(horizontal_alignment="right"):
+            if st.form_submit_button("完了", key="password_ok"):
+                hash_input_password = hashlib.sha256(input_password.encode('utf-8')).hexdigest()
+                if hash_input_password == password:
+                    save_data = create_save_data()
+                    json_save = json.dumps(save_data, ensure_ascii=False, indent=0).encode('utf-8')
+                    now = datetime.now()
+                    conn = get_connection()
+                    c = conn.cursor()
+                    c.execute("UPDATE sheet_data SET pc_name = ?, pl_name = ?, main_lv = ?, update_date = ?, json = ? WHERE id = ?", (name_pc, name_pl, main_lv, now.date(), json_save, st.session_state.edit_id,))
+                    conn.commit()
+                    conn.close()
+                    textbox.success("上書き保存に成功しました。")
+                    time.sleep(3)
+                    st.rerun()
+                else:
+                    textbox.error("パスワードが違います。  \nもう一度入力してください。")
 
 #シート一覧に戻るダイアログ
 @st.dialog("シート一覧に戻る")
@@ -2851,13 +3073,14 @@ def data_clear_dialog():
             elif st.form_submit_button("いいえ", key="data_clear_no"):
                 st.rerun()
 
-
+def on_upload_file():
+    st.session_state.file_upload_flag = True
 
 ###表示###
 #タイトル
-st.title("sw2.5 キャラシ作成")
+st.header("sw2.5 キャラシ作成")
 #キャラクター情報
-name_pc, name_pl, race__, race, feature, age, gender, brand, born__, born, born_dice, first_stats_list, race_mp_buf, race_mental_buf, race_accuracy_buf, race_physical_damage_buf, race_protection_buf, race_magic_buf, race_kousi_buf, race_magic_damage_buf, race_prist_buf = charactor()
+name_pc, name_pl, race__, race, feature, age, gender, brand, born__, born, born_dice, first_stats_list, race_stats_buf, race_mp_buf, race_mental_buf, race_accuracy_buf, race_physical_damage_buf, race_protection_buf, race_magic_buf, race_kousi_buf, race_magic_damage_buf, race_prist_buf = charactor()
 
 #能力値タブ
 with st.expander("能力値"):
@@ -2961,35 +3184,116 @@ honor_list = honor_func()
 history_list = history()
 memo()
 
-#サイドバーの表示
+@st.fragment
+def dice_roll():
+    with st.container(horizontal=True, vertical_alignment="center"):
+        if st.button("2d", key="button_2d"):
+            d6_1 = random.randrange(start=1, stop=7, step=1)
+            d6_2 = random.randrange(start=1, stop=7, step=1)
+            st.write(f"[{d6_1},{d6_2}] = {(d6_1+d6_2)}")
+            st.session_state.dice_history.append(f"2d：[{d6_1},{d6_2}] = {(d6_1+d6_2)}")
+    with st.container(horizontal=True, vertical_alignment="center"):
+        if st.button("1d", key="button_1d"):
+            d6_1 = random.randrange(start=1, stop=7, step=1)
+            st.write(f"[{d6_1}] = {d6_1}")
+            st.session_state.dice_history.append(f"1d：[{d6_1}] = {d6_1}")
+    with st.container(gap="xxsmall"):
+        col_his, col_delete = st.columns([1,1], vertical_alignment="center")
+        with col_his:
+            st.write("ダイス履歴")
+        with col_delete:
+            with st.container(horizontal_alignment="right"):
+                if st.button("履歴削除", type="tertiary", key="dice_history_delete"):
+                    st.session_state.dice_history = []
+        for dice_his in reversed(st.session_state.dice_history):
+            st.write(dice_his)
+        
+
+@st.fragment
+def born_dice_roll(race__, race, born_dice):
+    if race__ == "センティアン":
+        st.write(f"種族:{race__}({race})")
+    else:
+        st.write(f"種族:{race__}")
+    born_dice_list = [["2d","2d","2d","2d","2d","2d"],[0,0,0,0,0,0]]
+    born_dice_str = ""
+    for i in range(6):
+        if (born_dice[1][i] - born_dice[0][i]) == 10:
+            born_dice_list[0][i] = "2d"
+            born_dice_list[1][i] = born_dice[0][i] - 2
+        elif (born_dice[1][i] - born_dice[0][i]) == 5:
+            born_dice_list[0][i] = "1d"
+            born_dice_list[1][i] = born_dice[0][i] - 1
+        born_dice_str += born_dice_list[0][i]
+        born_dice_str += f"+{born_dice_list[1][i]}" if born_dice_list[1][i] != 0 else ""
+        born_dice_str += " ," if i != 5 else ""
+    born_dice_str
+    if st.button("生まれダイスを振る", key="born_dice_button"):
+        dice_result = [[""]*7,[0]*6]
+        stats_sum = dice_sum = dice_count = 0
+        for i in range(6):
+            if born_dice_list[0][i] == "2d":
+                d6_1 = random.randrange(start=1, stop=7, step=1)
+                d6_2 = random.randrange(start=1, stop=7, step=1)
+                dice_result[0][i] = f"[{d6_1},{d6_2}]+{born_dice_list[1][i]} = {(d6_1+d6_2+born_dice_list[1][i])}" if born_dice_list[1][i] != 0 else f"[{d6_1},{d6_2}] = {(d6_1+d6_2)}"
+                dice_result[1][i] = d6_1+d6_2+born_dice_list[1][i]
+                stats_sum += d6_1+d6_2+born_dice_list[1][i]
+                dice_sum += d6_1+d6_2
+                dice_count += 2
+            elif born_dice_list[0][i] == "1d":
+                d6_1 = random.randrange(start=1, stop=7, step=1)
+                dice_result[0][i] = f"[{d6_1}]+{born_dice_list[1][i]} = {(d6_1+born_dice_list[1][i])}" if born_dice_list[1][i] else f"[{d6_1}] = {(d6_1)}"
+                dice_result[1][i] = d6_1+born_dice_list[1][i]
+                stats_sum += d6_1+born_dice_list[1][i]
+                dice_sum += d6_1
+                dice_count += 1
+        dice_result[0][6] = f"合計: {stats_sum}, ﾀﾞｲｽ平均:{(dice_sum/dice_count):.2f}"
+        st.session_state.born_dice_history.append(dice_result)
+    with st.container():
+        col_his, col_delete = st.columns([1,1], vertical_alignment="center")
+        with col_his:
+            st.write("ダイス履歴")
+        with col_delete:
+            with st.container(horizontal_alignment="right"):
+                if st.button("履歴削除", type="tertiary", key="born_dice_history_delete"):
+                    st.session_state.born_dice_history = []
+        
+        for i, born_dice_his in enumerate(reversed(st.session_state.born_dice_history)):
+            with st.container(gap=0, border=True):
+                for j in range(6):
+                    st.write(f"{stats_name_list[0][j]}: {born_dice_his[0][j]}")
+                st.write(born_dice_his[0][6])
+                if st.button("結果を適用", type="tertiary", key=f"born_dice_input_{i}"):
+                    for j in range(6):
+                        st.session_state[f"stats_{j}_1"] = born_dice_his[1][j]
+                    st.rerun("app")
+        
+
+#サイドバー処理
 with st.sidebar:
-    return_sheet_list = st.button("シート一覧に戻る", key="return_sheet_list")
+    return_sheet_list = st.button("シート一覧に戻る", on_click=return_check_dialog, key="return_sheet_list")
     save_new = st.button("新規保存", key="data_save")
     save_update = st.button("上書き保存", key="data_update") if st.session_state.edit_mode else False
+    st.download_button("json出力", data=(json.dumps(create_save_data(), ensure_ascii=False, indent=2).encode('utf-8')), file_name=f"{name_pc}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json", mime="application/json")
     data_delete = st.button("データクリア", key="data_clear")
-    if return_sheet_list:
-        return_check_dialog()
+
     if save_new:
-        new_data_save_dialog()
-        # if name_pc != "":
-        #     new_data_save_dialog()
-        # else:
-        #     st.sidebar.error("キャラクター名が空欄では保存できません。")
+        # new_data_save_dialog() #id:0のデータを作る時用
+        if name_pc != "":
+            new_data_save_dialog()
+        else:
+            st.error("キャラクター名が空欄では保存できません。")
     if save_update:
         if name_pc != "":
-            save_data = create_save_data()
-            json_save = json.dumps(save_data, ensure_ascii=False, indent=0).encode('utf-8')
-            now = datetime.now()
-            conn = get_connection()
-            c = conn.cursor()
-            c.execute("UPDATE sheet_data SET pc_name = ?, pl_name = ?, main_lv = ?, update_date = ?, json = ? WHERE id = ?", (name_pc, name_pl, main_lv, now.date(), json_save, st.session_state.edit_id,))
-            conn.commit()
-            conn.close()
-            st.sidebar.success("上書き保存に成功しました")
+            update_data_save_dialog()
         else:
-            st.sidebar.error("キャラクター名が空欄では保存できません。")
+            st.error("キャラクター名が空欄では保存できません。")
     if data_delete:
         data_clear_dialog()
+    with st.expander("生まれダイス"):
+        born_dice_roll(race__,race,born_dice)
+    with st.expander("ダイス"):
+        dice_roll()
 
 
 
@@ -3009,4 +3313,3 @@ with st.expander("デバッグ用"):
         st.session_state[omake2]
     else:
         st.write(f'グローバル変数:"{omake2}"は存在しません')
-

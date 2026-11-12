@@ -21,8 +21,6 @@ def pass_input(id, password):
                     st.switch_page(st.session_state.pages["sheet"])
                 else:
                     textbox.error("パスワードが違います。  \nもう一度入力してください。")
-                    # st.write(hash_input_password)
-                    # st.write(password)
 
 @st.dialog("削除確認")
 def data_delete(id, password):
@@ -44,16 +42,20 @@ def data_delete(id, password):
                     st.rerun()
                 else:
                     textbox.error("パスワードが違います。  \nもう一度入力してください。")
-                    # st.write(hash_input_password)
-                    # st.write(password)
 
             elif st.form_submit_button("キャンセル", key="func_cancel_button"):
                 st.rerun()
 
-st.title("シート一覧")
+col_header, col_search = st.columns([3,1], vertical_alignment="bottom")
+with col_header:
+    st.header("シート一覧")
+with col_search:
+    search_text = st.text_input("", placeholder="PL名検索", help="完全一致検索です", type="search", label_visibility="visible")
 
-with st.container(gap="xxsmall"):
-    col_list_pc, col_list_pl, col_list_lv, col_list_date, col_list_create = st.columns([2,1,1,1,1])
+
+
+with st.container(gap=0):
+    col_list_pc, col_list_pl, col_list_lv, col_list_date, col_list_create = st.columns([2,1,1,1,1], vertical_alignment="bottom")
     with col_list_pc:
         st.write("PC名")
     with col_list_pl:
@@ -61,26 +63,36 @@ with st.container(gap="xxsmall"):
     with col_list_lv:
         st.write("レベル")
     with col_list_date:
-        st.write("更新日時")
+        st.write("更新日")
     with col_list_create:
         with st.container(horizontal_alignment="right"):
             if st.button("新規作成", type="primary"):
+                st.session_state.new_mode = True
                 st.session_state.edit_mode = False
+                st.session_state.file_upload_flag = False
                 st.switch_page(st.session_state.pages["sheet"])
     st.divider()
     conn = get_connection()
     c = conn.cursor()
-    c.execute("SELECT * FROM sheet_data")
+    if search_text != "":
+        c.execute("SELECT id, pc_name, pl_name, main_lv, update_date, password, json FROM sheet_data WHERE pl_name == ?", (search_text, ))
+    else:
+        c.execute("SELECT * FROM sheet_data")
+
     raw_data = c.fetchall()
     conn.close()
-    for id, pc, pl, lv, date, password, binary_data in raw_data:
+    for id, pc, pl, lv, date, password, binary_data in reversed(raw_data):
         if id == 0:
             continue
-        col_list_pc, col_list_pl, col_list_lv, col_list_date, col_list_delete = st.columns([2,1,1,1,1])
+        col_list_pc, col_list_pl, col_list_lv, col_list_date, col_list_delete = st.columns([2,1,1,1,1], vertical_alignment="center")
         with col_list_pc:
             if st.button(f"{pc}", key=f"pc_name_{id}", type="tertiary"):
-                st.session_state.input_password_text = ""
-                pass_input(id, password)
+                # st.session_state.input_password_text = ""
+                # pass_input(id, password)
+                st.session_state.edit_id = id
+                st.session_state.edit_mode = True
+                st.session_state.file_upload_flag = True
+                st.switch_page(st.session_state.pages["sheet"])
         with col_list_pl:
             st.write(f"{pl}")
         with col_list_lv:
@@ -93,8 +105,20 @@ with st.container(gap="xxsmall"):
                     data_delete(id, password)
     st.divider()
 
-if st.button("このサイトについて", icon="❕", key="about_site"):
-    st.switch_page(st.session_state.pages["about"])
+col_about, col_upload = st.columns([1,1])
+with col_about:
+    if st.button("このサイトについて", icon="❕", key="about_site"):
+        st.switch_page(st.session_state.pages["about"])
+with col_upload:
+    with st.container(horizontal_alignment="right"):
+        with st.popover("外部データ読み込み"):
+            uploaded_file = st.file_uploader("json読み込み", type="json", accept_multiple_files=False, label_visibility="collapsed")
+            if uploaded_file is not None:
+                st.session_state.edit_mode = False
+                st.session_state.file_upload_flag = True
+                st.session_state.uploaded_file = uploaded_file
+                st.switch_page(st.session_state.pages["sheet"])
+
 
 with st.expander("デバッグ用DB生データ", expanded=False):
     conn = get_connection()
@@ -109,3 +133,4 @@ with st.expander("デバッグ用DB生データ", expanded=False):
         df.append({"id": id, "PC名": pc, "PL名": pl, "Lv":lv, "更新日時": date, "pass": password, "data": json_obj})
 
     st.write(df)
+
