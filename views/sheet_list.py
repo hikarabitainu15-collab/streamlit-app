@@ -134,4 +134,15 @@ with st.expander("デバッグ用DB生データ", expanded=False):
 
     st.write(df)
 
+from st_supabase_connection import SupabaseConnection
+
+# Initialize connection.
+conn = st.connection("supabase",type=SupabaseConnection)
+
+# Perform query.
+rows = conn.table("save_data").select("*").execute()
+
+# Print results.
+st.write(rows)
+
 
