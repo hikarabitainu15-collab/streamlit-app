@@ -698,16 +698,10 @@ def edit_sheet_all(load_json):
 #DBからjsonデータを読み込む
 @st.cache_data
 def load_db_data(id):
-    # conn = get_connection()
-    # c = conn.cursor()
-    # c.execute("SELECT id, json FROM sheet_data WHERE id == ?", (id, ))
-    # raw_data = c.fetchall()
-    # conn.close()
+
     conn = st.connection("supabase",type=SupabaseConnection)
     raw_data = conn.table("save_data").select("*").eq("id", id).execute()
-    #conn.close()
     for raws in raw_data.data:
-        
         result = raws["json"]
         break
     return result
@@ -720,9 +714,7 @@ def sheet_edit():
         edit_sheet_all(load_json)
         #読み込み終了
         st.session_state.file_upload_flag = False
-    #return load_json
 if st.session_state.edit_mode:
-    #load_data = sheet_edit()
     sheet_edit()
 elif "uploaded_file" in st.session_state:
     edit_sheet_all(json.load(st.session_state.uploaded_file))
@@ -1639,7 +1631,11 @@ def abilitys():
                             ):
                                 current_ability_list.append(data["name"])
                     if st.session_state.ability_mode[abi_lv] != "自由記入":
-                        st.selectbox(f"戦闘特技{abi_lv}", options=current_ability_list, index=current_ability_list.index(st.session_state.ability_mode[abi_lv]), label_visibility="collapsed", key=f"ability_selectbox_{abi_lv}", on_change=update_ability_mode, args=(abi_lv,))
+                        try:
+                            st.selectbox(f"戦闘特技{abi_lv}", options=current_ability_list, index=current_ability_list.index(st.session_state.ability_mode[abi_lv]), label_visibility="collapsed", key=f"ability_selectbox_{abi_lv}", on_change=update_ability_mode, args=(abi_lv,))
+                        except:
+                            st.selectbox(f"戦闘特技{abi_lv}", options=current_ability_list, index=0, label_visibility="collapsed", key=f"ability_selectbox_{abi_lv}", on_change=update_ability_mode, args=(abi_lv,))
+                            update_ability_mode(abi_lv)
                         if st.session_state.ability_mode[abi_lv] == "自由記入":
                             st.rerun()
                         abi = st.session_state.ability_mode[abi_lv]
@@ -1685,7 +1681,11 @@ def abilitys():
                             ):
                                 current_ability_list.append(data["name"])
                     if st.session_state.ability_mode[abi_lv] != "自由記入":
-                        st.selectbox(f"戦闘特技{abi_lv}", options=current_ability_list, index=current_ability_list.index(st.session_state.ability_mode[abi_lv]), label_visibility="collapsed", key=f"ability_selectbox_{abi_lv}", on_change=update_ability_mode, args=(abi_lv,))
+                        try:
+                            st.selectbox(f"戦闘特技{abi_lv}", options=current_ability_list, index=current_ability_list.index(st.session_state.ability_mode[abi_lv]), label_visibility="collapsed", key=f"ability_selectbox_{abi_lv}", on_change=update_ability_mode, args=(abi_lv,))
+                        except:
+                            st.selectbox(f"戦闘特技{abi_lv}", options=current_ability_list, index=0, label_visibility="collapsed", key=f"ability_selectbox_{abi_lv}", on_change=update_ability_mode, args=(abi_lv,))
+                            update_ability_mode(abi_lv)
                         if st.session_state.ability_mode[abi_lv] == "自由記入":
                             st.rerun()
                         abi = st.session_state.ability_mode[abi_lv]
@@ -1748,7 +1748,7 @@ def weapon():
                     for i, i_list in enumerate(new_list):
                         col_weapon_cost, col_weapon_usage, col_weapon_strength, col_weapon_accuracy, col_weapon_power, col_weapon_critical_value, col_weapon_add_damage, col_weapon_category = st.columns([1.6,1.3,1,1,1,1,1,2.4], gap="xxsmall")
                         with col_weapon_cost:
-                            st.text_input(f"武器{i}価格ex", value=i_list[1], label_visibility="collapsed", disabled=True)
+                            st.number_input(f"武器{i}価格ex", value=i_list[1], step=1, label_visibility="collapsed", disabled=True, key=f"weapon_{i}_1")
                         with col_weapon_usage:
                             st.text_input(f"武器{i}用法ex", value=i_list[2], label_visibility="collapsed", disabled=True)
                         with col_weapon_strength:
@@ -2066,11 +2066,11 @@ def item_func():
                     for i ,i_list in enumerate(new_list):
                         col_item_cost, col_item_get, col_item_lost, col_item_other = st.columns([1,1,1,5], gap="xxsmall")
                         with col_item_cost:
-                            st.text_input(f"所持品{i}単価ex", value=i_list[1], label_visibility="collapsed", disabled=True)
+                            st.number_input(f"所持品{i}単価ex", value=i_list[1], step=1, label_visibility="collapsed", disabled=True, key=f"item_{i}_1")
                         with col_item_get:
-                            st.text_input(f"所持品{i}所持数ex", value=i_list[2], label_visibility="collapsed", disabled=True)
+                            st.number_input(f"所持品{i}所持数ex", value=i_list[2], step=1, label_visibility="collapsed", disabled=True, key=f"item_{i}_2")
                         with col_item_lost:
-                            st.text_input(f"所持品{i}消費数ex", value=i_list[3], label_visibility="collapsed", disabled=True)
+                            st.number_input(f"所持品{i}消費数ex", value=i_list[3], step=1, label_visibility="collapsed", disabled=True, key=f"item_{i}_3")
                         with col_item_other:
                             st.text_input(f"所持品{i}備考ex", value=i_list[4], label_visibility="collapsed", disabled=True)
             st.button("入れ替えモード終了", on_click=item_exchange_end, args=(new_list,), key="item_exchange_end")
@@ -3001,17 +3001,9 @@ def new_data_save_dialog():
         with st.container(horizontal_alignment="right"):
             if st.form_submit_button("完了", key="new_data_save_ok"):
                 if sheet_password != "":
-                    save_data = create_save_data()
-                    json_save = json.dumps(save_data, ensure_ascii=False, indent=0).encode('utf-8')
+                    json_save = create_save_data()
                     now = datetime.datetime.now()
                     hash_password = hashlib.sha256(sheet_password.encode('utf-8')).hexdigest()
-                    # conn = get_connection()
-                    # c = conn.cursor()
-                    # c.execute("INSERT INTO sheet_data (pc_name, pl_name, main_lv, update_date, password, json) VALUES (?, ?, ?, ?, ?, ?)", (name_pc, name_pl, main_lv, now.date(), hash_password, json_save,))
-                    # c.execute("SELECT id FROM sheet_data")
-                    # id_list = c.fetchall()
-                    # conn.commit()
-                    # conn.close()
                     conn = st.connection("supabase",type=SupabaseConnection)
                     conn.table("save_data").insert({"pc_name": name_pc, "pl_name": name_pl, "main_lv": main_lv, "update_date": now.date(), "password": hash_password, "json": json_save}).execute()
                     id_data = conn.table("save_data").select("id").execute()
@@ -3029,13 +3021,15 @@ def new_data_save_dialog():
 #上書き保存ダイアログ
 @st.dialog("上書き保存確認")
 def update_data_save_dialog():
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("SELECT id, password FROM sheet_data WHERE id == ?", (st.session_state.edit_id, ))
-    raw_data = c.fetchall()
-    conn.close()
-    for id_data, password_data in raw_data:
-        password = password_data
+    # conn = get_connection()
+    # c = conn.cursor()
+    # c.execute("SELECT id, password FROM sheet_data WHERE id == ?", (st.session_state.edit_id, ))
+    # raw_data = c.fetchall()
+    # conn.close()
+    conn = st.connection("supabase",type=SupabaseConnection)
+    raw_data = conn.table("save_data").select("*").eq("id", st.session_state.edit_id).execute()
+    for raws in raw_data:
+        password = raws["password"]
         break
     with st.form("update_data_save_dialog", enter_to_submit=False):
         textbox = st.empty()
@@ -3045,14 +3039,8 @@ def update_data_save_dialog():
             if st.form_submit_button("完了", key="password_ok"):
                 hash_input_password = hashlib.sha256(input_password.encode('utf-8')).hexdigest()
                 if hash_input_password == password:
-                    save_data = create_save_data()
-                    json_save = json.dumps(save_data, ensure_ascii=False, indent=0).encode('utf-8')
+                    json_save = create_save_data()
                     now = datetime.datetime.now()
-                    # conn = get_connection()
-                    # c = conn.cursor()
-                    # c.execute("UPDATE sheet_data SET pc_name = ?, pl_name = ?, main_lv = ?, update_date = ?, json = ? WHERE id = ?", (name_pc, name_pl, main_lv, now.date(), json_save, st.session_state.edit_id,))
-                    # conn.commit()
-                    # conn.close()
                     conn = st.connection("supabase",type=SupabaseConnection)
                     conn.table("save_data").update({"pc_name": name_pc, "pl_name": name_pl, "main_lv": main_lv, "update_date": now.date(), "json": json_save}).eq("id", st.session_state.edit_id).execute()
                     textbox.success("上書き保存に成功しました。")

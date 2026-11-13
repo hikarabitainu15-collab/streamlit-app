@@ -155,4 +155,6 @@ with st.expander("デバッグ用DB生データ", expanded=False):
     df = []
     for row in rows.data:
         df.append({"id": row["id"], "PC名": row["pc_name"], "PL名": row["pl_name"], "Lv":row["main_lv"], "更新日時": row["update_date"], "pass": row["password"], "data": row["json"]})
+        # if row["id"] == 2:
+        #     df.append(json.loads(row["json"].decode("utf-8")))
     st.write(df)
