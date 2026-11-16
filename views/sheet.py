@@ -3028,7 +3028,7 @@ def update_data_save_dialog():
     # conn.close()
     conn = st.connection("supabase",type=SupabaseConnection)
     raw_data = conn.table("save_data").select("*").eq("id", st.session_state.edit_id).execute()
-    for raws in raw_data:
+    for raws in raw_data.data:
         password = raws["password"]
         break
     with st.form("update_data_save_dialog", enter_to_submit=False):
