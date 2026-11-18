@@ -59,6 +59,8 @@ defaults = {
 if st.session_state.get("new_mode", False):
     for key, value in defaults.items():
         st.session_state[key] = value
+    st.session_state.edit_id = 0
+    st.query_params["id"] = 0
     st.session_state.new_mode = False
 else:
     for key, value in defaults.items():
@@ -700,6 +702,10 @@ def edit_sheet_all(load_json):
 def load_db_data(id):
 
     conn = st.connection("supabase",type=SupabaseConnection)
+    count_data = conn.table("save_data").select("*", count="exact", head=True).eq("id", id).execute()
+    if count_data.count == 0:
+        st.session_state.edit_mode = False
+        id = 0
     raw_data = conn.table("save_data").select("*").eq("id", id).execute()
     for raws in raw_data.data:
         result = raws["json"]
@@ -714,6 +720,17 @@ def sheet_edit():
         edit_sheet_all(load_json)
         #読み込み終了
         st.session_state.file_upload_flag = False
+if "id" not in st.query_params:
+    st.query_params["id"] = st.session_state.get("edit_id", 0)
+elif st.query_params["id"] != "0":
+    st.session_state.edit_mode = True
+    try:
+        id_buffer = int(st.query_params["id"])
+    except:
+        id_buffer = 0
+    if st.session_state.get("edit_id", -1) != id_buffer:
+        st.session_state.edit_id = id_buffer
+        st.session_state.file_upload_flag = True
 if st.session_state.edit_mode:
     sheet_edit()
 elif "uploaded_file" in st.session_state:
@@ -3011,6 +3028,7 @@ def new_data_save_dialog():
                         st.session_state.edit_id = id_list["id"]
                         break
                     #st.session_state.edit_id = 2#id_list[len(id_list)-1][0]
+                    st.query_params["id"] = st.session_state.edit_id
                     st.session_state.edit_mode = True
                     textbox.success("新規保存に成功しました。")
                     time.sleep(3)

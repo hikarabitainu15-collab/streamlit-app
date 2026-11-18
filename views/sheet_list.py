@@ -158,3 +158,7 @@ with st.expander("デバッグ用DB生データ", expanded=False):
         # if row["id"] == 2:
         #     df.append(json.loads(row["json"].decode("utf-8")))
     st.write(df)
+
+conn = st.connection("supabase",type=SupabaseConnection)
+count_data = conn.table("save_data").select("*", count="exact", head=True).eq("id", 1).execute()
+st.write(count_data.count == 0)
