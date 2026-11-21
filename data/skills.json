@@ -26,6 +26,11 @@
             "type": 0
         },
         {
+            "name": "ヴァイタルスミス",
+            "exp_table": 0,
+            "type": 0
+        },
+        {
             "name": "ソーサラー",
             "exp_table": 0,
             "type": 1
@@ -67,6 +72,11 @@
         },
         {
             "name": "ビブリオマンサー",
+            "exp_table": 0,
+            "type": 1
+        },
+        {
+            "name": "ウィッチ",
             "exp_table": 0,
             "type": 1
         },
