@@ -3343,21 +3343,3 @@ with st.expander("デバッグ用"):
     else:
         st.write(f'グローバル変数:"{omake2}"は存在しません')
 
-
-# list_name = ability_passive_list
-# for data in list_name:
-#     for data in list_name:
-#         required_lv = replace_lv = 0
-#         for j in range(len(data["required_lv"][0])):
-#             replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
-#             st.write(f"name:{data["name"]}, {replace_lv}")
-
-data_hoge = ability_passive_list[6:7]
-for data in data_hoge:
-    replace_lv = 0
-    data["required_lv"][0]
-    for j in range(len(data["required_lv"][0])):
-        replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["replace_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
-        st.write(replace_lv)
-
-data_hoge
