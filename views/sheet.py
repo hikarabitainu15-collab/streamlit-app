@@ -1579,7 +1579,8 @@ def abilitys():
                                 required_lv = replace_lv = 0
                                 for j in range(len(data["required_lv"][0])):
                                     required_lv = max(required_lv, main_lv if data["required_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["required_lv"][0][j])]["lv"])
-                                    replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
+                                for j in range(len(data["replace_lv"][0])):
+                                    replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["replace_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
                                 if((data["required_lv"][1] <= abi_lv ) and #習得可能レベル <= 戦闘特技枠のレベル かつ
                                 (data["required_lv"][1] <= required_lv) and #習得可能レベル <= 要求技能のレベル かつ
                                 (data["replace_lv"][1] <= replace_lv) and #置き換えレベル <= 要求技能のレベル かつ
@@ -1636,7 +1637,8 @@ def abilitys():
                             required_lv = replace_lv = 0
                             for j in range(len(data["required_lv"][0])):
                                 required_lv = max(required_lv, main_lv if data["required_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["required_lv"][0][j])]["lv"])
-                                replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
+                            for j in range(len(data["replace_lv"][0])):
+                                replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["replace_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
                             if((data["required_lv"][1] <= abi_lv ) and #習得可能レベル <= 戦闘特技枠のレベル かつ
                                 (data["required_lv"][1] <= required_lv) and #習得可能レベル <= 要求技能のレベル かつ
                                 (data["replace_lv"][1] <= replace_lv) and #置き換えレベル <= 要求技能のレベル かつ
@@ -1686,7 +1688,8 @@ def abilitys():
                             required_lv = replace_lv = 0
                             for j in range(len(data["required_lv"][0])):
                                 required_lv = max(required_lv, main_lv if data["required_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["required_lv"][0][j])]["lv"])
-                                replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
+                            for j in range(len(data["replace_lv"][0])):
+                                replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["replace_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
                             if((data["required_lv"][1] <= abi_lv ) and #習得可能レベル <= 戦闘特技枠のレベル かつ
                                 (data["required_lv"][1] <= required_lv) and #習得可能レベル <= 要求技能のレベル かつ
                                 (data["replace_lv"][1] <= replace_lv) and #置き換えレベル <= 要求技能のレベル かつ
@@ -1818,7 +1821,7 @@ def weapon():
                     with col_weapon_exclusive:
                         weapon_list_buffer.append(st.checkbox(f"武器{i}専用", label_visibility="collapsed", key=f"weapon_{i}_4"))
                     with col_weapon_skill:
-                        weapon_list_buffer.append(st.selectbox(f"武器{i}使用技能", [" ", "戦", "拳" ,"舞", "軽", "射", "魔", "練", "狩", "操"], label_visibility="collapsed", key=f"weapon_{i}_5"))
+                        weapon_list_buffer.append(st.selectbox(f"武器{i}使用技能", [" ", "戦", "拳" ,"舞", "軽", "射", "闘", "魔", "練", "狩", "操"], label_visibility="collapsed", key=f"weapon_{i}_5"))
                     with col_weapon_power:
                         weapon_list_buffer.append(st.number_input(f"武器{i}威力", step=1, min_value=0 , max_value=100 ,label_visibility="collapsed", key=f"weapon_{i}_6"))
                     with col_weapon_critical_value:
@@ -1843,6 +1846,8 @@ def weapon():
                                     skill_lv_damage = skill_data["skill"][skills_name_list.index("フェンサー")]["lv"] + stats_list[2][6]
                                 case "射":
                                     skill_lv_damage = skill_data["skill"][skills_name_list.index("シューター")]["lv"] + stats_list[2][6]
+                                case "闘":
+                                    skill_lv_damage = skill_data["skill"][skills_name_list.index("ヴァイタルスミス")]["lv"] + stats_list[2][6]
                                 case "魔":
                                     skill_lv_damage = skill_data["skill"][skills_name_list.index("デーモンルーラー")]["lv"] + stats_list[2][6]
                                 case "練":
@@ -1881,6 +1886,8 @@ def weapon():
                                     accuracy = skill_data["skill"][skills_name_list.index("フェンサー")]["lv"] + int((stats_list[0][3]+stats_list[0][4]+stats_list[0][5]+(2 if weapon_list_buffer[4] else 0))/6)        
                                 case "射":
                                     accuracy = skill_data["skill"][skills_name_list.index("シューター")]["lv"] + int((stats_list[0][3]+stats_list[0][4]+stats_list[0][5]+(2 if weapon_list_buffer[4] else 0))/6)        
+                                case "闘":
+                                    accuracy = skill_data["skill"][skills_name_list.index("ヴァイタルスミス")]["lv"] + int((stats_list[0][3]+stats_list[0][4]+stats_list[0][5]+(2 if weapon_list_buffer[4] else 0))/6)        
                                 case "魔":
                                     accuracy = skill_data["skill"][skills_name_list.index("デーモンルーラー")]["lv"] + int((stats_list[0][3]+stats_list[0][4]+stats_list[0][5]+(2 if weapon_list_buffer[4] else 0))/6)
                                 case "練":
@@ -1948,7 +1955,7 @@ def armor():
             with col_armor_mastery:
                 armor_list[3].append(st.selectbox("防具習熟", ["", "金属鎧", "非金属鎧"], label_visibility="collapsed", placeholder="防具習熟", key="armor_3_0"))
             with col_armor_skill:
-                armor_list[3].append(st.selectbox("防具使用技能", ["", "戦", "拳" ,"舞", "軽", "射", "魔", "操"], label_visibility="collapsed", placeholder="使用技能", key="armor_3_1"))
+                armor_list[3].append(st.selectbox("防具使用技能", ["", "戦", "拳" ,"舞", "軽", "射", "闘", "魔", "操"], label_visibility="collapsed", placeholder="使用技能", key="armor_3_1"))
                 armor_list[3].append(0)
                 armor_list[3].append(0)
                 armor_list[3].append(0)
@@ -1967,6 +1974,8 @@ def armor():
                     avoidance = skill_data["skill"][skills_name_list.index("フェンサー")]["lv"] + int((stats_list[1][3]+stats_list[1][4]+stats_list[1][5]+(2 if armor_list[1][1] else 0))/6)        
                 case "射":
                     avoidance = skill_data["skill"][skills_name_list.index("シューター")]["lv"] + int((stats_list[1][3]+stats_list[1][4]+stats_list[1][5]+(2 if armor_list[1][1] else 0))/6)        
+                case "闘":
+                    avoidance = skill_data["skill"][skills_name_list.index("ヴァイタルスミス")]["lv"] + int((stats_list[1][3]+stats_list[1][4]+stats_list[1][5]+(2 if armor_list[1][1] else 0))/6)
                 case "魔":
                     avoidance = skill_data["skill"][skills_name_list.index("デーモンルーラー")]["lv"] + int((stats_list[1][3]+stats_list[1][4]+stats_list[1][5]+(2 if armor_list[1][1] else 0))/6)
                 case "操":
@@ -2133,7 +2142,7 @@ def other_stats_func():
             st.number_input("全力移動", value=(move_power_3 * 3), step=1, disabled=True)
         #魔物知識
         with st.container(horizontal=True, width=335, wrap=False, gap="xsmall"):
-            mamotiki_skill_list = {"賢":"セージ", "騎":"ライダー", "狩":"ダークハンター"}
+            mamotiki_skill_list = {"賢":"セージ", "騎":"ライダー", "狩":"ダークハンター", "闘":"ヴァイタルスミス"}
             mamotiki_placeholder_1 = st.empty()
             mamotiki_placeholder_2 = st.empty()
             mamotiki_placeholder_3 = st.empty()
@@ -2274,7 +2283,7 @@ def language_func():
             all_language_list.append(first_language_list)
         #自動習得言語
         #魔法文明語
-        if (((skill_data["skill"][skills_name_list.index("ソーサラー")]["lv"] > 0) or (skill_data["skill"][skills_name_list.index("コンジャラー")]["lv"] > 0) or (skill_data["skill"][skills_name_list.index("ビブリオマンサー")]["lv"] > 0)) and (((race__ == " ") or (race__ == "自由記入")) or ("魔法文明語" not in [lang[0] for lang in all_language_list[0]]))):
+        if (((skill_data["skill"][skills_name_list.index("ソーサラー")]["lv"] > 0) or (skill_data["skill"][skills_name_list.index("コンジャラー")]["lv"] > 0) or (skill_data["skill"][skills_name_list.index("ビブリオマンサー")]["lv"] > 0) or (skill_data["skill"][skills_name_list.index("ウィッチ")]["lv"] > 0)) and (((race__ == " ") or (race__ == "自由記入")) or ("魔法文明語" not in [lang[0] for lang in all_language_list[0]]))):
             col_language_name_2, col_language_talk_2, col_language_read_2 = st.columns([6,1.5,1.5])
             with col_language_name_2:
                 st.selectbox("言語_魔法文明語", options=language_name_list, index=language_name_list.index("魔法文明語"), label_visibility="collapsed", disabled=True)
@@ -3290,6 +3299,7 @@ def born_dice_roll(race__, race, born_dice):
 
 #サイドバー処理
 with st.sidebar:
+    st.write(f"PC名:{name_pc}")
     return_sheet_list = st.button("シート一覧に戻る", on_click=return_check_dialog, key="return_sheet_list")
     save_new = st.button("新規保存", key="data_save")
     save_update = st.button("上書き保存", key="data_update") if st.session_state.edit_mode else False
@@ -3332,3 +3342,22 @@ with st.expander("デバッグ用"):
         st.session_state[omake2]
     else:
         st.write(f'グローバル変数:"{omake2}"は存在しません')
+
+
+# list_name = ability_passive_list
+# for data in list_name:
+#     for data in list_name:
+#         required_lv = replace_lv = 0
+#         for j in range(len(data["required_lv"][0])):
+#             replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["required_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
+#             st.write(f"name:{data["name"]}, {replace_lv}")
+
+data_hoge = ability_passive_list[6:7]
+for data in data_hoge:
+    replace_lv = 0
+    data["required_lv"][0]
+    for j in range(len(data["required_lv"][0])):
+        replace_lv  = max(replace_lv, main_lv if data["replace_lv"][0][j] == "冒険者" else magic_lv_max if data["replace_lv"][0][j] == "魔法使い" else skill_data["skill"][skills_name_list.index(data["replace_lv"][0][j])]["lv"])
+        st.write(replace_lv)
+
+data_hoge
